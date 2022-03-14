@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var x; // a function scope declaration, x will be available in current block from this line onwards
+        console.log(x);
+        x = 10; // number 
+        console.log('x = ' + x + '  and type of x = ' + typeof(x));
+        x = 'Mahesh'; // string
+        console.log('x = ' + x + '  and type of x = ' + typeof(x));
+        x = true; // boolean
+        console.log('x = ' + x + '  and type of x = ' + typeof(x));
+        x = new Date(2022,2,14); // object
+        console.log('x = ' + x + '  and type of x = ' + typeof(x));
+        x = {}; // object
+        console.log('x = ' + x + '  and type of x = ' + typeof(x));
+
+        // The JS Parsing capabilities
+        x = '123xyz';
+        var y = parseInt(x); // from left-to-right number parsing will be executed till the first non numeric value is not occurred
+        console.log('y = ' + y + '  and type of y = ' + typeof(y));
+
+        x = '10.45uyt';
+        let z = parseFloat(x);
+        console.log('z = ' + z + '  and type of z = ' + typeof(z));
+        x = 12345678910111121314;
+        console.log('x = ' + x + '  and type of x = ' + typeof(x));
+        console.log(x * x);
+    </script>
+</head>
+<body>
+    <h1>The JS 'var' demo</h1>
+</body>
+</html>

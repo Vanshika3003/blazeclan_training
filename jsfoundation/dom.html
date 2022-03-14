@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // the function will be executed when the window uis loaded 
+        window.onload = function(){
+            // 1. read the element using its 'id' property
+            var btn = document.getElementById('btnadd');
+            // 2. attach an event to the button    
+            // the 'false' makes sure that the function is released once the event execution is completed
+            btn.addEventListener('click', function(){
+                // 3. read data from txtn1 and txtn2
+                var n1 = parseInt(document.getElementById('txtn1').value); 
+                var n2 = parseInt(document.getElementById('txtn2').value); 
+
+                // 4. check for non zero and undefined value for n1 and n2
+                if((n1 === 0 || n2 === 0) || (n1 < 0 || n2 < 0))
+                {
+                    // var res = 0;
+                    var res = NaN; // Not-a-Number
+                }
+                else{
+                    var res = n1 + n2;
+                }
+
+                // 5. set the value of the txtres to addition of n1 and n2 
+                document.getElementById('txtres').value = res;
+
+            }, false); 
+        }
+    </script>
+</head>
+<body>
+    <h1>The DOM Programming</h1>
+    <div>
+        N1 : <input type="text" id="txtn1"/> 
+    </div>
+    <br/>
+    <div>
+        N2 : <input type="text" id="txtn2"/> 
+    </div>
+    <br/>
+    <div>
+        Result : <input type="text" id="txtres"/> 
+    </div>
+    <br/>
+    <div>
+      <input type="button" id="btnadd" value="Add"/> 
+    </div>
+</body>
+</html>

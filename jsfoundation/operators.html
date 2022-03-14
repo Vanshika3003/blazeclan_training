@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var a = 10;
+        var b = 20;
+        console.log(a > b); // false
+        console.log(a < b); // true
+        console.log(a >= b); // false
+        console.log(a <= b); // true
+
+        a = 100; b = 100;
+
+        console.log(a == b); // Value Comparison 
+
+        b = "100";// string
+
+        console.log(a == b); // true, because the JS parse value using == from Left-to-right
+
+        console.log(a === b); // false, deep Equality, first type and then value
+
+        console.log(a !== b); // the Not Equal
+        b = 900;
+        a +=b; // in a add value of a and b and store result in a
+        console.log( 'a = ' + a);  // 1000
+
+        a -=b; // in a subtract value of a and b and store result in a
+        console.log( 'a = ' + a);  // 100
+
+        a *=b; 
+        console.log( 'a = ' + a); // in a multiply value of a and b and store result in a
+
+        a /= b;
+        console.log( 'a = ' + a); // in a divide value of a and b and store result in a
+    </script>
+</head>
+<body>
+    <h1>JS Operators</h1>
+</body>
+</html>

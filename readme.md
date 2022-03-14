@@ -1,0 +1,64 @@
+# JavaScript Full Stack
+
+- Fundamental JS Programming
+    - JS Requirements
+        - Foundation of Modern Open JS Full Stack App development
+        - Provides End-to-End support for Application development
+            - Interactive Front-End with Browser
+            - Server-Side Apps
+    - Types
+        - No explicit DataTypes
+        - a Variable is declared using 'var' keyword
+            - The 'var' provides a function scope for a variable
+        - The Type is parsed by JS Parser which is already available in browser 
+            - Parsed Types as 
+                - number, string, boolean,  object, function 
+            - Parsed Type to extract values from the right-hand-side expression    
+        - Standard JS Objects
+            - window
+                - represents a currently loaded window
+                - Eventing to manage the JS Execution in the Browser
+            - document
+                - Currently loaded HTML DOM in current window object
+                - to extract the DOM elements using 'document' object, use the window.onload event
+                - Used to extract a DOM element so that the data can be read/write frm and to it
+                    - UI Elements
+                        - input: for Accepting Data and Selecting data
+                            - text, radio, check, button
+                            - property system
+``` html
+<input type="text" value="3" id="txt1" name="txt" class="c">
+```
+                                - input: the HTML tag
+                                - type: the type of UI that will be shown on browser
+                                - value: the data that can be entered in textbox and can be read from textbox
+                                - id: the Unique identity of UI element in DOM
+                                - name: the identity ti post the data to server using HTML Form 
+                                - class: used to apply CSS Styes on HTML element, alternatively used to define a element group  
+                    - The 'document' object's methods to extract UI element from DOM
+                        - getElementById('id'); return an instance of single HTML element
+                        - getElementsByTagName('TAG-NAME'), returns collection of HTML elements having name property value
+                            - e.g. 
+                                - document.getElementsByTagName('input'), return collection of input elements
+                        - getElementsByClass('class-name'), returns collection of HTML elements having same class name property value        
+                        - addEventListener(p1,p2,p3);
+                            - USed to attach an event with UI element
+                            - p1: the event name, e.g. click, change, blur, mouseenter, mouseleave, keyup, etc.
+                            - p2: the function that will be executed when an event is raised
+                            - p3: the boolean value to keep the event attached with UI element                      
+            - Array (Not Directly accessible, but available as type)
+                - The only Standard Collection Data Structure in JS
+            - Number, String, Boolean, Date (Not Directly accessible, but available as type) 
+            - console
+                - Represents the out object to present the data to End-User
+                    - console.log()   
+                    - console.error()                 
+    - Functions
+    - DOM Interaction with JS
+- HTML 5 API
+- CSS and CSS Frameworks
+- ES 6 aka Modern JavaScript
+- Server-Side App Development using Node.js
+- Front-End Interactive UI apps using React.js
+- Microsoft Services
+- Cloud App Development and Deployment 
