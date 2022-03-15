@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        // declare array
+        var numArray = [];
+        // push data in array
+        numArray.push(10);
+        numArray.push(20);
+        numArray.push(30);
+        numArray.push(40);
+        numArray.push(50);
+        numArray.push(60);
+        numArray.push(40);
+        numArray.push(30);
+        numArray.push(20);
+        numArray.push(10);
+        numArray.push(100);
+
+        document.getElementById('dv1').innerHTML = 'With New data Pushed ' + numArray;
+        // lets pop te top value from array
+        document.getElementById('dv2').innerHTML = 'Popped value from array ' + numArray.pop();
+        // print the remaining array
+        document.getElementById('dv3').innerHTML = 'The Remaining Array ' + numArray;
+        numArray.push(40);
+        // lets shift the numArray from left
+        numArray.shift(); 
+        document.getElementById('dv4').innerHTML = 'After shifting data from array ' + numArray;
+        // lets unsift the data in array by using value as 10
+        numArray.unshift(10);
+        document.getElementById('dv5').innerHTML = 'After Unshift data to array ' + numArray;
+        // lets find out an index of record in array
+        // if record is found then its 0-based index will be returned else -1 will be returned
+        document.getElementById('dv6').innerHTML = 'index of 20 is = ' + numArray.indexOf(20) + ' and index of 100 is = ' + numArray.indexOf(100); 
+        // lets find the last index
+        document.getElementById('dv7').innerHTML = 'Last index of 20 is = ' + numArray.lastIndexOf(20);
+        numArray.push(100);    
+        // lets sort the array
+        // The Array.sort() perform the pattern matching for entries as objects
+        // and sort them by parsing it from left-to-right 
+        document.getElementById('dv8').innerHTML = 'Sort is = ' + numArray.sort();
+
+        // lets sort the array elements based on its numeric value comparision 
+        // pass the compare function to compare values     
+       
+        document.getElementById('dv9').innerHTML = 'Sort is = ' +  numArray.sort(compareValueSort);
+
+        function compareValueSort(a,b){
+            // if result is positive, then a is greater than b
+            // if result is negative, then b is greater than a
+            // if result is 0, then a nd b are same
+            return a - b;
+        }
+
+        function compareValueReverse(a,b){
+            // if result is positive, then a is greater than b
+            // if result is negative, then b is greater than a
+            // if result is 0, then a nd b are same
+            return b - a;
+        }
+
+        document.getElementById('dv9').innerHTML = 'Reverse is = ' +  numArray.sort(compareValueReverse);
+
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Array Methods</h1>
+    <div id="dv1"></div>
+    <br/>
+    <div id="dv2"></div>
+    <br/>
+    <div id="dv3"></div>
+    <br/>
+    <div id="dv4"></div>
+    <br/>
+    <div id="dv5"></div>
+    <br/>
+    <div id="dv6"></div>
+    <br/>
+    <div id="dv7"></div>
+    <br/>
+    <div id="dv8"></div>
+    <br/>
+    <div id="dv9"></div>
+    <br/>
+    <div id="dv10"></div>
+  </body>
+</html>

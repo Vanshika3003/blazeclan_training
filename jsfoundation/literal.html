@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            // lets define an object
+            var obj = {
+                EmpNo:101,
+                EmpName: 'Mahesh',
+                display: function(){
+                    console.log(' id = ' + this.EmpNo + ' name ' + this.EmpName);
+                }
+            };
+            document.getElementById('dv1').innerHTML = 'EmpNo ' + obj.EmpNo + '  and EmpName = ' + obj.EmpName;  
+            // calling a method of the object
+            obj.display();  
+            // add a new key in the object    
+            obj.Salary = 200000;
+            document.getElementById('dv1').innerHTML = 'EmpNo ' + obj.EmpNo + '  and EmpName = ' + obj.EmpName + ' and Salary = ' + obj.Salary;  
+
+            var keys = Object.keys(obj);
+            console.log('All keys ' + keys);
+            var values = Object.values(obj);
+            console.log('All Values ' + values);
+
+            // just read keys those are not function
+
+            var props = Object.getOwnPropertyNames(obj);
+            console.log(props);
+            
+            // for(var k in obj){
+            //     if(k === Object.getProperties()){
+            //         console.log(k);
+            //     }
+            // }
+
+
+        }
+    </script>
+</head>
+<body>
+    <h1>JS Literal Objects aka JSON Objects</h1>
+    <div id="dv1"></div>
+</body>
+</html>

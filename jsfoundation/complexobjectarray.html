@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        var Employees = [
+          { EmpNo: 101, EmpName: "Mahesh" },
+          { EmpNo: 102, EmpName: "Vikram" },
+          { EmpNo: 103, EmpName: "Suprotim" },
+          { EmpNo: 104, EmpName: "Manish" },
+        ];
+        var lstemp = document.getElementById('lstemp');
+        var options ='';
+        for (var i=0; i< Employees.length; i++){
+              options+= '<option value="'+ Employees[i].EmpNo +'">' +Employees[i].EmpName + '</option>';  
+        }
+
+        lstemp.innerHTML = options;
+      };
+    </script>
+  </head>
+  <body>
+    <h1>The Complex Object Array</h1>
+    The Dynamically Generated Select
+
+    <select id="lstemp"></select>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            // define an array
+             var names = ["James Bond", "Ethun Hunt", "Jack Reacher", "Indiana Jones", "Jason Bourn"];    
+
+             var lstdynamic = document.getElementById('lstdynamic');
+             
+             var option = '';
+             // dynamically generate the option UI element   
+             for(var i=0; i<names.length; i++){
+                 option+= '<option value="' + names[i] +'">'+ names[i] + '</option>';
+             }
+            // pass options to innerHtml property of select
+            lstdynamic.innerHTML = option;
+
+            lstdynamic.addEventListener('change', function(){
+                 // when we write an event on the DOM element, inside the element's
+                 // event method, the element is refereed using 'this' scope object  
+                 var text = this.options[this.selectedIndex].text;
+                 var value = this.options[this.selectedIndex].value;
+
+                 document.getElementById('dvcharacters').innerHTML = 'text = ' + text + '  ' + 'value = ' + value;
+                 
+             },false); 
+
+
+             var lstnames1 = document.getElementById('lstnames1');  
+             // subscribe to the event
+             // the event is 'change'
+             lstnames1.addEventListener('change', function(){
+                 // when we write an event on the DOM element, inside the element's
+                 // event method, the element is refereed using 'this' scope object  
+                 var text = this.options[this.selectedIndex].text;
+                 var value = this.options[this.selectedIndex].value;
+
+                 document.getElementById('dvname1').innerHTML = 'text = ' + text + '  ' + 'value = ' + value;
+                 
+             },false); 
+        }
+    </script>
+</head>
+<body>
+    <h1>Using Collection Elements</h1>
+    Select Names:
+    <select id="lstnames1">
+        <option value="Tejas">Tejas</option>
+        <option value="Mahesh">Mahesh</option>
+        <option value="Ramesh">Ramesh</option>
+        <option value="Ram">Ram</option>
+        <option value="Sabnis">Sabnis</option>
+    </select>
+    <br/>
+    <div id="dvname1">
+    </div>   
+    <br/>
+    Select Characters
+    <select id="lstdynamic"></select>
+    <div id="dvcharacters">
+    </div>   
+</body>
+</html>

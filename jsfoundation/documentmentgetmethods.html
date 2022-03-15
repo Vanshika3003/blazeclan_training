@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btnclear = document.getElementById('btnclear');
+            btnclear.addEventListener('click',function(){
+                // document.getElementById('v1').value = '';
+                // document.getElementById('v2').value = '';
+                // document.getElementById('v3').value = '';
+
+                // read all input elements
+                // var inputs = document.getElementsByTagName('input');
+                // for(var i=0; i< inputs.length;i++){
+                //     // this will clear all input elements including input:button
+                //     inputs[i].value = '';
+                // }
+
+                // read all elements by class name
+                var inputs = document.getElementsByClassName('c1');
+                for(var i=0;i<inputs.length;i++) {
+                    inputs[i].value = '';
+                }
+            },false);
+        }
+    </script>
+</head>
+<body>1
+    <h1>The Get Methods of document object</h1>
+    <div>
+        <!--Create a group of input elements using either name attribute or class attribute-->
+        v1 : <input type="text" id="v1" class="c1">
+        <br>
+        v2 : <input type="text" id="v2" class="c1">
+        <br>
+        v3 : <input type="text" id="v3" class="c1">
+        <br>
+        <input type="button" value="Clear" id="btnclear">
+    </div>
+</body>
+</html>

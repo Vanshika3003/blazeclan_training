@@ -55,6 +55,39 @@
                     - console.error()                 
     - Functions
     - DOM Interaction with JS
+        - input elements    
+            - Text
+            - Button
+        - collection elements
+            - Provides a group of same UI
+            - generated statically using HTML elements and its parent child relationship
+            - generated dynamically using loops provided using JavaScript Programming
+                - for..loop
+                - for..in loop
+                    - simplification of for..loop   
+    - The JS 'Array'
+        - The most powerful collection data structure in JS
+        - In JS, this is an  'Array' class aka Type, which has following basic JS Methods
+            - push(), pop(), data management methods
+            - sort(), the data re-arrange methods
+            - shift(), unshift() methods, to remove and add data in top of the array (at indexes from 0)
+            - indexof(), read an element's existance in array
+            - lastIndexOf(), the index of element from top to bottom but the last appearance of element
+    - The JS literal objects aka JSON Object
+        - a Key:Value pair that holds the Text-Based Data
+        - The 'key' is literal identification and value can be 
+            - primptive datatype e.g. number, string, date, object, array
+            - a Function
+            - var obj = {
+                key:value
+            };           
+        - The literal object is global for the current JS function /  file as a Singleton Object   
+        - within the object, literal (or keys) are accessed using 'this' object
+        - The JS Provides an  'Object' class with following important methods
+            - Object.keys(literal-object)
+                - Used to read all keys of literal object
+            - Object.values(literal-object)
+                - Used to read value of each key in object                      
 - HTML 5 API
 - CSS and CSS Frameworks
 - ES 6 aka Modern JavaScript
