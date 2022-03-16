@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var str = "Indiana Jones is an American media franchise based on the adventures of Dr. Henry Walton \"Indiana\" Jones, Jr., a fictional professor of archaeology, that began in 1981 with the film Raiders of the Lost Ark. In 1984, a prequel, The Temple of Doom, was released, and in 1989, a sequel, The Last Crusade. A fourth film followed in 2008, titled The Kingdom of the Crystal Skull. A fifth film is in production and is provisionally scheduled to be released in 2023. The series was created by George Lucas and stars Harrison Ford as Indiana Jones.";
+
+            document.getElementById('dv1').innerHTML = str;
+            document.getElementById('dv2').innerHTML = 'Length of string = ' + str.length;
+            document.getElementById('dv3').innerHTML = str.toUpperCase();
+            document.getElementById('dv4').innerHTML = 'Index of \"The\" is ' + str.indexOf('The');
+            document.getElementById('dv5').innerHTML = 'Last Index of \"The\" is ' + str.lastIndexOf('The');
+            document.getElementById('dv6').innerHTML = 'FRrom start of the string Slicing from 3rd position to next 20th index ' + str.slice(3,20);
+            document.getElementById('dv7').innerHTML = 'From End of the string Slicing from 12th position from end till 6th position from end ' + str.slice(-12,-6);
+            document.getElementById('dv8').innerHTML = 'Substring from 4 to 15 ' + str.slice(4, 15);
+
+            // use the + operator for string concatenation
+            var s = 'Mahesh ' + ' ' + ' Sabnis'; 
+            document.getElementById('dv9').innerHTML = s;
+        }
+    </script>
+</head>
+<body>
+    <h1>The String DEMO</h1>
+    <div id="dv1"></div>
+    <br>
+    <div id="dv2"></div>
+    <br>
+    <div id="dv3"></div>
+    <br>
+    <div id="dv4"></div>
+    <br>
+    <div id="dv5"></div>
+    <br>
+    <div id="dv6"></div>
+    <br>
+    <div id="dv7"></div>
+    <br>
+    <div id="dv8"></div>
+    <br>
+    <div id="dv9"></div>
+    <br>
+</body>
+</html>

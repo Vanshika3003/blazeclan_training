@@ -87,8 +87,30 @@
             - Object.keys(literal-object)
                 - Used to read all keys of literal object
             - Object.values(literal-object)
-                - Used to read value of each key in object                      
+                - Used to read value of each key in object
+    - The 'string' type
+        - The Data Structure that is used to store textual data
+        - Case Sensitive
+        - Internally it is treated as Character Array
+        - Availability of most of the JS Array methods available to string  
+        - String Object
+            - length the property that shows length
+            - indexOf(), lastIndexOf(), substring(), slice(), toUpperCase(), toLowerCase(), etc.     
+            - The slice() and substring() both are same but the slice() can read from first (+ve) and last (-ve)positions where as the substring() always starts from first position            
+    - Math object
+        -  Useful object to reduce the complexity of client-side calculations those are executed on browser
+            - Provides a ready to use Mathematical functions those are useful for data processing on client-side based on calculations                         
+    - Date object
+        - Used process dates based on settings
+        - Date() object, the JS Class, this must be instantiated
+            - var d = new Date(format);
+                - yyyy, mm (0 to 11, where 0 is January and 11 is December), dd
+            - get methods
+                - getDate(), getFullYear(), getMonth(), getHours(), getMinutes(), getSeconds(), getMilliseconds()
+            - set methods        
+                 - setDate(), setYear(), setMonth(), setHours(), setMinutes(), setSeconds(), setMilliseconds()        
 - HTML 5 API
+
 - CSS and CSS Frameworks
 - ES 6 aka Modern JavaScript
 - Server-Side App Development using Node.js

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var dt = new Date(2022,2,16, 15, 49,10);
+        console.log('Year =  ' + dt.getFullYear());
+        console.log('Month =  ' + dt.getMonth());
+        console.log('Date =  ' + dt.getDate());
+        console.log('Hours =  ' + dt.getHours());
+        console.log(Date.now()); // Number of Milliseconds elapsed from Jan 1, 1970
+        // getting Minuts
+        var minuts = 1000 * 60; // milliseconds * seconds
+        var hours = minuts * 60; // multiply by 60 mins to get hours
+        var day = hours * 24; // multiply by 24 to get days
+        var year = day * 365; // multiple by 365 for years
+
+        // find time from Date.now() till today
+        var years = Math.round(Date.now() / year);
+        console.log('Total Elapsed Years = ' + years);
+
+        // Lets use the date object to get difference between two dates
+
+        var dt1 = new Date();
+        dt1.setFullYear(1976);
+        dt1.setMonth(7); // Agust
+        dt1.setDate(7); // Date
+
+        // Number of Days in Date Difference
+
+        var dob = new Date('8/8/1976'); // from Mid-Night
+        var curDate = new Date('3/16/2022'); // to Mid-Night
+
+        // 1. Get Time Difference
+        var diffTime = Math.abs(curDate - dob);
+        console.log('Time Difference is = ' + diffTime);
+        // 2. Get Days
+        var days = Math.ceil(diffTime/ (1000 * 60 * 60 * 24));
+        console.log('Days is = ' + days);
+        var years = days / 365;
+        console.log('Years is = ' + years);
+
+
+    </script>
+</head>
+<body>
+    <h1>The Date Object</h1>
+</body>+
+</html>
