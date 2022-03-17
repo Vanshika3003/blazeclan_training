@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--Load and externally hosted JavaScript Document-->
+    <script src="./reffunction.js"></script>
+    <script src="./mathxt.js"></script>
+    <script src="./uigenerator.js"></script>
+    <script>
+        window.onload =  function(){
+            // lets instantiate the Mathematics object
+            var mathObj = new Mathematics();
+            
+            var btnAdd = document.getElementById('btnadd');
+
+            btnAdd.addEventListener('click', function(){
+                 var a = parseInt(document.getElementById('txtn1').value);  
+                 var b = parseInt(document.getElementById('txtn2').value); 
+                 
+               
+                 var z = mathObj.add(a,b);
+                 document.getElementById('txtres').value  = z;
+            },false);
+
+            var btnsqAdd = document.getElementById('btnsqadd');
+
+            btnsqAdd.addEventListener('click', function(){
+                 var a = parseInt(document.getElementById('txtn1').value);  
+                 var b = parseInt(document.getElementById('txtn2').value); 
+                 
+                 var z = mathObj.addSquare(a,b);;
+                 document.getElementById('txtres').value  = z;
+            },false);
+
+            var btnmult = document.getElementById('btnmult');
+
+            btnmult.addEventListener('click', function(){
+                 var a = parseInt(document.getElementById('txtn1').value);  
+                 var b = parseInt(document.getElementById('txtn2').value); 
+                 
+                 var z = mathObj.mult(a,b);;
+                 document.getElementById('txtres').value  = z;
+            },false);
+
+            var names = ['James Bond', 'Jack Reacher', 'Jason Bourn', 'Indiana Jones', 'EThan Hunt'];
+           // var names = [];
+            var uiGenerator = new UIGenerator(names);
+            document.getElementById('dvselect').innerHTML = uiGenerator.select();
+        }
+    </script>
+</head>
+<body>
+    <h1>Using the REference function</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>Num 1</td>
+                <td>
+                    <input type="text" id="txtn1">
+                </td>
+            </tr>
+            <tr>
+                <td>Num 2</td>
+                <td>
+                    <input type="text" id="txtn2">
+                </td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td>
+                    <input type="text" id="txtres" disabled>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Add" id="btnadd">
+                </td>
+                <td>
+                    <input type="button" value="Square Add" id="btnsqadd">
+                </td>
+                <td>
+                    <input type="button" value="Multiply" id="btnmult">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <div id="dvselect"></div>
+</body>
+</html>

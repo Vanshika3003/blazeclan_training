@@ -50,3 +50,10 @@ Note: You have to solve these assignments using HTML UI
     - if difference in hours is more than  24 then add 1 day
     - if difference in minutes is more than 60 then add 1 hour
     - if difference in seconds is more tha 60 the add 1 minute      
+
+# Date 17-March-2022
+
+1. Modify the Logic function from closefuncion.js to add perform CRUD Operations on Employee my modifying employees array with DeptName, Designation and Salary along with EmpNo and EmpName
+2. The Logic function will have getEmployees(), addEMployee(), updateEmployee() and deleteEmployee() methods to perform read/write operations on employees array
+3. Modify the UiGenerator ref function from ugenerator.js to generate HTML table dynamically based on employees passed to it.
+4. The DeptName MUST selected from Departments array and Designation MUST be selected from designations array, these arrays will be passed to select() method of UIGenerator class to generate the select element.  
