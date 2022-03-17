@@ -108,7 +108,39 @@
             - get methods
                 - getDate(), getFullYear(), getMonth(), getHours(), getMinutes(), getSeconds(), getMilliseconds()
             - set methods        
-                 - setDate(), setYear(), setMonth(), setHours(), setMinutes(), setSeconds(), setMilliseconds()        
+                 - setDate(), setYear(), setMonth(), setHours(), setMinutes(), setSeconds(), setMilliseconds()    
+    - JavaScript Function Objects
+        - These are the functions those will be used as follows
+            - A Standard Traditional Function with reusable code
+            - A Class with Public and Private scope for its contents
+                - Started introducing new Libraries and Frameworks
+            - An Immediately Invocable Function Expression (IIFE) aka Module                  
+        - 3 Types of Functions
+            - Reference Functions, a full function implementation is stored in an object
+                - var MyObject = function(){...........}
+                    - the Reference function contains public functions/members prfixed using 'this'
+                        - var MyObject = function(){ this.fn1=function(){......};} 
+                            - The 'fn1' is public function, the 'this' is scope that represents 'MyObject' itself   
+                        - Offers a 'prototype' property
+                            - This is used to extend the object by adding new function(s) in it
+                            - MyObject.prototype.fn2 = function()  {........}    
+            - Close function aka function
+                - This is function body that returns an 'Object Literal' aka '{}' as the publicly exposed contents from the function 
+                    - function MyObject(){
+                        return {
+                            Key1:value1,
+                            Key2:value2,
+                            ....
+                        }
+                    }           
+                    - The Return is exposed as public contents from the MyObject
+            - IIFE
+                - A Module Implementation to define a scope of variable, function in a limited block
+                    - (function(){.......})();
+                        - Self-Executable JavaScript
+                    - var MyObject =  (function(){.......})();
+                        - MyObject is a Module             
+
 - HTML 5 API
 
 - CSS and CSS Frameworks
