@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,24 @@
         var empObj = new Logic();
         var res = empObj.getEmployees();
         console.log('Employees = ' + JSON.stringify(res));
-        var emp = {EmpNo:103, EmpName: 'C'};   
-        res = empObj.addEmployee(emp); 
+        var emp = { EmpNo: 103, EmpName: 'C' };
+        res = empObj.addEmployee(emp);
         console.log('Employees After add = ' + JSON.stringify(res));
+        var emp = { EmpNo: 103, EmpName: 'C' };
+        res = empObj.deleteEmployee(emp);
+        console.log('Employees After delete = ' + JSON.stringify(res));
+        var emp = [
+
+            { EmpNo: 106, EmpName: 'U' }
+        ];
+        res = empObj.updateEmployee(emp);
+        console.log('Employees After delete = ' + JSON.stringify(res));
     </script>
 </head>
+
 <body>
     <h1>Using JS Close Functions AKA Function Object</h1>
 
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,48 +11,59 @@
     <script src="./mathxt.js"></script>
     <script src="./uigenerator.js"></script>
     <script>
-        window.onload =  function(){
+        window.onload = function () {
             // lets instantiate the Mathematics object
             var mathObj = new Mathematics();
-            
+
             var btnAdd = document.getElementById('btnadd');
 
-            btnAdd.addEventListener('click', function(){
-                 var a = parseInt(document.getElementById('txtn1').value);  
-                 var b = parseInt(document.getElementById('txtn2').value); 
-                 
-               
-                 var z = mathObj.add(a,b);
-                 document.getElementById('txtres').value  = z;
-            },false);
+            btnAdd.addEventListener('click', function () {
+                var a = parseInt(document.getElementById('txtn1').value);
+                var b = parseInt(document.getElementById('txtn2').value);
+
+
+                var z = mathObj.add(a, b);
+                document.getElementById('txtres').value = z;
+            }, false);
 
             var btnsqAdd = document.getElementById('btnsqadd');
 
-            btnsqAdd.addEventListener('click', function(){
-                 var a = parseInt(document.getElementById('txtn1').value);  
-                 var b = parseInt(document.getElementById('txtn2').value); 
-                 
-                 var z = mathObj.addSquare(a,b);;
-                 document.getElementById('txtres').value  = z;
-            },false);
+            btnsqAdd.addEventListener('click', function () {
+                var a = parseInt(document.getElementById('txtn1').value);
+                var b = parseInt(document.getElementById('txtn2').value);
+
+                var z = mathObj.addSquare(a, b);;
+                document.getElementById('txtres').value = z;
+            }, false);
 
             var btnmult = document.getElementById('btnmult');
 
-            btnmult.addEventListener('click', function(){
-                 var a = parseInt(document.getElementById('txtn1').value);  
-                 var b = parseInt(document.getElementById('txtn2').value); 
-                 
-                 var z = mathObj.mult(a,b);;
-                 document.getElementById('txtres').value  = z;
-            },false);
+            btnmult.addEventListener('click', function () {
+                var a = parseInt(document.getElementById('txtn1').value);
+                var b = parseInt(document.getElementById('txtn2').value);
+
+                var z = mathObj.mult(a, b);;
+                document.getElementById('txtres').value = z;
+            }, false);
 
             var names = ['James Bond', 'Jack Reacher', 'Jason Bourn', 'Indiana Jones', 'EThan Hunt'];
-           // var names = [];
+            var employees = ['James ', 'Jack ', 'Jason ', 'Indiana ', 'EThan '];
+            var employeeDetails = [{ EmpNo: 101, EmpName: "A", deptName: 'CSE', designation: 'teacher' }, { EmpNo: 101, EmpName: "A", deptName: 'BBA', designation: 'student' }]
+            // var names = [];
             var uiGenerator = new UIGenerator(names);
+            var uiGenerator1 = new UIGenerator1(employees);
+            var uiGenerator2 = new UIGenerator2(employeeDetails);
+            var uiGenerator3 = new UIGenerator3(employeeDetails);
+
             document.getElementById('dvselect').innerHTML = uiGenerator.select();
+            document.getElementById('dvselect1').innerHTML = uiGenerator1.select();
+            document.getElementById('dvselect2').innerHTML = uiGenerator2.select();
+            document.getElementById('dvselect3').innerHTML = uiGenerator3.select();
+
         }
     </script>
 </head>
+
 <body>
     <h1>Using the REference function</h1>
     <table>
@@ -87,7 +99,11 @@
             </tr>
         </tbody>
     </table>
-    <hr/>
+    <hr />
     <div id="dvselect"></div>
-</body>
+    <div id="dvselect1"></div>
+    <div id="dvselect2"></div>
+    <div id="dvselect3"></div>
+
+
 </html>

@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+
+        window.onload = function () {
+            var btndiff = document.getElementById('btndiff');
+
+            btndiff.addEventListener('click', function () {
+                var srcdate = document.getElementById('dtsrc').value;
+                var srctime = document.getElementById('timsrc').value;
+                var dtdate = document.getElementById('dttgt').value;
+                var dttime = document.getElementById('timtgt').value;
+                console.log("time", (dttime - srctime))
+                var dob = new Date(srcdate + ":" + srctime); // from Mid-Night
+                console.log("dob", dob)
+                var curDate = new Date(dtdate + ":" + dttime); // to Mid-Night
+                var year1 = dob.getFullYear();
+                var hr1 = dob.getHours();
+                var hr2 = curDate.getHours();
+
+                console.log("hr1", hr1);
+                var year2 = curDate.getFullYear();
+                var month1 = dob.getMonth();
+                var month2 = curDate.getMonth();
+
+
+                if ((0 == year1 % 4) && (0 != year1 % 100) || (0 == year1 % 400) || (0 == year2 % 4) && (0 != year2 % 100) || (0 == year2 % 400)) {
+                    var diffTime = Math.abs(curDate - dob);
+                    console.log('Time Difference is = ' + diffTime);
+
+
+                    var days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    if (days > 365) {
+                        diffTime += 365;
+                    }
+
+
+
+                    var years = days / 365;
+                    console.log('Years is = ' + years);
+                    var months = (year2 - year1) * 12;
+                    console.log("months", months);
+                    if (months > 12) {
+                        console.log("differnence of motnths is more than 12");
+                        diffTime += 365;
+
+                    }
+                    var hourDifference = hr2 - hr1;
+                    if (hourDifference > 24) {
+                        console.log("differnence of hrs is more than 24");
+                        hourDifference += 24;
+
+                    }
+                    document.getElementById('dv9').innerHTML = 'Date Difference - ' + diffTime + "<br>" + 'Days -' + days + "<br>" + "Years - " + years + "<br>" + "Hour Difference -" + hourDifference;
+
+
+                } else {
+                    console.log(year1 + ' is not a leap year');
+                }
+                console.log("x", srctime, dttime)
+                var dif = (new Date(srcdate + srctime) - new Date(dtdate + dttime)) / 1000 / 60 / 60;
+                console.log("difv", (new Date(srcdate + srctime)) / 1000 / 60 / 60)
+
+
+            }, false);
+
+
+        }
+    </script>
 </head>
+
 <body>
     <h1>Calculate a Date Difference in Years, Months, Days, Hours, Minutes and Seconds</h1>
 
@@ -20,7 +89,7 @@
                 </td>
                 <td>
                     <input type="time" id="timsrc">
-                </td> 
+                </td>
             </tr>
             <tr>
                 <td>
@@ -31,14 +100,17 @@
                 </td>
                 <td>
                     <input type="time" id="timtgt">
-                </td> 
+                </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <input type="button" value="Get Difference" id="btndiff">
+                    <div id="dv9"></div>
                 </td>
             </tr>
+
         </tbody>
     </table>
 </body>
+
 </html>
