@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>HTML 5 Validations</h1>
+    <form>
+      <div>
+        <label>EmpNo</label>
+        <input type="number" id="eno" placeholder="Enter EmpNo"  required="true"  pattern="[0-9]+" minlength="2" maxlength="5"/>
+      </div>
+      <div>
+        <label>Emp Name</label>
+        <input type="text" id="ename" placeholder="Enter EmpName"  required="true" />
+      </div>
+      <div>
+        <label>Joining Date</label>
+        <input type="date" id="doj" placeholder="Select Joining Date" />
+      </div>
+      <div>
+        <label>Duty Start Time</label>
+        <input type="time" id="dutytime" placeholder="Enter duty start time" />
+      </div>
+      <div>
+        <label>Reporting Week</label>
+        <input type="week" id="reportweek" placeholder="Enter Week" />
+      </div>
+      <div>
+        <label>Salary Revision Month</label>
+        <input type="month" id="revisionmonth" placeholder="Enter EmpNo" />
+      </div>
+      <div>
+          <input type="submit" value="Save">
+      </div>
+    </form>
+  </body>
+</html>

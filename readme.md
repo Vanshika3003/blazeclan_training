@@ -142,7 +142,49 @@
                         - MyObject is a Module             
 
 - HTML 5 API
-
+    - HTML 5 =  HTML Tags + Inline CSS + Inline JavaScript
+        - Input Elements with new attributes
+            - Input Elements: number, date, time, month, week, email
+            - Attributes: placeHolder, min, max, minLength, maxLength, pattern, required, disabled, readonly
+    - HTML 5 API System
+        - It is a set of JavaScript Classes those are used for following
+            - Storage
+                - localStorage
+                    - Browser's storage to store the data in JSON form
+                    - Non-Volatile data, means the data will be available when the same site is loaded
+                        - This uses the 'Same Origin Policy'
+                         - The data will be available for the page for the specific site only
+                         - e.g. is data is created using xyz.com, the it will be always available for xyz.com, other web site will not be able to access to access it 
+                - sessionStorage
+                    - Browser's storage to store the data in JSON form
+                    - Volatile data, means the data will be lost when the browser is closed
+                    - This uses the 'Same Origin Policy'
+                        - The data will be available for the page for the specific site only
+                        - e.g. is data is created using xyz.com, the it will be always available for xyz.com, other web site will not be able to access to access it 
+                    - methods
+                        - setItem(key, data)
+                        - getItem(key)
+                        - clear(), delete all data    
+                - indexedDB
+                    - Database in Browser like RDMBS
+                - WebSQL
+                    - Available for Chrome
+            - Drag-Drop
+                - Events used for Dynamic Updates in HTML DOM using following events
+                    - dragstart
+                        - event.dataTransfer Object
+                            - Used to store the data of element being dragged 
+                    - drop
+                         - event.dataTransfer Object
+                            - Used to pick the data of element being dropped 
+                    - dragover
+                - property
+                    - draggable
+                        - applied to element to inform to HTML DOM that this element will be dragged      
+            - Graphics
+            - Media
+            - Files
+            - Device Sensors         
 - CSS and CSS Frameworks
 - ES 6 aka Modern JavaScript
 - Server-Side App Development using Node.js

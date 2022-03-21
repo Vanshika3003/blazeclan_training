@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var btnsessionsave =  document.getElementById('btnsessionsave');
+            btnsessionsave.addEventListener('click', function(){
+                  var emp = {
+                       EmpNo: parseInt(document.getElementById('txtseno').value), 
+                       EmpName:  document.getElementById('txtsename').value
+                  };  
+                  sessionStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
+            },false);
+            var btnsessionread = document.getElementById('btnsessionread');
+            btnsessionread.addEventListener('click', function(){
+                var key = prompt("Enter EmpNo");
+                var data = sessionStorage.getItem(key);
+                document.getElementById('dvsessionstorage').innerHTML = JSON.stringify(data);
+            },false);
+
+
+            // code for Local Storage
+
+            var btnlocalstoragesave =  document.getElementById('btnlocalstoragesave');
+            btnlocalstoragesave.addEventListener('click', function(){
+                  var emp = {
+                       EmpNo: parseInt(document.getElementById('txtleno').value), 
+                       EmpName:  document.getElementById('txtslname').value
+                  };  
+                  localStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
+            },false);
+            var btnlocalstorageread = document.getElementById('btnlocalstorageread');
+            btnlocalstorageread.addEventListener('click', function(){
+                var key = prompt("Enter EmpNo");
+                var data = localStorage.getItem(key);
+                document.getElementById('dvlocalstorage').innerHTML = JSON.stringify(data);
+            },false);
+
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Using HTML 5 Storage</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    Using the Session Storage
+                </td>
+            </tr>
+            <tr>    
+                <td>
+                    <label>EmpNo</label>
+                    <input type="text" id="txtseno">
+                </td>
+             <tr>        
+                <td>
+                    <label>EmpName</label>
+                    <input type="text" id="txtsename">
+                </td>
+               
+            </tr>    
+            <tr>
+                <td>
+                    <input type="button" value="Session Save" id="btnsessionsave">
+               </td>
+               <td>
+                <input type="button" value="Read Session" id="btnsessionread">
+           </td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <div id="dvsessionstorage"></div>
+    <hr>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    Using the Local Storage
+                </td>
+            </tr>  
+            <tr>    
+                <td>
+                    <label>EmpNo</label>
+                    <input type="text" id="txtleno">
+                </td>
+            <tr>
+
+                <td>
+                    <label>EmpName</label>
+                    <input type="text" id="txtslname">
+                </td>
+            </tr>
+            <tr>    
+                <td>
+                     <input type="button" value="Local Storage Save" id="btnlocalstoragesave">
+                </td>
+                <td>
+                    <input type="button" value="Local Storage Read" id="btnlocalstorageread">
+               </td>
+            </tr>    
+        </tbody>
+    </table>
+    <br/>
+    <div id="dvlocalstorage"></div>
+</body>
+</html>

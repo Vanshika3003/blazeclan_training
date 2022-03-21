@@ -55,5 +55,10 @@ Note: You have to solve these assignments using HTML UI
 
 1. Modify the Logic function from closefuncion.js to add perform CRUD Operations on Employee my modifying employees array with DeptName, Designation and Salary along with EmpNo and EmpName
 2. The Logic function will have getEmployees(), addEMployee(), updateEmployee() and deleteEmployee() methods to perform read/write operations on employees array
-3. Modify the UiGenerator ref function from ugenerator.js to generate HTML table dynamically based on employees passed to it.
+3. Modify the UiGenerator ref function from uigenerator.js to generate HTML table dynamically based on employees passed to it.
 4. The DeptName MUST selected from Departments array and Designation MUST be selected from designations array, these arrays will be passed to select() method of UIGenerator class to generate the select element.  
+
+# Date: 21-March-2022
+
+- Modify the assignment on 17-March-2022 by using the LocalStorage
+    - Added/Updated data in LocalStorage  must be shown in HTML table which is generated dynamically 
