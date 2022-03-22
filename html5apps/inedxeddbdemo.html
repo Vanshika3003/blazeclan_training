@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        // global declarations
+        var mydb; // use this for storing reference of indexedDB
+        var table; // the table / ObjectStore in indexDB
+
+        // function to create database
+        function createDatabase(){
+            //1. create database if not exists else create it and open it
+            mydb = window.indexedDB.open('PersonDB',1);
+            // 3 Events for Creating a complete schema of indexedDB
+            // a. onupgradneeded: The event checks if the browser supports IndexedDB if yes then the DB 
+            // DB will be created and it will be open for Transactions to create ObjectStore in it 
+
+            // the e is an event argument object for following
+            // the e will be used to monitor the creation of ObjectStore in DB  
+            mydb.onupgradeneeded = function(e){
+
+                // get the reference of the IndexedDB database for creating Store
+                var dbReference = e.target.result;
+                // create a store (table) so that data can be stored in it
+                // the keyPath is an ObjectKey aka Primary key to identity Record in Object Store 
+                table = dbReference.createObjectStore('Person', {keyPath: 'id'});
+                // Create Columns in the ObjectStore
+                table.createIndex("PersonId1", "PersonId", {unique:false});
+                table.createIndex("PersonName1", "PersonName", {unique:false});
+                table.createIndex("City1", "City", {unique:false});
+
+                document.getElementById('dvstatus').innerHTML = "Data is created and ObjectStore is created in it";
+            };
+
+            // b. onsuccess: YTYhe current operations on indexedDB are successful
+            mydb.onsuccess = function(e){
+                document.getElementById('dvstatus').innerHTML = "Database opening is successful";
+            };
+            // c. onerror: Event to handlle any error in IndexedDB  
+            mydb.onerror = function(e){
+                document.getElementById('dvstatus').innerHTML = "Database opening is Failed";
+            }
+        }
+
+        // read data from IndexedDB
+        function loadData(){
+            mydb = window.indexedDB.open('PersonDB');
+            if(mydb){
+                mydb.onsuccess = function(e){
+                     // retrieve the transaction object on the success of the database 
+                   var transaction = e.target.result.transaction("Person", "readwrite"); // IDBTransaction object
+                   // point to the Person ObjectStore to perform Add Operations
+                   table = transaction.objectStore("Person");
+
+                   table.getAll().onsuccess = function(record){
+                       document.getElementById('dvRecords').innerHTML = "Datga Fetched";
+                       document.getElementById('dvRecords').innerHTML += JSON.stringify(record.target.result);
+                   }
+                }
+            }else {
+                document.getElementById('dvstatus').innerHTML = "Database opening is Failed";
+            }
+        }
+        function saveData(){
+            // Get Db reference and if present then start saving record
+            mydb = window.indexedDB.open('PersonDB');
+            if(mydb){
+                mydb.onsuccess = function(e){
+                   // retrieve the transaction object on the success of the database 
+                   // readwrite transaction on objectstore
+                   var transaction = e.target.result.transaction("Person", "readwrite"); // IDBTransaction object
+                   // point to the Person ObjectStore to perform Add Operations
+                   table = transaction.objectStore("Person");
+
+                   // define an object
+                   var person = {
+                       "id": parseInt(document.getElementById('txtid').value),
+                       "PersonId": document.getElementById('txtid').value,
+                       "PersonName":document.getElementById('txtname').value,
+                       "City":document.getElementById('txtcity').value
+                   };
+                   console.log(JSON.stringify(person));
+                   // perform add transaction
+                   var operations = table.add(person); // table.put(person) // table.delete(person)
+                   // Success
+                   operations.onsuccess = function(e){
+                    document.getElementById('dvstatus').innerHTML = "Record is added successfully";
+                   };
+                   // Error
+                   operations.onerror = function(e){
+                    document.getElementById('dvstatus').innerHTML = "Record add failed";
+                   };
+                }    
+            }else{
+                document.getElementById('dvstatus').innerHTML = "Database opening is Failed";
+            }
+        }
+
+        function clearInput(){
+            // read all elments having class name as c
+             var inputs =  document.getElementsByClassName('c');
+             for(var i=0;i<inputs.length;i++){
+                 inputs[i].value = "";
+
+             }
+
+        }
+
+        window.onload = function(){
+            createDatabase();
+            document.getElementById('btnClear').addEventListener('click', clearInput,false);
+            document.getElementById('btnSave').addEventListener('click', saveData,false);
+            document.getElementById('btnLoadData').addEventListener('click', loadData,false);
+        }
+    </script>
+  </head>
+  <body>
+    <h1>Using IndexedDB</h1>
+    <div id="dvstatus"></div>
+    <br />
+    <table>
+      <tr>
+        <td>Id</td>
+        <td>
+          <input type="text" id="txtid" class="c" />
+        </td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>
+          <input type="text" id="txtname" class="c" />
+        </td>
+      </tr>
+      <tr>
+        <td>City</td>
+        <td>
+          <input type="text" id="txtcity" class="c" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="button" value="Load Data" id="btnLoadData" />
+          <input type="button" value="Save" id="btnSave" />
+          <input type="button" value="Clear" id="btnClear" />
+        </td>
+      </tr>
+      <tfoot>
+          <tr>
+              <td colspan="2">
+                 <div id="dvRecords"></div>
+              </td>
+          </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
