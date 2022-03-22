@@ -62,3 +62,28 @@ Note: You have to solve these assignments using HTML UI
 
 - Modify the assignment on 17-March-2022 by using the LocalStorage
     - Added/Updated data in LocalStorage  must be shown in HTML table which is generated dynamically 
+
+# Date: 21-March-2022
+
+https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+
+1. Create an IndexedDB Store that will be used to store information of the Products as follows
+    - ProductRowId, ProductId, ProductName, CategoryName, Manufacturer, Description, Price
+2. There MUST be UI (You decide) for following
+    - Accept ProductInformation from End-User
+        - PreoductRowId must be Auto-generated
+        - ProductId MUST be unique {unique:true}
+    - Provide Product Search Facility based on following Criteria
+        - By ProductId
+            - Return Single Record
+        - By ProductName          
+            - There could be mulltiple values for ProductName e.g. Laptop
+            - This will return collection
+        - By Category
+            -  Return Collection
+        - By Manufacturer
+            - Return Collection
+3. Implement HTML 5 validations
+4. Once a record is added It must be shown in table 
+5. (Optional) Try to implement pagination for table to show data from IndexedDb
+    - e.g. if 50 records in indexedDb the per table page show 5 records so 10 table tables                      
