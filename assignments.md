@@ -63,7 +63,7 @@ Note: You have to solve these assignments using HTML UI
 - Modify the assignment on 17-March-2022 by using the LocalStorage
     - Added/Updated data in LocalStorage  must be shown in HTML table which is generated dynamically 
 
-# Date: 21-March-2022
+# Date: 22-March-2022
 
 https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
 

@@ -74,6 +74,7 @@ var UIGenerator3 = function (dataSource) {
 var UIGenerator1 = function (dataSource) {
   // this function wil be used to generate a
   // HTML <select> element
+  console.log("ds", dataSource);
   this.select = function () {
     // check if the data is passed to generate the UI
     if (dataSource === undefined || dataSource.length === 0) {
@@ -83,9 +84,14 @@ var UIGenerator1 = function (dataSource) {
       // iterate over the dataSource and Generate a UI
       for (var i = 0; i < dataSource.length; i++) {
         select +=
-          '<tr value="' + dataSource[i] + '">' + dataSource[i] + "</tr>";
+          '<tr  value="' +
+          dataSource[i] +
+          '">' +
+          dataSource[i] +
+          "</tr> &nbsp;";
       }
       select += "</table>";
+      console.log("select value", select);
       return select;
     }
   };

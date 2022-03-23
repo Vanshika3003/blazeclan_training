@@ -47,16 +47,45 @@
             }, false);
 
             var names = ['James Bond', 'Jack Reacher', 'Jason Bourn', 'Indiana Jones', 'EThan Hunt'];
-            var employees = ['James ', 'Jack ', 'Jason ', 'Indiana ', 'EThan '];
+
+            // var employees = ['James ', 'Jack ', 'Jason ', 'Indiana ', 'EThan '];
+            var employees = []
+            var employeeIds = [];
+
+            btnsessionsave.addEventListener('click', function () {
+                var txtsename = document.getElementById('txtsename').value;
+                var txtseno = document.getElementById('txtseno').value;
+                console.log("txtsename", txtsename)
+                employees.push(txtsename);
+                employeeIds.push(txtseno);
+                var emp = {
+                    EmpNo: parseInt(document.getElementById('txtseno').value),
+                    EmpName: document.getElementById('txtsename').value
+                };
+                sessionStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
+                localStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
+
+
+                console.log("employees", employees)
+                var uiGenerator1 = new UIGenerator1(employees);
+                var uiGeneratorids = new UIGenerator1(employeeIds);
+
+                document.getElementById('dvselectIds').innerHTML = uiGeneratorids.select();
+
+                document.getElementById('dvselect1').innerHTML = uiGenerator1.select();
+
+            }, false);
+
+
             var employeeDetails = [{ EmpNo: 101, EmpName: "A", deptName: 'CSE', designation: 'teacher' }, { EmpNo: 101, EmpName: "A", deptName: 'BBA', designation: 'student' }]
             // var names = [];
             var uiGenerator = new UIGenerator(names);
-            var uiGenerator1 = new UIGenerator1(employees);
+            // var uiGenerator1 = new UIGenerator1(employees);
             var uiGenerator2 = new UIGenerator2(employeeDetails);
             var uiGenerator3 = new UIGenerator3(employeeDetails);
 
             document.getElementById('dvselect').innerHTML = uiGenerator.select();
-            document.getElementById('dvselect1').innerHTML = uiGenerator1.select();
+            // document.getElementById('dvselect1').innerHTML = uiGenerator1.select();
             document.getElementById('dvselect2').innerHTML = uiGenerator2.select();
             document.getElementById('dvselect3').innerHTML = uiGenerator3.select();
 
@@ -99,8 +128,37 @@
             </tr>
         </tbody>
     </table>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    Using the Session Storage
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>EmpNo</label>
+                    <input type="text" id="txtseno">
+                </td>
+            <tr>
+                <td>
+                    <label>EmpName</label>
+                    <input type="text" id="txtsename">
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" value="Session Save" id="btnsessionsave">
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
     <hr />
     <div id="dvselect"></div>
+    <div id="dvselectIds"></div>
+
     <div id="dvselect1"></div>
     <div id="dvselect2"></div>
     <div id="dvselect3"></div>

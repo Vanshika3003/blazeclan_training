@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./functionobjects/uigenerator.js"></script>
+
+    <script>
+
+        // global declarations
+        var mydb; // use this for storing reference of indexedDB
+        var table; // the table / ObjectStore in indexDB
+
+        // function to create database
+        function createDatabase() {
+            //1. create database if not exists else create it and open it
+            mydb = window.indexedDB.open('ProductDB', 1);
+
+            // 3 Events for Creating a complete schema of indexedDB
+            // a. onupgradneeded: The event checks if the browser supports IndexedDB if yes then the DB 
+            // DB will be created and it will be open for Transactions to create ObjectStore in it 
+
+            // the e is an event argument object for following
+            // the e will be used to monitor the creation of ObjectStore in DB  
+            mydb.onupgradeneeded = function (e) {
+
+                // get the reference of the IndexedDB database for creating Store
+                var dbReference = e.target.result;
+                // create a store (table) so that data can be stored in it
+                // the keyPath is an ObjectKey aka Primary key to identity Record in Object Store 
+                table = dbReference.createObjectStore('Products', { keyPath: 'id' });
+                // Create Columns in the ObjectStore
+                table.createIndex("ProductId1", "ProductId", { unique: true });
+                table.createIndex("ProductName1", "ProductName", { unique: false });
+                table.createIndex("CategoryName1", "CategoryName", { unique: false });
+                table.createIndex("Manyfacturer1", "Manyfacturer", { unique: false });
+                table.createIndex("Description1", "Description", { unique: false });
+                table.createIndex("Price1", "Price", { unique: false });
+
+                document.getElementById('dvstatus').innerHTML = "Data is created and ObjectStore is created in it";
+            };
+
+            // b. onsuccess: YTYhe current operations on indexedDB are successful
+            mydb.onsuccess = function (e) {
+                document.getElementById('dvstatus').innerHTML = "Database opening is successful";
+            };
+            // c. onerror: Event to handlle any error in IndexedDB  
+            mydb.onerror = function (e) {
+                document.getElementById('dvstatus').innerHTML = "Database opening is Failed";
+            }
+        }
+
+        // read data from IndexedDB
+        function loadData() {
+            mydb = window.indexedDB.open('ProductDB');
+            if (mydb) {
+                mydb.onsuccess = function (e) {
+                    // retrieve the transaction object on the success of the database 
+                    var transaction = e.target.result.transaction("Products", "readwrite"); // IDBTransaction object
+                    // point to the Person ObjectStore to perform Add Operations
+                    table = transaction.objectStore("Products");
+
+                    table.getAll().onsuccess = function (record) {
+                        // console.log("recorddd", record.target.result);
+                        var id = record.target.result.map(record => record.id);
+                        var ProductName = record.target.result.map(record => record.ProductName);
+                        var CategoryName = record.target.result.map(record => record.CategoryName);
+                        var Manyfacturer = record.target.result.map(record => record.Manyfacturer);
+                        var Description = record.target.result.map(record => record.Description);
+                        var Price = record.target.result.map(record => record.Price);
+                        var uiGeneratorid = new UIGenerator1(id);
+                        var uiGeneratorPn = new UIGenerator1(ProductName);
+                        var uiGeneratorCn = new UIGenerator1(CategoryName);
+                        var uiGeneratorMf = new UIGenerator1(Manyfacturer);
+                        var uiGeneratorDp = new UIGenerator1(Description);
+                        var uiGeneratorPrice = new UIGenerator1(Price);
+
+                        document.getElementById('dvselectIds').innerHTML = uiGeneratorid.select();
+                        document.getElementById('dvselect1').innerHTML = uiGeneratorPn.select();
+                        document.getElementById('dvselect2').innerHTML = uiGeneratorCn.select();
+                        document.getElementById('dvselect2').innerHTML = uiGeneratorMf.select();
+                        document.getElementById('dvselect4').innerHTML = uiGeneratorDp.select();
+                        document.getElementById('dvselect5').innerHTML = uiGeneratorPrice.select();
+
+
+                        document.getElementById('dvRecords').innerHTML = "Data Fetched";
+                        document.getElementById('dvRecords').innerHTML += JSON.stringify(record.target.result);
+                        var searchValue = document.getElementById('txtsearch').value;
+                        if (searchValue) {
+                            console.log("searchValue", searchValue, record.target.result)
+                            var found = record.target.result.find(item => item.id == searchValue);
+                            var found = record.target.result.find(item => item.ProductName == searchValue);
+                            var found = record.target.result.find(item => item.CategoryName == searchValue);
+                            var found = record.target.result.find(item => item.Manyfacturer == searchValue);
+
+                            console.log(found);
+                            record.target.result = found;
+                            document.getElementById('dvRecords').innerHTML = JSON.stringify(found);
+                        }
+
+                    }
+                }
+            } else {
+                document.getElementById('dvstatus').innerHTML = "Database opening is Failed";
+            }
+        }
+        function saveData() {
+            // Get Db reference and if present then start saving record
+            mydb = window.indexedDB.open('ProductDB');
+            if (mydb) {
+                mydb.onsuccess = function (e) {
+                    // retrieve the transaction object on the success of the database 
+                    // readwrite transaction on objectstore
+                    var transaction = e.target.result.transaction("Products", "readwrite"); // IDBTransaction object
+                    // point to the Person ObjectStore to perform Add Operations
+                    table = transaction.objectStore("Products");
+                    console.log("tabelll", table);
+                    // define an object
+                    var product = {
+                        "id": parseInt(document.getElementById('txtid').value),
+                        "ProductId": parseInt(document.getElementById('txtid').value),
+                        "ProductName": document.getElementById('txtname').value,
+                        "CategoryName": document.getElementById('txtcity').value,
+                        "Manyfacturer": document.getElementById('txtman').value,
+                        "Description": document.getElementById('txtdes').value,
+                        "Price": document.getElementById('txtprice').value
+
+                    };
+                    console.log(JSON.stringify(product));
+                    // perform add transaction
+                    var operations = table.add(product); // table.put(person) // table.delete(person)
+                    // Success
+                    console.log("operations", operations);
+
+                    operations.onsuccess = function (e) {
+                        document.getElementById('dvstatus').innerHTML = "Record is added successfully";
+                    };
+                    // Error
+                    operations.onerror = function (e) {
+                        document.getElementById('dvstatus').innerHTML = "Record add failed";
+                    };
+                }
+            } else {
+                document.getElementById('dvstatus').innerHTML = "Database opening is Failed";
+            }
+        }
+
+        function clearInput() {
+            // read all elments having class name as c
+            var inputs = document.getElementsByClassName('c');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+
+            }
+
+        }
+
+        window.onload = function () {
+            createDatabase();
+            document.getElementById('btnClear').addEventListener('click', clearInput, false);
+            document.getElementById('btnSave').addEventListener('click', saveData, false);
+            document.getElementById('btnLoadData').addEventListener('click', loadData, false);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Using IndexedDB</h1>
+    <div id="dvstatus"></div>
+    <br />
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>
+                <input type="text" id="txtid" class="c" placeholder="Enter Id" required="true" pattern="[0-9]+"
+                    minlength="2" maxlength="5" />
+            </td>
+        </tr>
+        <tr>
+            <td>ProductName</td>
+            <td>
+                <input type="text" id="txtname" class="c" placeholder="Enter Productname" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td>CategoryName</td>
+            <td>
+                <input type="text" id="txtcity" class="c" placeholder="Enter CategoryName" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td>Manufacturer</td>
+            <td>
+                <input type="text" id="txtman" class="c" placeholder="Enter Manufacturer" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <input type="text" id="txtdes" class="c" placeholder="Enter Description" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input type="text" id="txtprice" class="c" placeholder="Enter Price" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="Load Data" id="btnLoadData" />
+                <input type="button" value="Save" id="btnSave" />
+                <input type="button" value="Clear" id="btnClear" />
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">
+
+                <input type="text" id="txtsearch" class="c" />
+            </td>
+        </tr>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <div id="dvRecords"></div>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <br>
+    Id <div id="dvselectIds"></div>
+    ProductName <div id="dvselect1"></div>
+    CategoryName <div id="dvselect2"></div>
+    Manyfacturer <div id="dvselect3"></div>
+    Description <div id="dvselect4"></div>
+    Price <div id="dvselect5"></div>
+
+</body>
+
+</html>
