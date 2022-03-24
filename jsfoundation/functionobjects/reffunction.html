@@ -53,28 +53,77 @@
             var employeeIds = [];
 
             btnsessionsave.addEventListener('click', function () {
+                var final = [];
                 var txtsename = document.getElementById('txtsename').value;
                 var txtseno = document.getElementById('txtseno').value;
+                final.push({
+                    EmpNo: txtsename,
+                    EmpName: txtseno
+                })
                 console.log("txtsename", txtsename)
-                employees.push(txtsename);
+                employees.push(
+                    {
+                        EmpNo: txtsename,
+                        EmpName: txtseno
+                    }
+                );
                 employeeIds.push(txtseno);
                 var emp = {
                     EmpNo: parseInt(document.getElementById('txtseno').value),
                     EmpName: document.getElementById('txtsename').value
                 };
-                sessionStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
+                //  sessionStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
                 localStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
 
-
+                console.log(localStorage.getItem(emp));
                 console.log("employees", employees)
-                var uiGenerator1 = new UIGenerator1(employees);
-                var uiGeneratorids = new UIGenerator1(employeeIds);
+                //var uiGenerator1 = new UIGenerator1(final);
+                var table = document.getElementById("table");
+                var theadid = document.getElementById("theadid");
+                var tbodyid = document.getElementById("tbodyid");
 
-                document.getElementById('dvselectIds').innerHTML = uiGeneratorids.select();
+                var heading = [];
+                console.log("my data----" + Object.keys(emp));
+
+                var p = Object.keys(emp);
+                console.log("my data" + p);
+                for (var i = 0; i < p.length; i++) {
+                    // heading += '<tr><th>'+p[0]+'</th><th>'+p[1]+'</th><th>'+p[2]+'</th><th>'+p[3]+'</th><th>'+p[4]+'</th></tr>' ;
+                    heading += '<th>' + p[i] + '</th>';
+                }
+                theadid.innerHTML = heading;
+                var tabledata = [];
+                for (var i = 0; i < employees.length; i++) {
+                    tabledata += '<tr>'
+                    for (var j in p) {
+                        tabledata += '<td>' + employees[i][p[j]] + '</td>';
+                    }
+                    tabledata += '</tr>';
+                }
+                tbodyid.innerHTML = tabledata;
+                console.log("tabeldata", tabledata);
+                console.log("tabeldata", JSON.stringify(final));
+
+                // var uiGeneratorids = new UIGenerator1(employeeIds);
+
+                //document.getElementById('dvselectIds').innerHTML = uiGeneratorids.select();
 
                 document.getElementById('dvselect1').innerHTML = uiGenerator1.select();
 
             }, false);
+
+
+
+            var clear = document.getElementById("clear");
+            clear.addEventListener('click', function () {
+                document.getElementById('txtsename').value = '';
+                document.getElementById('txtseno').value = '';
+            }, false);
+
+
+
+
+
 
 
             var employeeDetails = [{ EmpNo: 101, EmpName: "A", deptName: 'CSE', designation: 'teacher' }, { EmpNo: 101, EmpName: "A", deptName: 'BBA', designation: 'student' }]
@@ -88,6 +137,10 @@
             // document.getElementById('dvselect1').innerHTML = uiGenerator1.select();
             document.getElementById('dvselect2').innerHTML = uiGenerator2.select();
             document.getElementById('dvselect3').innerHTML = uiGenerator3.select();
+            var table = document.getElementById("table");
+            var theadid = document.getElementById("theadid");
+            var tbodyid = document.getElementById("tbodyid");
+
 
         }
     </script>
@@ -151,6 +204,9 @@
                 <td>
                     <input type="button" value="Session Save" id="btnsessionsave">
                 </td>
+                <td>
+                    <input type="button" value="Clear" id="clear">
+                </td>
 
             </tr>
         </tbody>
@@ -158,7 +214,10 @@
     <hr />
     <div id="dvselect"></div>
     <div id="dvselectIds"></div>
-
+    <table id="table" border="1">
+        <thead id="theadid"></thead>
+        <tbody id="tbodyid"></tbody>
+    </table>
     <div id="dvselect1"></div>
     <div id="dvselect2"></div>
     <div id="dvselect3"></div>

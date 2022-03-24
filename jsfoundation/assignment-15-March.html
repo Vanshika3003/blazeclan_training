@@ -1,147 +1,107 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
         window.onload = function () {
-            // lets define as array with different type of data
-            var arrProducts = []
-            var categories = ["Saab", "Volvo", "BMW"]
-            var manufacturers = ["James Bond", "Ethun Hunt", "Jack Reacher", "Indiana Jones", "Jason Bourn"];
-            // var arrProducts = [{
-            //     ProductId: 1, ProductName: 'A', CategoryName: 'CA', Manufacturer: 'MA', Price: 'PA',
-            // },
-            // {
-            //     ProductId: 2, ProductName: 'A', CategoryName: 'CA', Manufacturer: 'MA', Price: 'PA',
-            // },
-            // {
-            //     ProductId: 3, ProductName: 'A', CategoryName: 'CA', Manufacturer: 'MA', Price: 'PA',
-            // },
-            // {
-            //     ProductId: 4, ProductName: 'A', CategoryName: 'CA', Manufacturer: 'MA', Price: 'PA',
-            // },
-            // {
-            //     ProductId: 5, ProductName: 'A', CategoryName: 'CA', Manufacturer: 'MA', Price: 'PA',
-            // },
+            var Products = [
+                { ProductId: '101', ProductName: 'Iron', CategoryName: 'Electrical', Manufacturer: 'TATA', Price: 9000 },
+                { ProductId: '102', ProductName: 'Samsung', CategoryName: 'Mobile', Manufacturer: 'Samsung', Price: 8000 },
+                { ProductId: '103', ProductName: 'Book1', CategoryName: 'Book', Manufacturer: 'Books', Price: 7000 },
+                { ProductId: '104', ProductName: 'Heater', CategoryName: 'Electrical', Manufacturer: 'TATA', Price: 6000 },
+                { ProductId: '105', ProductName: 'Laptop', CategoryName: 'Electronics', Manufacturer: 'Samsung', Price: 5000 },
+            ]
+            //Create two arrays
+            var Categories = ["Electrical", "Mobile", "Electronics", "Book"];
+            var Manufacturers = ["TATA", "Books", "Samsung"];
 
-            // ]
-            var lstemp = document.getElementById('lstemp');
-            var man = document.getElementById('man');
-
-            for (i = 0; i < 6; i++) {
-                arrProducts[i] = {
-                    ProductId: i + 1, ProductName: 'A', CategoryName: 'CA', Manufacturer: 'MA', Price: 'PA',
-                }
-                console.log("  arrProducts", arrProducts)
-            }
-
+            //
+            var lstCat = document.getElementById('lstCat');
             var option = '';
-            // dynamically generate the option UI element   
-            for (var i = 0; i < categories.length; i++) {
-                option += '<option value="' + categories[i] + '">' + categories[i] + '</option>';
+            //generate dynamic UI
+            for (var i = 0; i < Categories.length; i++) {
+                option += '<option value="' + Categories[i] + '">' + Categories[i] + '</option>';
             }
-            var option1 = '';
-            // dynamically generate the option UI element   
-            for (var i = 0; i < manufacturers.length; i++) {
-                option1 += '<option value="' + manufacturers[i] + '">' + manufacturers[i] + '</option>';
+            lstCat.innerHTML = option;
+
+            var lstMan = document.getElementById('lstMan');
+            var option = '';
+            //generate dynamic UI
+            for (var i = 0; i < Manufacturers.length; i++) {
+                option += '<option value="' + Manufacturers[i] + '">' + Manufacturers[i] + '</option>';
             }
-            lstemp.innerHTML = option;
-            man.innerHTML = option1;
+            lstMan.innerHTML = option;
 
+            //on button
+            var btnadd = document.getElementById("btnadd");
+            btnadd.addEventListener('click', function () {
+                var pid = document.getElementById('txt1').value;
+                var pName = document.getElementById('txt2').value;
+                var pPrice = parseInt(document.getElementById('txt3').value);
+                var pCat = document.getElementById('lstCat').value;
+                var pMan = document.getElementById('lstMan').value;
 
-            var cat = lstemp.addEventListener('change', function () {
-                var text = this.options[this.selectedIndex].text;
-                var value = this.options[this.selectedIndex].value;
+                var product = { ProductId: pid, ProductName: pName, CategoryName: pCat, Manufacturer: pMan, Price: pPrice };
 
-                document.getElementById('dvcharacters').innerHTML = 'text = ' + text + '  ' + 'value = ' + value;
+                // give it to products literal then push it to products
+                Products.push(product);
+                console.log(Products);
 
-            }, false);
-            console.log("cattyyy", cat);
-            var manufactures = man.addEventListener('change', function () {
-                // when we write an event on the DOM element, inside the element's
-                // event method, the element is refereed using 'this' scope object  
-                var text = this.options[this.selectedIndex].text;
-                var value = this.options[this.selectedIndex].value;
+                console.log("========================================================");
+                var table = document.getElementById("table");
+                var theadid = document.getElementById("theadid");
+                var tbodyid = document.getElementById("tbodyid");
 
-                document.getElementById('manufactures').innerHTML = 'text = ' + text + '  ' + 'value = ' + value;
+                var heading = [];
+                console.log("my data----" + Object.keys(product));
 
-            }, false);
-
-            document.getElementById('dv1').innerHTML = 'Add Data ' + JSON.stringify(arrProducts);
-            var keys = Object.keys((arrProducts[0]));
-            console.log("keys", keys)
-            document.getElementById('headings').innerHTML = keys;
-            var values = []
-            for (i = 0; i < arrProducts.length; i++) {
-                values.push(Object.values((arrProducts[i]))) + "<br><br>";
-                console.log("values", values);
-            }
-
-            document.getElementById('rows').innerHTML = values;
-
-            var btnclear = document.getElementById('btnclear');
-            btnclear.addEventListener('click', function () {
-                var productName = document.getElementById("v1").value;
-                var productId = document.getElementById("v2").value;
-                var price = document.getElementById("v3").value;
-
-                document.getElementById('saved').innerHTML = 'ProductName ' + productName + 'ProductId ' + productId + 'Price' + price;
-            }, false);
-
-        };
+                var p = Object.keys(product);
+                console.log("my data" + p);
+                for (var i = 0; i < p.length; i++) {
+                    // heading += '<tr><th>'+p[0]+'</th><th>'+p[1]+'</th><th>'+p[2]+'</th><th>'+p[3]+'</th><th>'+p[4]+'</th></tr>' ;
+                    heading += '<th>' + p[i] + '</th>';
+                }
+                theadid.innerHTML = heading;
+                var tabledata = [];
+                for (var i = 0; i < Products.length; i++) {
+                    tabledata += '<tr>'
+                    for (var j in p) {
+                        tabledata += '<td>' + Products[i][p[j]] + '</td>';
+                    }
+                    tabledata += '</tr>';
+                }
+                tbodyid.innerHTML = tabledata;
+            }, false)
+        }
     </script>
 </head>
 
 <body>
-    <h1>The Array Data</h1>
-    <div id="dv1"></div>
-    <br />
-    <div>
-        <select id="lstemp"></select>
-        <select id="man"></select><br>
-        <!--Create a group of input elements using either name attribute or class attribute-->
-        ProductName : <input type="text" id="v1" class="c1">
-        <br>
-        ProductId : <input type="text" id="v2" class="c1">
-        <br>
-        Price : <input type="text" id="v3" class="c1">
-        <br>
-
-
-        <input type="button" value="Save" id="btnclear">
-        <div id="saved"></div>
-        <div id="dvcharacters"></div>
-        <div id="manufactures"></div>
-        <table>
-            <thead id="headings">
-                <tr>
-                    <th>Month</th>
-                    <th>Savings</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="rows">
-                    <td>January</td>
-                    <td>$100</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
+    <h1> Add Product</h1>
+    <label for="">Product ID:</label>
+    <input type="text" id="txt1">
+    <br><br>
+    <label for="">Product Name:</label>
+    <input type="text" id="txt2">
+    <br><br>
+    <label for="">Product Price:</label>
+    <input type="text" id="txt3">
+    <br><br>
+    <label for="">CategoryName</label>
+    <select name="" id="lstCat"></select>
+    <br><br>
+    <label for="">Manufacturer</label>
+    <select name="" id="lstMan"></select>
+    <br>
+    <input type="button" value="Save" id="btnadd">
+    <hr>
+    <table id="table" border="1"  >
+        <thead id="theadid"></thead>
+        <tbody id="tbodyid"></tbody>
+    </table>
 </body>
 
 </html>

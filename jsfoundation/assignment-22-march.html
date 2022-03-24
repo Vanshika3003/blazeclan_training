@@ -92,9 +92,9 @@
                         if (searchValue) {
                             console.log("searchValue", searchValue, record.target.result)
                             var found = record.target.result.find(item => item.id == searchValue);
-                            var found = record.target.result.find(item => item.ProductName == searchValue);
-                            var found = record.target.result.find(item => item.CategoryName == searchValue);
-                            var found = record.target.result.find(item => item.Manyfacturer == searchValue);
+                            // var found = record.target.result.find(item => item.ProductName == searchValue);
+                            // var found = record.target.result.find(item => item.CategoryName == searchValue);
+                            // var found = record.target.result.find(item => item.Manyfacturer == searchValue);
 
                             console.log(found);
                             record.target.result = found;
