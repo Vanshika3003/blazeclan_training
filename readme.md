@@ -170,6 +170,9 @@
                 - WebSQL
                     - Available for Chrome
             - Drag-Drop
+                - Interactive and Non-Interactive Elements
+                    - Interactive, elements those are open to accept data from End-User and change its properties e.g. inpue:text all input elements. They are not having support for Mouseenter and MouseLeave events   
+                    - Non-Interactive elements, they does not Read any values from End-User bust can write or show values to end-user (they are read-only elements). They have MouseLeave and MouseEnter events supported, e.g. Table, Div, span, paragraph, etc. 
                 - Events used for Dynamic Updates in HTML DOM using following events
                     - dragstart
                         - event.dataTransfer Object
@@ -186,6 +189,18 @@
             - Files
             - Device Sensors         
 - CSS and CSS Frameworks
+    - Understanding CSS as a Concept
+    - Using and Applying CSS on HTML Elements Statically and Dynamically
+        - Applying Styles to TAG
+            - Browser internally invokes 'document.getElementsByTagName("tag")' and applies styles to all matching tags
+                - This is known as 'TAG-SELECTOR'
+        - Applying Styles to HTML elements based on its 'id'
+            - Browser internally invokes 'document.getElementById("id")'   and applies style to it
+                - This is known as 'id selector'
+                    - #{id}     
+        - Define a Style class and apply it to 'class' attribute of HTML elements
+            - .{CLASS-NAME}{..define styles...}
+            - This is known as 'class selector'            
 - ES 6 aka Modern JavaScript
 - Server-Side App Development using Node.js
 - Front-End Interactive UI apps using React.js

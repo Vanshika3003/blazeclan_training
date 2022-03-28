@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=3, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            // 1. Read all button elements
+            var buttons = document.getElementsByTagName('input');
+            // 2. Iterate over all buttons and attach 'dragStart' event on them
+            for(var i=0;i<buttons.length;i++){
+                // receive an DragEventArgs object for dgarstart event and
+                // set its data transfer object by an id of element on which the 'dragstart'
+                // event is raised  
+                buttons[i].addEventListener('dragstart', function(evt){
+                    // select an id of the element and add it into the 
+                    // data transfer object
+                    evt.dataTransfer.setData('Text', evt.target.id);
+                },false);
+            }
+
+            // 3. Make sure that the Dragged element is pinned to mouse
+            // till the drop does not takes place and prevent any other operations
+            // those will be performed using mouse event
+            var dvtgt = document.getElementById('dvtgt');
+            dvtgt.addEventListener('dragover', function(e){
+                // prevent any other mouse operations on the
+                // target div 
+                e.preventDefault();
+            },false);
+
+            // 4. Now drop the data to dvtgt
+            dvtgt.addEventListener('drop',function(e){
+                console.log('in drop');
+                // prevent any other events on same div till drop is not
+                // completed 
+                e.preventDefault();
+                // read data from dataTransfer
+                 var elementId = e.dataTransfer.getData('Text');
+                 console.log('id of a dragged element = ' + elementId);
+                 // based on the id append UI element to the dvdtgt
+                 // the element which is dragged is now dropped in target
+                 e.target.appendChild(document.getElementById(elementId));
+                 
+            },false);
+
+            var b1 = document.getElementById('btn1');
+
+            b1.addEventListener('click',function(){
+                var dv1 = document.getElementById('dv1');
+                var btn =  document.createElement('input');
+                btn.setAttribute('id', 'btn5');
+                btn.setAttribute('value', '5');
+                btn.setAttribute('type', 'button');
+                dv1.appendChild(btn);
+                document.getElementById('btn5').addEventListener('click',function(){
+                    alert('Value  = ' + this.value);
+                },false);
+            },false);
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+    <h1>HTML 5 Drag-Drop</h1>
+    <h3>Drag from Here</h3>
+    <div id="dvsrc">
+        <input type="button" value="1" id="btn1" draggable="true">
+        <input type="button" value="2" id="btn2" draggable="true">
+        <input type="button" value="3" id="btn3" draggable="true">
+        <input type="button" value="4" id="btn4" draggable="true">
+    </div>
+    <hr>
+    <h3>Drop to Here</h3>
+    <div id="dvtgt" style="height: 250px;width: 250px; border: darkblue;"></div>
+    <hr/>
+    <div id="dv1" style="height: 250px;width: 250px; border: darkblue;"></div>
+
+</body>
+</html>
