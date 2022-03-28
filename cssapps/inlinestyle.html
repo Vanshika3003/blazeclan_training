@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <script>
+      window.onload = function(){
+         document.getElementById('btn')
+            .addEventListener('mouseenter',function(){
+                // apply styles based on event
+                this.style.backgroundColor='yellow';
+                this.style.color = 'red';
+                this.style.fontFamily='cursive';
+                this.style.fontSize= '50px';
+            },false);
+            document.getElementById('btn')
+            .addEventListener('mouseleave',function(){
+                // apply styles based on event
+                this.style.backgroundColor='';
+                this.style.color = '';
+                this.style.fontFamily='';
+                this.style.fontSize= '';
+            },false);
+
+            document.getElementById('txt').addEventListener('keyup',function(){
+                if(parseInt(this.value)<0) {
+                    this.style.borderColor='red';
+                }else {
+                    this.style.borderColor='green';
+                }
+            },false);
+      }
+  </script>
+</head>
+<body>
+    <h1>Inline style to HTML Elements</h1>
+    <div style="height: 50px;width: 500px;background-color:red;color:yellow;text-align: center;">
+            <strong>I am Inline Style</strong>
+    </div>
+    <hr>
+    <input type="button" value="Click Me" style="height:100px;width:200px;color: yellowgreen;background-color: blue;font-size: 50px;font-family: cursive;">
+    <hr>
+    <input type="button" value="Click Me" id="btn">
+    <hr>
+    <input type="text" id="txt">
+</body>
+</html>

@@ -87,3 +87,21 @@ https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
 4. Once a record is added It must be shown in table 
 5. (Optional) Try to implement pagination for table to show data from IndexedDb
     - e.g. if 50 records in indexedDb the per table page show 5 records so 10 table tables                      
+
+# Date: 28-March-2022
+
+1. Create a Shopping Cart Application which has UI as per described below (MUST)
+    - The Page MUST have 2 Div Tags Side-by-Side
+    - The Left-Side div will show list of the Items with its Unit Price
+    - The Right-Side div will allow user to drag the item from left-side list and drop in right-side div
+    - Once the Item is droped, the textbox will appear where end-use MUST enter quantity of dropped item to be purchased (Dynamically generate input:text element), once the quantity is entered in text element and tab is pressed, the total price for selected item must be calculated and  the bottom of the div has to show total price of all items
+2. (Optional) Next to the text element also show a Button with X on it, so that the end-user can deleted the dropped item.
+HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jquery
+
+3. (Mandatory)
+    - Modify Assignment of 22-March-2022 (IndexedDB) with following
+        - EmpNo < 0, the TextBox border will be read else for valid value its MUST be green
+        - EmpName length ==0  the TextBox border will be read else for valid value its MUST be green
+        - Address length ==0  the TextBox border will be read else for valid value its MUST be green 
+        - Salary < 0, the TextBox border will be read else for valid value its MUST be green
+        - The 'Save' button will be enabled when all TextBoxes has valid entry
