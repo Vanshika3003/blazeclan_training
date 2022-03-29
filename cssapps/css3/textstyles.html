@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            background-color:aqua;
+            color: red;
+        }
+        /* define styles fore multiple elements at a time */
+        h1, h4{
+            background-color:black;
+            color: yellow;
+            text-align: center;
+            letter-spacing: 5px;
+        }
+        div {
+            text-align: justify;
+        }
+        /* defining styles for paragraph 'p' based on its class*/
+        /* paragraph with class as 'a'*/
+        /* applying styles to the last line of the paragraph */
+        p.a {
+            text-align-last: right;
+            text-decoration: overline; /* adding line above the text */
+        }
+        p.b{
+            text-align-last: center;
+            text-decoration: line-through; /* adding line through the text*/
+        }
+        p.c{
+            text-align-last: justify;
+            text-decoration: underline; /* underline the text*/
+        }
+        p.d{
+            text-align-last: justify;
+            text-decoration: overline underline; /* overline and underline the text*/
+        }
+        /* Text Contents Styles. Transforms the Text Contents into a various forms*/
+        p.e {
+            text-transform: uppercase;
+        }
+        p.f {
+            text-transform: lowercase;
+        }
+        p.f {
+            text-transform: capitalize;
+        }
+        /* Text Spacing Styles for  
+          1. Indentation : Set the Position of  first line of the Paragraph
+          2. letter Spacing: space between letters of text
+          3. Word Spaing: Space between Words
+          5. line Height: Space between lines
+        */
+        .dv1 {
+            text-indent: 50px;
+            letter-spacing: 5px;
+            word-spacing: 10px;
+            line-height: 20px;
+            text-shadow: 10px 3px yellow;
+            /* Setting Dimensions for the div by creating a box-model */
+            width: 900px;
+            height: 80px;
+            /* Lets define a border, padding and margin for BOX*/
+            border: 20px solid green;
+            padding: 50px; /* Space from the Left */
+            margin:20px;
+            /* Overflow for the Div contents */
+            overflow:auto scroll;
+            opacity: 0.2; /* Managing transparency 0 to 1 */
+        }
+        /* Shadow Effects: text is applied with shadow */
+        h1 {
+            text-shadow: 3px 3px red;
+        }
+    </style>
+</head>
+<body>
+    <h1>The CSS 3 Text Style</h1>
+    <div class="dv1">
+        Jack Reacher is a 2012 American action thriller film[3][4] written and directed by Christopher McQuarrie, based on Lee Child's 2005 novel One Shot. The film stars Tom Cruise as the title character, with Rosamund Pike, David Oyelowo, Richard Jenkins, Jai Courtney, Werner Herzog, and Robert Duvall also starring. The film entered production in October 2011, and was completed in January 2012. It was filmed entirely on location in Pittsburgh, Pennsylvania. It received mixed reviews but was successful at the box office.
+    </div>
+    <hr>
+    <p class="a">
+        In Pittsburgh, Pennsylvania, a man drives a van into a parking garage across the Allegheny River from PNC Park, dropping a quarter into the meter. He readies a Springfield Armory M1A and assassinates five people on the river's North Shore Trail from long range before driving off. The police, headed by Detective Calvin Emerson, find a shell casing as well as the quarter used to pay for parking. A fingerprint on the coin belongs to James Barr, a former U.S. Army sniper. When the police raid his house, they find the van, equipment for reloading rifle cartridges, the rifle in question, and Barr asleep in his bed.
+    </p>    
+    <hr>
+    <p class="b">
+        During an interrogation by Emerson and District Attorney Alex Rodin, Barr is offered a choice between life in prison in exchange for a full confession or guaranteed death row, as Rodin has never lost a conviction. They are bewildered when Barr instead takes a notepad and writes "Get Jack Reacher". Reacher is a drifter and former Army Military Police officer. He arrives in Pittsburgh after seeing a news report about Barr and the shooting. Emerson and Rodin deny Reacher's request to view the evidence but agree to let him see Barr, who was attacked by fellow inmates and is now in a coma. Reacher meets Barr's defense attorney, Helen Rodin, the District Attorney's daughter, who has been saddled with the apparently hopeless task of saving Barr from the death penalty.
+    </p> 
+    <hr>
+    <p class="c">
+        Helen tells Reacher he can see the evidence if he will be her investigator, but Reacher retorts that he is not interested in clearing Barr's name. He reveals that Barr had gone on a killing spree during his tour in Iraq but was not prosecuted because, unbeknownst to Barr, his victims were under investigation for numerous assaults and the U.S. Army wanted them forgotten. Reacher vowed that if Barr tried anything like this again, he would take him down.
+    </p>
+    <hr>
+    <p class="d">
+        Reacher agrees to investigate if Helen visits the victims' families to learn about the people murdered that day. Reacher goes to the crime scene and finds inconsistencies about the location, thinking that a trained shooter would have done the killings from the cover of the van on the nearby Fort Duquesne Bridge. After an apparently spurious bar fight, Reacher realizes that someone is attempting to strong-arm him into dropping his investigation. After Helen reports her findings about the victims to Reacher, he suggests that the owner of a local construction company was the intended victim, while the other victims served as a cover-up. Reacher is later framed for the murder of the young woman who was paid to instigate the brawl, but this only motivates him further. Reacher eventually follows up a lead at a shooting range in the neighboring state of Ohio, owned by former Marine Gunnery Sergeant Martin Cash, who will talk only if Reacher demonstrates his shooting skills.
+    </p>
+     <h4>String Operation Styles</h4>
+     <p class="e">
+         Mahesh Rameshrao Sabnis
+     </p>
+     <br/>
+     <p class="f">
+        Tejas Mahesh Sabnis
+    </p>
+    <br/>
+    <p class="g">
+       Leena Mahesh Sabnis
+   </p>
+</body>
+</html>

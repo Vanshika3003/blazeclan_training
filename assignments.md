@@ -105,3 +105,15 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
         - Address length ==0  the TextBox border will be read else for valid value its MUST be green 
         - Salary < 0, the TextBox border will be read else for valid value its MUST be green
         - The 'Save' button will be enabled when all TextBoxes has valid entry
+
+# Date 19-March-2022
+
+1. Create a table with 5 Columns as EmpNo, EmpName, DeptName, Salary, Designation. Add Rows for Employees in it fror Department NAmes like IT, HRD, SALES, ADMIN, ACCOUNTS (10 20 Rows in table)
+2. When a Mouse Cursor is Moved from the table row its must change the appearance of Table row as follows
+    - Font Size: 30px, Background colorL: Yellow, Color: Red, Font-Family:cursive
+3. Make sure that each row based on DeptName has different background color
+    - IT: Red
+    - HRD: Blue
+    - SALES: Chocklet
+    - ACCOUNTS: Cyan
+    - ADMIN: Magenta     

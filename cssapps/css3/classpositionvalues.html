@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div[class^=The] {
+            font-size:100px;
+        }
+        div[class$=Div] {
+            font-size:100px;
+            background-color: blue;
+            color: yellow;
+        }
+        div[class*=style] {
+            font-size:100px;
+            background-color: red;
+            color: yellow;
+            border: 10px solid chocolate;
+            border-radius: 40px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Apply Styles on DOm elements for attribute values at any position fro DOM Elements</h1>
+
+    <div class="The Div First ">
+        I am the First Div
+    </div>
+    <hr>
+    <div class=" Second The Div">
+        I am the Second Div
+    </div>
+
+    <hr>
+    <div class=" style Div The Third ">
+        I am the Third Div
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* All input elements appears post p but only input:text elements*/
+        p~input[type="text"] {
+            font-size: 20px;
+            color: red;
+            border: double;
+        }
+        /* All input elements appearing after div tag having class as c1 */
+        div~input.c1 {
+            font-size: 50px;
+            color: black;
+            border: double;
+        }
+        /* All buttons thor are children of div tag */
+        div > button {
+            width: 200px;
+            height:100px;
+            border: double;
+            border-radius: 20px;
+        }
+        /* All Children of Div tag */
+        div > * {
+            background-color: orange;
+            color: black;
+            width: 200px;
+            height:100px;
+            border: double;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Apply Styles based on Position and Appearance</h1>
+    <input type="text">
+    <p>Applying Styles to all input elements appears after this paragraph</p>
+    <input type="text">
+    <br>
+    <input type="text">
+    <br>
+    <p>All Input elements after paragraph, but excluding buttons </p>
+    <input type="text">
+    <br>
+    <input type="button" value="Click">
+ 
+    <div class="dv1">Now apply style for all input elements appearing after div having class as c1</div>
+    <input type="text" class="c1">
+    <br>
+    <input type="text">
+    <br/>
+    <input type="text">
+    <br>
+    <input type="text" class="c1">
+    <br>
+    <input type="button" value="BTN" class="c1">
+    <hr>
+    <div>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <input type="button" value="Fifth">
+    </div>
+</body>
+</html>

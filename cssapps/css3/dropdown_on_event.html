@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .dropbutton {
+            background-color: brown;
+            color: yellow;
+            font-size: 30px;
+            cursor:pointer;
+        }
+        .dropdown {
+            display:inline-block;
+            position: relative;
+        }
+        .dropdown-hover {
+            display: none;
+            position: absolute;
+            background-color: chartreuse;
+            min-width: 150px;
+            /*Let's create a box that will provide an effect like drop-down
+              left top right bottom color
+            */
+            box-shadow: 0px 8px 16px cyan;
+        }
+
+        /* Define the same hover class for anchor tag*/
+        .dropdown-hover a {
+            color: black;
+            padding: 12px 16px; /* Left Top */
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Apply Style of the anchor tag on the Mouse enter aka hover*/
+        .dropdown-hover a:hover  {
+            background-color:yellowgreen;
+        }
+
+        /* Define aStyle that will detect the Mouse Hover event and toggle through the classes*/
+        .dropdown:hover .dropbutton {
+            background-color: blue;
+        }
+        .dropdown:hover .dropdown-hover {
+            display: block;
+        }
+
+        /*Lets define styles for the table*/
+        table{
+            font-family: Arial, Helvetica, sans-serif;
+            border:double;
+            width: 100%; /* Auto Expand the DOM Element Horizontally with the available space in the container */
+        }
+
+        th,td {
+            border:double;
+            padding:8px;
+        }
+         th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left; 
+            background-color: cyan;
+            color: black;
+        }
+
+        /*First Column*/
+        td:nth-child(1) {
+            background-color: yellow;
+        }
+          /*Second Column*/
+        td:nth-child(2) {
+            background-color: red;
+        }
+          /*Third Column*/
+        td:nth-child(3) {
+            background-color: green;
+        }
+
+        td:first-child {
+            color: red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Apply Style based on Mouse Events</h1>
+    <p>Hover the Mouse Cursor on the Button to expand it as DropDown</p>
+    <div class="dropdown">
+        <button class="dropbutton">Select Link</button>
+        <div class="dropdown-hover">
+            <a href="#">My Link 1</a>
+            <a href="#">My Link 2</a>
+            <a href="#">My Link 3</a>
+        </div>
+    </div>
+    <hr>
+    <table>
+            <tr>
+                <th>
+                    EmpNo
+                </th>
+                <th>
+                    EmpName
+                </th>
+                <th>
+                    Salary
+                </th>
+            </tr>
+       
+            <tr>
+                <td>101</td>
+                <td>Mahesh</td>
+                <td>120000</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Vikram</td>
+                <td>520000</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Suprotim</td>
+                <td>920000</td>
+            </tr>
+            <tr>
+                <td>104</td>
+                <td>Tejas</td>
+                <td>120000</td>
+            </tr>
+            <tr>
+                <td>105</td>
+                <td>Aditya</td>
+                <td>620000</td>
+            </tr>
+            <tr>
+                <td>106</td>
+                <td>Ansh</td>
+                <td>720000</td>
+            </tr>
+    </table>
+</body>
+</html>
