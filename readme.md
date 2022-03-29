@@ -154,7 +154,7 @@
                     - Non-Volatile data, means the data will be available when the same site is loaded
                         - This uses the 'Same Origin Policy'
                          - The data will be available for the page for the specific site only
-                         - e.g. is data is created using xyz.com, the it will be always available for xyz.com, other web site will not be able to access to access it 
+                         - e.g. is data is created using xyz.com, the it will be always available for xyz.com, other web site will not be able to access to access it
                 - sessionStorage
                     - Browser's storage to store the data in JSON form
                     - Volatile data, means the data will be lost when the browser is closed
@@ -200,7 +200,59 @@
                     - #{id}     
         - Define a Style class and apply it to 'class' attribute of HTML elements
             - .{CLASS-NAME}{..define styles...}
-            - This is known as 'class selector'            
+            - This is known as 'class selector'
+    - CSS in depth CSS 3
+        - Various Selectors   
+            - Tag + Type
+                - e.g. input[type="text"] all elements of input:text only
+                       input.c1 all input elements with class as c1 
+            - Element After
+            - Element with Specific Position
+                  - tr:nth-child
+                    - tr:last-child
+            - Element with specific value applied for an attribute of the HTML Element  
+                - Value Starts With
+                    - ^ symbol is used to apply style if attribute value starts specific valiu
+                    - e.g.  
+                        - <div class="The First Div"></div>
+                        - div[class^=The]
+                            - The class value starts with 'First'  
+                - Value Ends With 
+                    - $ Symbol
+                    
+                    - e.g.  
+                        - <div class="The First Div"></div>
+                        - div[class$=Div]
+                            - The class value starts with 'Div'  
+                - Value ate any position  
+                    -  * Symbol
+                    - e.g.  
+                        - <div class="The First Div"></div>
+                        - div[class*=Div]
+                            - The class value has 'Div' at any position  
+        - Styles for
+            - Text
+            - Tables
+                - We can apply styles on specific Rows/Cells
+                    - tr:nth-child
+                    - tr:last-child
+            - Borders
+            - Margin
+            - Fonts
+            - Links
+            - Alignments
+            - Opacity
+            - Dropdown     
+        - CSS Definition and applying CSS on HTML Elements based on the Events
+            - The CSS 3 detects Mouse Events on HTML Elements and then apply styles on it
+                - Syntax
+                    .{CLASS-NAME}:{EVENT-NAME}    
+        - An Enhancements into the HTMl DOM Position for applying Styles based on the Element Position of element in DOM
+            - element1~element2
+                - All element2 those are coming after element1
+            - element1>element2
+                - All element2 those are children of element1    
+
 - ES 6 aka Modern JavaScript
 - Server-Side App Development using Node.js
 - Front-End Interactive UI apps using React.js
