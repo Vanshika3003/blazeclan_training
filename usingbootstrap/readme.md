@@ -1,0 +1,39 @@
+# Using Bootstrap
+- It is CSS + CSS 3 + HTML + jQuery
+    - Bootstrap 4.0+ jQuery dependency is eliminated
+- Configure the Bootstrap
+    - use the following steps
+        - create package.json
+            - The Project Confgurations file
+            - This contains list of dependencies required for the Project
+            - use the following command to create package.json from the command prompt     
+            - npm init -y 
+       - package.json sections
+         - dependenceis
+            - list of packages required during the build and execution of the project
+            - npm install --save [PACKAGE-NAME]
+                - e.g. npm install --sa bootstrap
+         - devDependencies
+            - list of packages required during the development, testing of the project
+            - npm install --save-dev [PACKAGE-NAME]
+                - e.g. npm install --save-dev bootstrap
+
+2. Playing with bootstrap
+    - Style classes for we need to use the Bootstrap css e.g. bootstrap.min.css
+        - Tables
+        - Button
+        - list
+        - div                               
+        - navigation and navigation bar
+        - forms (MOST Popular)
+    - PlugIn Classes, we need to load the plug-in js in browser to provide the rendering fro HTML elements and set ite behavior 
+        - pagination
+            - The 'pagination' class applied to 'ul' element
+        - page-item
+            - class applied to 'li' under 'ul'
+        - page-link 
+            - class applied to the 'a' inside the 'li'     
+        - breadcrumb
+            - A Horizontal navigation separated by /  
+            - breadcrumb-item
+                - a class for each item in Pagination     
