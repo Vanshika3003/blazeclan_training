@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="./../node_modules/bootstrap/dist/css/bootstrap.min.css"
+  />
+</head>
+<body>
+    <h1>Using Buttons</h1>
+    <!--btn btn-primary btn-success btn-danger btn-warning btn-light-->
+    <div class="container">
+        <input type="button" value="Primary" class="btn btn-primary">  
+        <input type="button" value="Success" class="btn btn-success">
+        <input type="button" value="Warning" class="btn btn-warning">
+        <input type="button" value="Danger" class="btn btn-danger">       
+        <input type="button" value="Dark" class="btn btn-dark">       
+        <!--Link Button-->
+        <a href="#" class="btn btn-warning">Link Button</a> 
+        <hr/>
+        <!--Buttons with outlines--> 
+        <input type="button" value="Primary" class="btn btn-outline-primary">  
+        <input type="button" value="Success" class="btn btn-outline-success">
+        <input type="button" value="Warning" class="btn btn-outline-warning">
+        <input type="button" value="Danger" class="btn btn-outline-danger">       
+        <input type="button" value="Dark" class="btn btn-outline-dark">  
+        <!--Button Size classes-->
+        <br/>
+        <input type="button" value="Primary Large" class="btn btn-outline-primary btn-lg">  
+        <input type="button" value="Success Deefault" class="btn btn-outline-success">
+        <input type="button" value="Warning Small" class="btn btn-outline-warning btn-sm">    
+    </div>
+    <hr>
+    <div class="d-grid" style="border: 5px solid red;">
+        <h7 style="text-align: center;">Block level VButton. the button with width size as of its container</h7>
+        <input type="button" value="Primary Large" class="btn btn-primary btn-block"> 
+    </div>
+    <hr>
+    <!--3 mm-->
+    <div class="d-grid gap-3" style="border: 5px solid red;">
+        <h7 style="text-align: center;">Block level Multiple Buttons with same gap across them. </h7>
+        <input type="button" value="Primary Large" class="btn btn-primary btn-block"> 
+        <input type="button" value="Primary Large" class="btn btn-primary btn-block"> 
+        <input type="button" value="Primary Large" class="btn btn-primary btn-block"> 
+    </div>
+    <br/>
+    <div class="container">
+        <h7 style="text-align:center">Using Spinners with Buttons</h7>
+        <button class="btn btn-success">
+            <span class="spinner-border"></span>
+        </button>
+        <button class="btn btn-success">
+            <span class="spinner-border spinner-border-sm"></span>
+            Loading...
+        </button>
+        <button class="btn btn-success">
+            <span class="spinner-grow spinner-border-sm"></span>
+            Loading...
+        </button>
+    </div>
+    <br>
+    <div class="btn-group btn-group-sm">
+        <input type="button" value="Primary Large" class="btn btn-primary"> 
+        <input type="button" value="Primary Large" class="btn btn-success"> 
+        <input type="button" value="Primary Large" class="btn btn-warning"> 
+    </div>
+</body>
+</html>
