@@ -138,5 +138,11 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
 (Self-Study for Bootstrap)
     - Use the 'model' class to show a model dialog
         - model-dialog, model-header, model-title, model-body
-    - (optional) When a Row is selected from Employees table, the Employee information MUST be shown in Model dialog so that the end-user can update it    
+    - (optional) When a Row is selected from Employees table, the Employee information MUST be shown in Model dialog so that the end-user can update it
+
+# Date: 31-March-2022
+
+1. Create an Array of Employees as    - EmpNo, EmpName, DeptName, Designation, Salary
+2. Find out How many employees are there in Each Department
+3. Fund out How many Managers, Clerks, Operators are in the array
 
