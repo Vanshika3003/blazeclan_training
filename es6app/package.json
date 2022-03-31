@@ -1,0 +1,19 @@
+{
+  "name": "es6app",
+  "version": "1.0.0",
+  "description": "- Block Scope definition using 'let' keyword\r - Template String aka String Interpolation\r     - New Syntax for building an immutable string object\r - Easy Callback function using Arrow operator\r - rest parameter\r - Array and String Method Cahnges\r - Object Oriented Programming\r - Modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-private-methods": "^7.16.11",
+    "@babel/preset-env": "^7.16.11"
+  }
+}
