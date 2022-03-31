@@ -25,4 +25,6 @@
 - Add the /babelrc file in project
     - This is Babel resource  Configuration file that will used during the transpilation pf Class Properties, Private methods
 - Transpile the project
-    - babel SOURCE-ES6-FILE.js -ouput TARGET-TRANSPILED-FILE.js             
+    - babel SOURCE-ES6-FILE.js -o TARGET-TRANSPILED-FILE.js        
+        - e.g.
+            - abel .\source\scope.js -o .\transpiled\scope.build.js     
