@@ -146,3 +146,9 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
 2. Find out How many employees are there in Each Department
 3. Fund out How many Managers, Clerks, Operators are in the array
 
+
+# Date: 01-April-2022
+
+1. Create a UI for Accepting the Products Record from EndUser so that it can be stored into the Map() known as ProductMap. The Product information will be accepted as ProductId, ProductName, CategoryName, Manufacturer, Price
+2. Make the ProductId as a Key of the Map() which is storing Product record. This Must be Auto-Generated.
+3. Make sure that, you generate separate Map objects from ProductMap to store data category wise known as CategoryMap (Key will be CategoryName) and Manufaturer wise known as  ManufacturereMap() Key will be Manufacturer , so tht they will be useful to show Product data by Category  as well as by Manufacturer on Demand.  
