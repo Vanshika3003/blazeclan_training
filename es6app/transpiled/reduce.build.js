@@ -35,7 +35,8 @@ var frequency = records.reduce(function (prevRec, curRec) {
   console.log("Prev Rec = ".concat(JSON.stringify(prevRec), " and Cur Rec = ").concat(JSON.stringify(curRec))); // use the JavaScript 'in' operator for pattern matching from curRec to prevRec
 
   if (curRec in prevRec) {
-    // lets handle prevRec as array and add the counter for curRec in prevRec by 1
+    // lets handle prevRec as Object with iterated records from 
+    // the Array and add the counter for curRec in prevRec by 1
     prevRec[curRec]++; // Increment
 
     console.log("Match Found ".concat(JSON.stringify(prevRec)));
@@ -49,3 +50,76 @@ var frequency = records.reduce(function (prevRec, curRec) {
 }, {}); // Print the result
 
 console.log("Per record frequency in array is = ".concat(JSON.stringify(frequency)));
+var Employees = [{
+  eno: 1,
+  ename: 'A',
+  dname: 'D1'
+}, {
+  eno: 2,
+  ename: 'B',
+  dname: 'D2'
+}, {
+  eno: 3,
+  ename: 'C',
+  dname: 'D3'
+}, {
+  eno: 4,
+  ename: 'E',
+  dname: 'D1'
+}, {
+  eno: 5,
+  ename: 'F',
+  dname: 'D2'
+}, {
+  eno: 6,
+  ename: 'G',
+  dname: 'D3'
+}, {
+  eno: 7,
+  ename: 'H',
+  dname: 'D1'
+}, {
+  eno: 8,
+  ename: 'I',
+  dname: 'D2'
+}, {
+  eno: 9,
+  ename: 'J',
+  dname: 'D3'
+}, {
+  eno: 10,
+  ename: 'K',
+  dname: 'D1'
+}, {
+  dname: 'D4'
+}]; // records: Array on which group will be created
+// property: The name of the property based on which group will be created  
+
+function crateEmployeeGroupByDname(records, property) {
+  // groupResult: Initial State {}
+  // record: The current record to be read
+  var result = records.reduce(function (groupResult, record) {
+    console.log("Current State ".concat(JSON.stringify(groupResult), " and current record ").concat(JSON.stringify(record))); // read the key on which the group will be created on the current record
+
+    var key = record[property]; // currentRecord[dname] this will be value of the property for the record
+    // key will be D1, D2, D3
+
+    console.log("Key of the record = ".concat(key)); // match each record with the previous record key in the groupResult state
+    // because groupResult has the resultant records
+
+    if (!groupResult[key]) {
+      groupResult[key] = []; // if the match does not found based on key makes the resultant as empty
+    } // if found then add the matched record in the resultant state
+
+
+    groupResult[key].push(record);
+    console.log("After match found for push state is = ".concat(JSON.stringify(groupResult))); // return the final group state
+
+    return groupResult;
+  }, {});
+  return result;
+}
+
+;
+var group = crateEmployeeGroupByDname(Employees, 'dname');
+console.log("Group by Property is = ".concat(JSON.stringify(group)));

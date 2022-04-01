@@ -27,4 +27,24 @@
 - Transpile the project
     - babel SOURCE-ES6-FILE.js -o TARGET-TRANSPILED-FILE.js        
         - e.g.
-            - abel .\source\scope.js -o .\transpiled\scope.build.js     
+            - abel .\source\scope.js -o .\transpiled\scope.build.js
+
+# ES 6 Collection Objects
+- Set
+    - A Collection that has data stored in Key:Value pair
+    - Key is string/number and always unique
+        - The Key is implicitly allocated by the Set object base on the Value stored in it  
+    - Used to store non-repeated data 
+    - value can be string, number or can also be an object
+- Map
+    - A Key:Value collection
+    - Key MUST be defined explicitly
+    - Key can be String, Number
+    - Value can be String, number, object
+    - If the Key is repeated, the the previous Key:Value will be overwritten by the new value
+    - This is a best suitable collection for string large amount od data in JS Application
+
+- WeakSet() and WeakMap()
+    - used to store only Objects
+    - Based on the Concept of JavaScript Object Management(?)
+    - These are the weak references for data storage in browser, they are used for effective way of handling data in browser.
