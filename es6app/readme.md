@@ -59,7 +59,7 @@
         - The new.target will check which class is being instantiated
         - We can implement abstract class in ES 6 by preventing new.target from instantiating the class 
     - The inheritance using 'extends' keyword
-    - No overloading by default
+    - No overloading by default-
         - Use JavaScript Function Invocation Pattern to implementing function Overloading
             - apply()
                 - apply a function at runtime to an JS object with arguments
@@ -67,3 +67,18 @@
                 - Invoke a function dynamically
             - bind()
                 - Bind an object with remote function / function will exist separately but it can be bound with the JS object remotely  
+
+- Pattern based approach for Working with ES 6 to build a Re-Usable Library or a framework
+    - Singleton creation
+    - Proxy: A Mechanism for hiding teh direct access of the target object from the client/caller  
+        - Proxy object
+            - Proxy(targetObject, handler)
+                - targetObject: An Object that has original logic with methods, properties, etc.
+                - handler: The object, using which the targetObject's methods, properties will be hidden from the client/caller
+                    - handler = { get(): Provide an access to properties from targetObject, set(): a way to write values to properties of targetObject, ownKeys(): To read all properties of targetObject and ownValues(): To read values of properties of the target object  }
+                    -  CLIENT -- Access to Handler -- Handler Access -- targetObject 
+
+    - Observer
+        - Work with the JS Promises
+    - Factory
+    - Facade 
