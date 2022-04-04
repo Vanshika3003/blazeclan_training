@@ -48,3 +48,22 @@
     - used to store only Objects
     - Based on the Concept of JavaScript Object Management(?)
     - These are the weak references for data storage in browser, they are used for effective way of handling data in browser.
+# ES 6 Object Oriented Programming
+- class
+    - default access specifier is public
+        - data members
+        - members functions
+    - private declarations are prefixed using #
+    - get/set properties
+    - Abstract class using 'new.target'
+        - The new.target will check which class is being instantiated
+        - We can implement abstract class in ES 6 by preventing new.target from instantiating the class 
+    - The inheritance using 'extends' keyword
+    - No overloading by default
+        - Use JavaScript Function Invocation Pattern to implementing function Overloading
+            - apply()
+                - apply a function at runtime to an JS object with arguments
+            - call()
+                - Invoke a function dynamically
+            - bind()
+                - Bind an object with remote function / function will exist separately but it can be bound with the JS object remotely  
