@@ -152,3 +152,12 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
 1. Create a UI for Accepting the Products Record from EndUser so that it can be stored into the Map() known as ProductMap. The Product information will be accepted as ProductId, ProductName, CategoryName, Manufacturer, Price
 2. Make the ProductId as a Key of the Map() which is storing Product record. This Must be Auto-Generated.
 3. Make sure that, you generate separate Map objects from ProductMap to store data category wise known as CategoryMap (Key will be CategoryName) and Manufaturer wise known as  ManufacturereMap() Key will be Manufacturer , so tht they will be useful to show Product data by Category  as well as by Manufacturer on Demand.  
+
+# Date: 04-April-2022
+
+1. Use the es6apps/oops/overloading.js to implement overloading in class
+
+2. Use the application.js from es6apps/oops/ folder to complete the application as per explained in EmployeeLoc and UserInterface class and show the Functional Application in .html page
+    - Note: You can use Array, Map, IndexedDB for Storing and Reading data
+    - (Optional): The EmployeeLogic class has various Search methods, try to use function overloading for them.
+
