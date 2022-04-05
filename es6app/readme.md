@@ -80,5 +80,28 @@
 
     - Observer
         - Work with the JS Promises
+        - ES 7
+            - Promise Enhancements
+                - If a method is performing any async operations OR if a method is calling other method which is returning the promise object then
+                    - Decorate the caller method as 'async'
+                    - The method calls MUSt be decorated as 'await'
+                - async, reptresents that the method have at-least one  or more calls those are asynchronous and await, represents that the call MUST be subscribed (means that Promise.then().catch() is implicitly invoked) and data is received from that    
+            - fetch(), Pure ES 6 object for HTTP Calls
+                - Based on XmlHttpRequest()
+                - contains HTTP Methods 
+                    - get()/post()/put()/delete()    
+                    - Each method returns promise object
+                    - This supports
+                        - text, xml, json, BLOB and ArrayBuffer data
+            - axios (Preferred by React, Vue, ect.)
+                - axios npm package
+                - Promise based Library for HTTP Calls      
+                      - get()/post()/put()/delete()    
+                    - Each method returns promise object
+                    - This supports
+                        - text, xml, json, BLOB and ArrayBuffer data    
+                        
+
+                
     - Factory
     - Facade 

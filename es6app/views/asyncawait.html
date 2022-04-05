@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../advanced/promises/asyncawait.js"></script>
+    <script>
+        window.onload = function(){
+            var btnGetData = document.getElementById('btnGetData');
+            btnGetData.addEventListener('click', function(){
+                console.log('start click....');
+                // receive and subscribe to the Promise object
+                var response = getData();
+
+                // Resolve or Reject the Promise
+
+                response.then(function(response){
+                    document.getElementById('dvdata').innerHTML = response;
+                }).catch(function(error){
+                    document.getElementById('dvdata').innerHTML = error;
+                }); 
+
+             
+                console.log('click done.....');
+                for (let index = 0; index < 10; index++) {
+                    console.log(index);
+                    
+                }
+            },false);
+
+
+            var btnPostData = document.getElementById('btnPostData');
+            btnPostData.addEventListener('click', function(){
+                
+                var cat = {
+                     "CategoryId": 'Cat-006',
+                     "CategoryName": "Electrical",
+                     "BasePrice":50   
+                };
+                // receive and subscribe to the Promise object
+                var response = postData(cat);
+
+                // Resolve or Reject the Promise
+
+                response.then(function(response){
+                    document.getElementById('dvdata').innerHTML = response;
+                }).catch(function(error){
+                    document.getElementById('dvdata').innerHTML = error;
+                }); 
+
+             
+                console.log('click done.....');
+                
+            },false);
+        }
+    </script>
+</head>
+<body>
+    <h1>AJAX call to REST API using XmlHttpRequest object with ASYNC/AWAIT</h1>
+    <button id="btnGetData">Get Data</button>
+    <br>
+    <div id="dvdata"></div>
+    <br>
+    <button id="btnPostData">Post Data</button>
+</body>
+</html>
