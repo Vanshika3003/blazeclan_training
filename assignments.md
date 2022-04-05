@@ -161,3 +161,23 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Note: You can use Array, Map, IndexedDB for Storing and Reading data
     - (Optional): The EmployeeLogic class has various Search methods, try to use function overloading for them.
 
+# Date: 05-April-2022
+
+1. Design a REST API for Performing CRUS Operations on it using 'fetch' object
+    - Either create a REST API or Use Open Free API for this lab
+    - Experience Promise and fetch object
+2. Create a ProductInfo object with the Following Properties
+    - ProductId
+    - ProductName
+    - CategoryName
+    - Description
+    - Manufacturer
+    - Price
+3. Create Client1 class, that want to update the Product information, so for the Client1 create a Proxy object, that will make sure that Client1 following below rules before creating new Product                  
+    - ProductId, Must start from CLT1--[JS Random-Number]
+    - CategoryName will always be Either Electrical or Electronics
+
+4. Create Client2 class, that want to update the Product information, so for the Client2 create a Proxy object, that will make sure that Client2 following below rules before creating new Product                  
+    - ProductId, Must start from CLT2--Prd-[JS Random-Number]
+    - CategoryName will always be from  Electrical, Electronics, Civil, Mechanical, Chemical
+    - Manufacturer will be always from HP, Bajaj, TATA, LnT, etc.       
