@@ -1,0 +1,46 @@
+# PostgreSQL
+- Open Source
+- Object-Relational Database
+    - Table Schemas
+    - Stored Procs (From Version 11+)
+    - Functions
+    - pgSQL Language
+- Age more than 15 years
+- PostgrSQL Global Dev. Team    
+- Written in C
+- Latest Release is PostgreSQL 14.2 Nearly Feb 2022
+- pgAdmin is a IDE Tool for DB Object Creations (MUST be installed)
+- Create RDBMS Objects
+    - Tables
+    - Views
+    - Stored Procedures
+    - Functions
+    - Triggers
+    - User
+- Observations
+    - Begineer do not use Command Line Interface (CLI)
+    - Set a Strong Password while installing the Database
+    - DEfault Super user is 'postgres'
+    - IMP***
+        - Create a Role and User for the Application instead of using the Super User  
+
+# PostgrsSQL DataTypes
+- Numeric Types (in bracket size in bytes)
+    - smallint(2), integer(4), bigint(8 large integer), decimal(variable- more than 130000+ digites)
+    - numeric (variable, same like decimal), real(4), double precision (8, 15 decimal digits)
+    - smallserial(2, auto generate number 1 to 32000)
+    - serial(4autogenerate number 1 to 21470000), bigserial(8)
+- Monetory
+    - money(8)
+- Character Types
+    - varchar(n), character(n fixed size), text(unlimited length)
+- Binary Data Types
+    - bytea(1 to 4 bytes plus the binary string)
+- Date/Time Data Types
+    - sddate, time
+- Boolean Data Type
+- Geometric Data Type
+- Network Address Data Type
+- XML Data Type
+- JSON Data Type
+- Array Data Type

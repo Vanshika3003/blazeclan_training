@@ -181,3 +181,23 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - ProductId, Must start from CLT2--Prd-[JS Random-Number]
     - CategoryName will always be from  Electrical, Electronics, Civil, Mechanical, Chemical
     - Manufacturer will be always from HP, Bajaj, TATA, LnT, etc.       
+
+# Date: 06-April-2022
+
+1. Consider that you are going to design S/W application for a Medical Store where the Information stored is like
+    - Medicines
+        - Stock Information
+    - Customers
+        - Customers those purchase Medicines
+    - Doctors
+        - They are register doctors who asks to purchase medicines by issuing prescription  
+    - Prescription
+        -  Issued by doctor to a Customer
+    - Bill
+        - Per Medicine Bill issued to customer
+    - DailyReceived
+        - Daily money received against bill issued to customer
+    - OrderedMedicines
+        - medicines those are ordered
+    - ReceivedMedicines
+        - Medicines those are received against the order            
