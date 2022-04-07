@@ -201,3 +201,18 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
         - medicines those are ordered
     - ReceivedMedicines
         - Medicines those are received against the order            
+
+# Date 07-April-2022
+
+1. Perform Following Query Operations on Tables Created on Date:06-April-2022
+    - Insert 15 Records in Each of the Table
+    - Print Customers by Doctor Name
+    - Print Count of Customer by Each Doctor Name
+    - Print Prescription Details by Each Customer
+    - Print Prescription Details by Each Doctor Name
+    - Print List of Medicines Per Customer Name
+    - Print Receivables between 2 Dates
+    - Print List of Medicines Ordered between 2 Dates
+    - Print Count of Order placed for each medicine between 2 Dates
+2. Create a Stored Procedure to Generate  Detailed bill for a Customer 
+    - This will use Customer Table, Preseciption Table, Bill and Item_Wise_Bill Table       
