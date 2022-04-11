@@ -216,3 +216,7 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Print Count of Order placed for each medicine between 2 Dates
 2. Create a Stored Procedure to Generate  Detailed bill for a Customer 
     - This will use Customer Table, Preseciption Table, Bill and Item_Wise_Bill Table       
+
+# Date: 11-April-2022
+1. Create Database and Tables of exercise dates Date: 06-April-2022 in MySQL and also repeate the same queries dates  Date 07-April-2022
+2. Create a Procedure that will Generate an A Bill with all Medicines sold to the customer against the Prescription  
