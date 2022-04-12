@@ -2,8 +2,8 @@
 
 function Logic() {
   var employees = [];
-  employees.push({ EmpNo: 101, EmpName: "A" });
-  employees.push({ EmpNo: 102, EmpName: "B" });
+  // employees.push({ EmpNo: 101, EmpName: "A" });
+  // employees.push({ EmpNo: 102, EmpName: "B" });
   return {
     getEmployees: function () {
       return employees;

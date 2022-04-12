@@ -27,7 +27,7 @@ function getData() {
     // by default the open() method will execute asynchronously
     // to run it synchronously pass the third parameter as 'false'
 
-    http.open("GET", "https://localhost:7013/api/category");
+    http.open("GET", "https://gorest.co.in/public/v2/users");
     // send the request
     http.send();
     console.log("Request send and now existing from the method");

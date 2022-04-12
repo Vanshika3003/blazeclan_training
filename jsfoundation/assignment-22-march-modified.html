@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style type="text/css">
+
+    </style>
+    <script src="functionobjects/uigeneratorcopy2.js"></script>
+    <script>
+        //Create database
+        var mydb;
+        var table;
+        function createDatabase() {
+            mydb = window.indexedDB.open("ProductDB", 1);
+            mydb.onupgradeneeded = function (e) {
+                var dbReference = e.target.result;
+                table = dbReference.createObjectStore("Product", {
+                    keyPath: "ProductRowId",
+                    autoIncrement: true,
+                });
+
+                table.createIndex("ProductRowId1", "ProductRowId", {
+                    unique: false,
+                    autoIncrement: true,
+                });
+                table.createIndex("ProductId1", "ProductId", { unique: true });
+                table.createIndex("ProductName1", "ProductName", { unique: false });
+                table.createIndex("CategoryName1", "CategoryName", { unique: false });
+                table.createIndex("Manufacturer1", "Manufacturer1", {
+                    unique: false,
+                });
+                table.createIndex("Description1", "Description", { unique: false });
+                table.createIndex("Price1", "Price", { unique: false });
+
+                document.getElementById("dvstatus").innerHTML =
+                    "Data is created and ObjectStore is created in it";
+            };
+
+            mydb.onsuccess = function (e) {
+                document.getElementById("dvstatus").innerHTML =
+                    "Database opening is successfull";
+            };
+            mydb.onerror = function (e) {
+                document.getElementById("dvstatus").innerHTML =
+                    "Data opening is failed";
+            };
+        }
+
+        //build table
+        function buildTable(data) {
+            var t = document.getElementById("myTable");
+            t.innerHTML = " ";
+            for (var i = 0; i < data.length; i++) {
+                var row = `
+                <tr>
+                   <td>${data[i].ProductRowId}</td>
+                    <td>${data[i].ProductId}</td>
+                    <td>${data[i].ProductName}</td>
+                            <td>${data[i].CategoryName}</td>
+                                <td>${data[i].Manufacturer}</td>
+                                <td>${data[i].Description}</td>
+                                <td>${data[i].Price}</td>
+                    </tr>
+                `;
+                t.innerHTML += row;
+            }
+        }
+        //build table end
+
+        //load data
+        function loadData() {
+            mydb = window.indexedDB.open("ProductDB");
+            if (mydb) {
+                mydb.onsuccess = function (e) {
+                    // retrieve the transaction object on the success of the database
+                    var transaction = e.target.result.transaction(
+                        "Product",
+                        "readwrite"
+                    ); // IDBTransaction object
+                    console.log("transaction", transaction)
+                    // point to the Person ObjectStore to perform Add Operations
+                    table = transaction.objectStore("Product");
+
+                    table.getAll().onsuccess = function (record) {
+                        document.getElementById('dvRecords').innerHTML = "Datga Fetched";
+                        document.getElementById('dvRecords').innerHTML += JSON.stringify(record.target.result);
+                        var uiGenerator1 = new UIGenerator(record.target.result);
+                        document.getElementById("dvtable").innerHTML = uiGenerator1.table();
+                        buildTable(record.target.result);
+                        var searchValue = document.getElementById('txtsearch').value;
+                        console.log("serach va" + searchValue);
+                        if (searchValue) {
+
+                            console.log("searchValue", searchValue, record.target.result)
+
+                            var found = record.target.result.find(item => item.ProductId == searchValue);
+
+                            var found = record.target.result.find(item => item.ProductName == searchValue);
+
+                            var found = record.target.result.forEach(element => {
+                                element.CategoryName == searchValue;
+                                return element;
+                            });
+
+                            var found = record.target.result.forEach(element => {
+                                element.Manufacturer == searchValue;
+                                return element;
+                            });
+
+
+
+
+                            console.log("is found", JSON.stringify(found));
+
+                            record.target.result = found;
+
+                            document.getElementById('dvRecords').innerHTML = JSON.stringify(found);
+                            //buildTable(data1);
+                        }
+                        //searchByProductId(e,record.target.result);
+                    };
+                };
+            } else {
+                document.getElementById("dvstatus").innerHTML =
+                    "Database opening is Failed";
+            }
+        }
+        //save
+        function saveData() {
+            var disable=true;
+            mydb = window.indexedDB.open("ProductDB");
+            if (mydb) {
+                mydb.onsuccess = function (e) {
+                    var transaction = e.target.result.transaction(
+                        "Product",
+                        "readwrite"
+                    );
+                    table = transaction.objectStore("Product");
+
+                    var product = {
+                        // "ProductRowId":parseInt(document.getElementById('txtproductRowId').value),
+                        ProductId: document.getElementById("txtproductId").value,
+                        ProductName: document.getElementById("txtproductName").value,
+                        CategoryName: document.getElementById("lstCat").value,
+                        Manufacturer: document.getElementById("lstMan").value,
+                        Description: document.getElementById("txtdescription").value,
+                        Price: document.getElementById("txtprice").value,
+                    };
+                    if(product.ProductId ||product.ProductName||product.Description||product.Manufacturer){
+                          disable=false;
+                    }
+                    console.log(product);
+                    if (product.ProductId < 0 || !product.ProductId) {
+                        document.getElementById("txtproductId").style.borderColor = "red";
+                    }
+                    else{
+                        document.getElementById("txtproductId").style.borderColor = "green";
+ 
+                    }
+                    if (!product.ProductName || !product.Description) {
+                        document.getElementById("txtproductName").style.borderColor = "red";
+                        document.getElementById("txtdescription").style.borderColor = "red";
+                        document.getElementById("txtdescription").style.borderColor = "red";
+
+                    }
+                    else{
+                        document.getElementById("txtproductName").style.borderColor = "green";
+                        document.getElementById("txtdescription").style.borderColor = "green";
+  
+                    }
+                    if (product.Price < 0 || !product.Price) {
+                        document.getElementById("txtprice").style.borderColor = "red";
+                    }
+                  else{
+                    document.getElementById("txtprice").style.borderColor = "green";
+ 
+                  }
+                    //perform add op
+                    var operation = table.add(product);
+
+                    loadData();
+
+                    operation.onsuccess = function (e) {
+                        document.getElementById("dvstatus").innerHTML =
+                            "Record is added successfully";
+                    };
+                    operation.onerror = function (e) {
+                        document.getElementById("dvstatus").innerHTML =
+                            "Record add failed";
+                    };
+                };
+            } else {
+                document.getElementById("dvstatus").innerHTML =
+                    "Data opening is failed";
+            }
+        }
+        //get single
+     
+        //end single
+        function searchByProductId(e) {
+            mydb = window.indexedDB.open("ProductDB");
+            var data = {};
+            // alert('Hello');
+            if (mydb) {
+                mydb.onsuccess = function (e) {
+                    // retrieve the transaction object on the success of the database
+                    var transaction = e.target.result.transaction(
+                        "Product",
+                        "readwrite"
+                    ); // IDBTransaction object
+                    // point to the Person ObjectStore to perform Add Operations
+                    table = transaction.objectStore("Product");
+
+                    table.getAll().onsuccess = function (record) {
+                        document.getElementById('dvRecords').innerHTML = "Datga Fetched";
+                        document.getElementById('dvRecords').innerHTML += JSON.stringify(record.target.result);
+                        // data = record.target.result;
+
+                        //console.log("data "+JSON.stringify(record.target.result));
+
+                        //searchByProductId(e,record.target.result);
+                    };
+                };
+                //var inputElement = document.getElementById("searchByProductId");
+
+            }
+            function searchValueOfProductId(val, data) {
+
+
+            }
+        }
+
+        window.onload = function () {
+            createDatabase();
+            loadData();
+               // console.log("proo",product);
+            //add all event listener here and call specific function
+            document
+                .getElementById("btnSave")
+                .addEventListener("click", saveData, false);
+            document
+                .getElementById("load")
+                .addEventListener("click", loadData, false);
+               console.log("hey",saveData.product); 
+            var Categories = ["iphone", "clothes", "shoes", "accessories"];
+            var Manufacturers = ["Apple", "Oneplus", "Amazon"];
+
+            //
+            var lstCat = document.getElementById("lstCat");
+            var option = "";
+            //generate dynamic UI
+            for (var i = 0; i < Categories.length; i++) {
+                option +=
+                    '<option value="' +
+                    Categories[i] +
+                    '">' +
+                    Categories[i] +
+                    "</option>";
+            }
+            lstCat.innerHTML = option;
+
+            var lstMan = document.getElementById("lstMan");
+            var option = "";
+            //generate dynamic UI
+            for (var i = 0; i < Manufacturers.length; i++) {
+                option +=
+                    '<option value="' +
+                    Manufacturers[i] +
+                    '">' +
+                    Manufacturers[i] +
+                    "</option>";
+            }
+            lstMan.innerHTML = option;
+        };
+
+    </script>
+</head>
+
+<body>
+    <h1 class="text-center">Assignment 22<sup>nd</sup> March</h1>
+    <div class="container">
+        <div id="dvstatus"></div>
+        <form>
+            <table class="table">
+                <!-- <tr>
+            <td>
+               <label>ProductRowID</label>
+            </td>
+            <td>
+                <input type="text" class="form-control" id="txtproductRowId">
+            </td> 
+        </tr> -->
+                <tr>
+                    <td>
+                        <label>ProductID</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtproductId" placeholder="Enter Product Id"
+                            required="true" minlength="2" maxlength="5" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>ProductName</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtproductName" placeholder="Enter Product Name"
+                            required="true" autocomplete="off" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Category Name</label>
+                    </td>
+                    <td>
+                        <select id="lstCat" class="form-control"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Manufacturer</label>
+                    </td>
+                    <td>
+                        <select id="lstMan" class="form-control"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Description</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtdescription"
+                            placeholder="Enter Product Description" required="true" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Price</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtprice" placeholder="Enter Product Price"
+                            required="true" pattern="[0-9]+" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <input type="button" id="btnSave" value="Save"  />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+        <div>
+            <input type="text" id="txtsearch" placeholder="Search..." /><br />
+            <input type="button" id="load" value="Load Data">
+        </div>
+        <div id="dvRecords"></div>
+
+
+
+        <br />
+        <div id="dvtable" class="table"></div>
+
+        <!-- trying to do -->
+        <!-- <table class="table table-striped">
+        <tr class="bg-info">
+          <th>ProductRowId</th>
+          <th>ProductId</th>
+          <th>ProductName</th>
+          <th>CategoryName</th>
+          <th>Manufacturer</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+        <tbody id="myTable"></tbody>
+      </table> -->
+        <!-- trying to do end -->
+    </div>
+</body>
+
+</html>

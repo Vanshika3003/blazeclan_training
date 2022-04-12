@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=3, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        table,
+        td {
+            background-color: azure;
+            border: double;
+        }
+
+        #dvright,
+        #dvleft {
+            background-color: azure;
+            height: 200px;
+            width: 300px;
+        }
+    </style>
+    <script>
+
+        window.onload = function () {
+            var listItems = document.getElementsByTagName('li');
+            // 2. Iterate over all buttons and attach 'dragStart' event on them
+            for (var i = 0; i < listItems.length; i++) {
+                // receive an DragEventArgs object for dgarstart event and
+                // set its data transfer object by an id of element on which the 'dragstart'
+                // event is raised  
+
+                listItems[i].addEventListener('dragstart', function (evt) {
+                    // select an id of the element and add it into the 
+                    // data transfer object
+                    console.log("evnttt", evt.target.value);
+                    evt.dataTransfer.setData('Text', evt.target.id);
+                    evt.dataTransfer.setData('Value', evt.target.value);
+
+                }, false);
+            }
+
+            var lstselectedproducts = document.getElementById('dvright');
+            lstselectedproducts.addEventListener('dragover', function (e) {
+                // prevent any other mouse operations on the
+                // target div 
+                e.preventDefault();
+            }, false);
+            var totalPrice = 0;
+            var c = 1;
+            // 4. Now drop the data to dvtgt
+            lstselectedproducts.addEventListener('drop', function (e) {
+                // prevent any other events on same div till drop is not
+                // completed 
+                e.preventDefault();
+                // read data from dataTransfer
+                var elementId = e.dataTransfer.getData('Text');
+                var elementIdValue = e.dataTransfer.getData('Value');
+
+                console.log('id of a dragged element = ' + elementId, elementIdValue);
+                // based on the id append UI element to the dvdtgt
+                // the element which is dragged is now dropped in target
+                var ek = e.target.appendChild(document.getElementById(elementId));
+                console.log("ek", ek)
+                //e.target.appendChild(document.getElementById(elementIdValue));
+                var btn = document.createElement('input');
+                btn.setAttribute('type', 'text');
+                btn.setAttribute('id', 'c' + c);
+                c++;
+                lstselectedproducts.appendChild(btn);
+                // document.getElementById('c1').addEventListener('change', function () {
+                //     totalPrice += this.value * elementIdValue;
+                //     document.getElementById('calculatedValue').innerHTML = "The total Price is =" + totalPrice
+                // }, false);
+            }, false);
+
+            document.addEventListener("keyup", function (event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    console.log('sdhfijds', document.getElementById('dvright'));
+                    var nums = document.getElementById("dvright");
+                    var inputs = nums.getElementsByTagName('input')
+
+                    var listItem = nums.getElementsByTagName("li");
+
+                    var total = 0;
+                    for (let i = 0; i < listItem.length; i++) {
+                        total += listItem[i].value * inputs[i].value;
+                    }
+                    document.getElementById('calculatedValue').innerHTML = "The total Price is =" + total
+                }
+            });
+
+
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Assignment 28 march</h1>
+
+    <table>
+        <tr>
+            <td>
+                <h1>Product List</h1>
+            </td>
+            <td>
+                <h1>Selected Products</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="dvleft">
+                    <ul id="lstproducts">
+                        <li id="item1" value="203" draggable="true">Desktop<br>$203 </li>
+                        <li id="item2" value="12" draggable="true">Laptop<br>$12</li>
+                        <li id="item3" value="10" draggable="true">Printer<br>$10</li>
+                        <li id="item4" value="34" draggable="true">Router<br>$34</li>
+                        <li id="item5" value="19" draggable="true">Iphone<br>$19</li>
+
+                    </ul>
+                </div>
+            </td>
+            <td>
+                <div id="dvright">
+                    <ul id="lstselectedproducts">
+
+                    </ul>
+                    <div id="dv1"></div>
+                </div>
+                <div id="calculatedValue"></div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

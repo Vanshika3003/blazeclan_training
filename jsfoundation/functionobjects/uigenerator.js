@@ -79,35 +79,64 @@ var UIGenerator1 = function (dataSource) {
     // check if the data is passed to generate the UI
     if (dataSource === undefined || dataSource.length === 0) {
       return "No Data So No UI will be generated";
-    } else {
-      var k = 0;
-      var table =
-        '<table border="1" ><thead><tr><th>EmpName</th><th>EmpNo</th></thead><tbody>';
-      for (j of dataSource) {
-        for (var i = 0; i < dataSource.length; i++) {
-          console.log("here 3" + dataSource[i]["EmpName"]);
-          table +=
-            "<tr><td>" +
-            dataSource[i]["EmpName"] +
-            "</td><td>" +
-            dataSource[i]["EmpNo"] +
-            "</td></tr>";
-        }
-        table += "</tbody></table>";
-        return table;
-      }
+  //   } else {
+  //     var k = 0;
+  //     var dsKeys=[];
+  //  var heading;
+  //     var p = Object.keys(dataSource[0]);
+  //     console.log("my data" + p);
+  //     for (var i = 0; i < p.length; i++) {
+  //         // heading += '<tr><th>'+p[0]+'</th><th>'+p[1]+'</th><th>'+p[2]+'</th><th>'+p[3]+'</th><th>'+p[4]+'</th></tr>' ;
+  //         heading =  p[i] ;
+  //         console.log("my data heading" + heading);
+
+  //     }
+  //     for (j of heading) {
+  //       console.log("my l" + heading[j]);
+
+  //     }
+  //     var table =
+  //       '<table border="1" >';
+        
+     
+  //       for (var i = 0; i < dataSource.length; i++) {
+  //         table += "<tr>";
+  //         console.log("here 3" + dataSource[i][j]);
+  //         for (var j = 0; j < dataSource[i].length; j++) {
+  //           table += "<td>"+dataSource [i][j]+"</td>";
+  //                   console.log("vkkk 3" +table);
+  //       }
+  //       table += "</tr>";
+  //     }
+  //     table += "</table>";
+  //       return table;
+      
+  //     // var table = "<table border=1>";    
+  //     // for(var i=0; i<dataSource.length; i++) {
+  //     //     table += "<tr>";
+  //     //     for(var j=0; j<dataSource[i].length; j++){
+  //     //         table += "<td>"+dataSource [i][j]+"</td>";
+  //     //         console.log("vkkk 3" +table);
+         
+  //     //     }
+  //     //     table += "</tr>";
+  //     // }
+  //     // table += "</table>";
+  
+  //     // return table;
+  //   }
     }
-    // else{
-    //         var k =0;
-    //         var table = '<table border="1" ><thead><tr><th>ProductRowId</th><th>ProductId</th><th>ProductName</th><th>CategoryName</th><th>Manufacturer</th><th>Description</th><th>Price</th></tr></thead><tbody>';
-    //        for(j of dataSource){
-    //         for(var i=0;i<dataSource.length;i++){
-    //             console.log("here 3"+dataSource[i]['ProductRowId']);
-    //             table+= '<tr><td>'+dataSource[i]['ProductRowId']+'</td><td>'+dataSource[i]['ProductId']+'</td><td>'+dataSource[i]['ProductName']+'</td><td>'+dataSource[i]['CategoryName']+'</td><td>'+dataSource[i]['Manufacturer']+'</td><td>'+dataSource[i]['Description']+'</td><td>'+dataSource[i]['Price']+'</td></tr>';
-    //         }
-    //         table +='</tbody></table>';
-    //         return table;
-    //     }}
-    // };
+    else{
+            var k =0;
+            var table = '<table  class="table table-striped table-bordered table-hover table-dark" border="1" ><thead><tr><th>EmployeeId</th><th>EmployeeName</th><th>DeptName</th><th>Salary</th><th>Designation</th></tr></thead><tbody>';
+           for(j of dataSource){
+            for(var i=0;i<dataSource.length;i++){
+                console.log("here 3"+dataSource[i]['ProductRowId']);
+                table+= '<tr><td>'+dataSource[i]['EmployeeID']+'</td><td>'+dataSource[i]['EmployeeName']+'</td><td>'+dataSource[i]['deptName']+'</td><td>'+dataSource[i]['Salary']+'</td><td>'+dataSource[i]['Designation']+'</td></tr>';
+            }
+            table +='</tbody></table>';
+            return table;
+        }
+      }
   };
 };

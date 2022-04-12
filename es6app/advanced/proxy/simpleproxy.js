@@ -69,7 +69,7 @@ function consumerRead() {
   console.log(`Secret Code = ${proxyObject._SecretCode}`);
 }
 
-// consumerRead();
+ consumerRead();
 
 // Consumer that wants to write the property value
 function consumerWrite() {
@@ -79,7 +79,7 @@ function consumerWrite() {
   proxyObject.Email = "m.s@ms.com";
 }
 
-// consumerWrite();
+ consumerWrite();
 
 function readProps(){
     let keys = Object.keys(proxyObject);

@@ -197,12 +197,10 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
         - Per Medicine Bill issued to customer
     - DailyReceived
         - Daily money received against bill issued to customer
-    - OrderedMedicines
-        - medicines those are ordered
-    - ReceivedMedicines
+         - medicines those are ordered
+    - ReceivedMedicines 
         - Medicines those are received against the order            
-
-# Date 07-April-2022
+        # Date 07-April-2022
 
 1. Perform Following Query Operations on Tables Created on Date:06-April-2022
     - Insert 15 Records in Each of the Table
@@ -215,4 +213,4 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Print List of Medicines Ordered between 2 Dates
     - Print Count of Order placed for each medicine between 2 Dates
 2. Create a Stored Procedure to Generate  Detailed bill for a Customer 
-    - This will use Customer Table, Preseciption Table, Bill and Item_Wise_Bill Table       
+    - This will use Customer Table, Preseciption Table, Bill and Item_Wise_Bill Table  

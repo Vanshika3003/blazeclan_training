@@ -11,6 +11,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <script src="./functionobjects/uigenerator.js"></script>
+    <script src="./functionobjects/closefunction.js"></script>
+
+
     <title>Document</title>
     <!-- <script src="uigenerator copy 2.js"></script> -->
     <script>
@@ -35,10 +39,38 @@
             }
             lstMan.innerHTML = option;
 
+            var Products = []
+            var empObj = new Logic();
+            var btnadd = document.getElementById("btndelete");
 
+            btndelete.addEventListener('click', function () {
+                var EmployeeID = document.getElementById("txtproductId").value;
+
+                Products = Products.filter(item => item.EmployeeID !== EmployeeID)
+                var uiGenerator = new UIGenerator1(Products);
+
+                console.log("pd", Products)
+
+            }, false)
+            var update = document.getElementById("update");
+            update.addEventListener('click', function () {
+                var EmployeeID = document.getElementById("txtproductId").value;
+                var EmployeeName = document.getElementById("txtproductName").value;
+                var deptName = document.getElementById("lstCat").value;
+                var Designation = document.getElementById("lstMan").value;
+
+                var Salary = document.getElementById("txtdescription").value;
+                for(i=0;i<Products.length;i++){
+                if(Products[i].EmployeeID==EmployeeID){
+                Products[i].EmployeeName=EmployeeName;
+               }
+               console.log("pd", Products)
+
+                var uiGenerator = new UIGenerator1(Products);
+            }
+        },false)
             var btnadd = document.getElementById("btnadd");
             btnadd.addEventListener('click', function () {
-                var Products = []
                 var EmployeeID = document.getElementById("txtproductId").value;
                 var EmployeeName = document.getElementById("txtproductName").value;
                 var deptName = document.getElementById("lstCat").value;
@@ -50,6 +82,9 @@
 
                 // give it to products literal then push it to products
                 Products.push(product);
+                var uiGenerator = new UIGenerator1(Products);
+                //  document.getElementById('tableProducts').innerHTML = uiGenerator.select();
+
                 console.log(Products);
 
                 console.log("========================================================");
@@ -77,6 +112,8 @@
                 }
                 tbodyid.innerHTML = tabledata;
             }, false)
+
+
 
         }
     </script>
@@ -143,18 +180,23 @@
             </table>
         </form>
 
+
         <div id="dvRecords"></div>
 
 
 
         <br />
         <div id="dvtable" class="table"></div>
-        <input type="button" value="Save" id="btnadd">
+        <input type="button" value="Add" id="btnadd">
+        <input type="button" value="Delete" id="btndelete">
+        <input type="button" value="Update" id="update">
+
         <hr>
         <table id="table" border="1">
             <thead id="theadid"></thead>
             <tbody id="tbodyid"></tbody>
         </table>
+
         <!-- trying to do -->
         <!-- <table class="table table-striped">
             <tr class="bg-info">
@@ -169,6 +211,8 @@
         </table> -->
         <!-- trying to do end -->
     </div>
+    <!-- <div id="tableProducts"></div> -->
+
 </body>
 
 </html>

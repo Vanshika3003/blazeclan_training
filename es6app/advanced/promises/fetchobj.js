@@ -11,6 +11,7 @@ result
   .then((data) => console.log(JSON.stringify(data))) // Subscribe to read data actually 
   .catch((error) => console.log(error)); // Error If any
 
+ // https://gorest.co.in/public/v2/users
 function postData() {
    let cat = {
     "CategoryId": "Cat-007",

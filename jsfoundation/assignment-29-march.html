@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .dropbutton {
+            background-color: brown;
+            color: yellow;
+            font-size: 30px;
+            cursor:pointer;
+        }
+        .dropdown {
+            display:inline-block;
+            position: relative;
+        }
+        .dropdown-hover {
+            display: none;
+            position: absolute;
+            background-color: chartreuse;
+            min-width: 150px;
+            /*Let's create a box that will provide an effect like drop-down
+              left top right bottom color
+            */
+            box-shadow: 0px 8px 16px cyan;
+        }
+
+        /* Define the same hover class for anchor tag*/
+        .dropdown-hover a {
+            color: black;
+            padding: 12px 16px; /* Left Top */
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Apply Style of the anchor tag on the Mouse enter aka hover*/
+        .dropdown-hover a:hover  {
+            background-color:yellowgreen;
+        }
+
+        /* Define aStyle that will detect the Mouse Hover event and toggle through the classes*/
+        .dropdown:hover .dropbutton {
+            background-color: blue;
+        }
+        .dropdown:hover .dropdown-hover {
+            display: block;
+        }
+
+        /*Lets define styles for the table*/
+        table{
+            font-family: Arial, Helvetica, sans-serif;
+            border:double;
+            width: 100%; /* Auto Expand the DOM Element Horizontally with the available space in the container */
+        }
+
+        th,td {
+            border:double;
+            padding:8px;
+        }
+         th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left; 
+            background-color: green;
+            color: black;
+        }
+
+        /*First Column*/
+        .hover tbody tr:nth-child(n):hover{
+            background-color: grey;
+            font-size:30px ;
+            color: green;
+            font-family:cursive ;
+         
+        }
+        /* .hover  tr:nth-child(2):hover {background-color: purple;} */
+
+          /*Second Column*/
+          tr:nth-child(1) {
+            background-color: pink;
+        } 
+        tr:nth-child(2) {
+            background-color: Blue;
+        } 
+          /*Third Column*/
+         tr:nth-child(3) {
+            background-color: chocolate;
+        }
+        tr:nth-child(4) {
+            background-color: gold;
+        }
+        tr:nth-child(5) {
+            background-color: Cyan;
+        }
+        tr:nth-child(6) {
+            background-color: palevioletred;
+        }
+       
+    tr {
+            color: red;
+        }
+        /* .hover tbody tr:nth-child(1):hover {background-color: #ebebeb;}
+.hover tbody tr:nth-child(2):hover {background-color: yellow;}
+.hover tbody tr:nth-child(3):hover {background-color: pink;}
+.hover tbody tr:nth-child(4):hover {background-color: blue;}
+.hover tbody tr:nth-child(4):hover {background-color: purple;} */
+
+    </style>
+</head>
+<body>
+   
+    <hr>
+    <table class="hover">
+            <tr>
+                <th>
+                    EmpNo
+                </th>
+                <th>
+                    EmpName
+                </th>
+                <th>
+                    Salary
+                </th>
+                <th>
+                    Department Name
+                </th>
+            </tr>
+       <tbody>
+            <tr>
+                <td>101</td>
+                <td>Mahesh</td>
+                <td>120000</td>
+                <td>IT</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Vikram</td>
+                <td>520000</td>
+                <td>HRD</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Suprotim</td>
+                <td>920000</td>
+                <td>SALES</td>
+
+            </tr>
+            <tr>
+                <td>104</td>
+                <td>Tejas</td>
+                <td>120000</td>
+                <td>ACCOUNTS</td>
+
+            </tr>
+            <tr>
+                <td>105</td>
+                <td>Aditya</td>
+                <td>620000</td>
+                <td>ADMIN</td>
+
+            </tr>
+         
+        </tbody>
+    </table>
+ 
+</body>
+</html>

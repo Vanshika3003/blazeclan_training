@@ -51,6 +51,42 @@
             // var employees = ['James ', 'Jack ', 'Jason ', 'Indiana ', 'EThan '];
             var employees = []
             var employeeIds = [];
+            var update = document.getElementById("update");
+            update.addEventListener('click', function () {
+               var idToBeUpdated= document.getElementById('txtseno').value;
+               var nameToBeUpdated= document.getElementById('txtsename').value;
+            console.log("EMPLOYEES",employees);
+            for(i=0;i<employees.length;i++){
+                if(employees[i].EmpNo==idToBeUpdated){
+                employees[i].EmpName=nameToBeUpdated;
+               }
+            }
+            var tabledata = [];
+            var heading = [];
+
+            var emp = {
+                    EmpNo: parseInt(document.getElementById('txtseno').value),
+                    EmpName: document.getElementById('txtsename').value
+                };
+                localStorage.setItem('Emp-' + emp.EmpNo, JSON.stringify(emp));
+
+            var p = Object.keys(emp);
+                console.log("my data" + p);
+                for (var i = 0; i < p.length; i++) {
+                    // heading += '<tr><th>'+p[0]+'</th><th>'+p[1]+'</th><th>'+p[2]+'</th><th>'+p[3]+'</th><th>'+p[4]+'</th></tr>' ;
+                    heading += '<th>' + p[i] + '</th>';
+                }
+                for (var i = 0; i < employees.length; i++) {
+                    console.log("employess updated",employees)
+                    tabledata += '<tr>'
+                    for (var j in p) {
+                        tabledata += '<td>' + employees[i][p[j]] + '</td>';
+                    }
+                    tabledata += '</tr>';
+                }
+                tbodyid.innerHTML = tabledata;
+             
+            }, false);
 
             btnsessionsave.addEventListener('click', function () {
                 var final = [];
@@ -63,8 +99,8 @@
                 console.log("txtsename", txtsename)
                 employees.push(
                     {
-                        EmpNo: txtsename,
-                        EmpName: txtseno
+                        EmpNo: txtseno,
+                        EmpName: txtsename
                     }
                 );
                 employeeIds.push(txtseno);
@@ -81,9 +117,10 @@
                 var table = document.getElementById("table");
                 var theadid = document.getElementById("theadid");
                 var tbodyid = document.getElementById("tbodyid");
+                var update = document.getElementById("update");
 
                 var heading = [];
-                console.log("my data----" + Object.keys(emp));
+                console.log("my daddta----" + Object.keys(emp));
 
                 var p = Object.keys(emp);
                 console.log("my data" + p);
@@ -114,12 +151,7 @@
 
 
 
-            var clear = document.getElementById("clear");
-            clear.addEventListener('click', function () {
-                document.getElementById('txtsename').value = '';
-                document.getElementById('txtseno').value = '';
-            }, false);
-
+           
 
 
 
@@ -205,7 +237,7 @@
                     <input type="button" value="Session Save" id="btnsessionsave">
                 </td>
                 <td>
-                    <input type="button" value="Clear" id="clear">
+                    <input type="button" value="Update" id="update">
                 </td>
 
             </tr>
