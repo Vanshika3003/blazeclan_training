@@ -213,4 +213,29 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Print List of Medicines Ordered between 2 Dates
     - Print Count of Order placed for each medicine between 2 Dates
 2. Create a Stored Procedure to Generate  Detailed bill for a Customer 
+<<<<<<< HEAD
     - This will use Customer Table, Preseciption Table, Bill and Item_Wise_Bill Table  
+=======
+    - This will use Customer Table, Preseciption Table, Bill and Item_Wise_Bill Table       
+
+# Date: 11-April-2022
+1. Create Database and Tables of exercise dates Date: 06-April-2022 in MySQL and also repeate the same queries dates  Date 07-April-2022
+2. Create a Procedure that will Generate an A Bill with all Medicines sold to the customer against the Prescription  
+
+
+# Date: 12-April-2022 (Solution expected on 13-April-2022)
+
+1. Create a REST API using Node.js Http  Module for CRUD Operations on Array
+2. HTTP GET/POST/PUT/DELETE
+3. Make sure that the Client Accept this API using either XmlHttpRequest object or fetch object
+4. Make sure that the AUTHORIZATION Header is passed to REST API which will contains UserName and Password
+    - on REST API side, create an Array called as Users like  follows 
+        - const Users = [
+            {UserName: '', Password:''}
+        ];
+    - Make sure that the Request header pass the Users information to REST API and if the UserName and Password match found then only Perform GET/POST/PUT/DELETE operations
+    - Else response 401 Error To Client
+    - The Client MUSt be HTML Page
+        - Use Previously Created JS using ES 6, HTML with Bootstrap, UI generator for showing Employee information in Table 
+  
+>>>>>>> e9ac668f3754158b57acf20ac6b5fd7cd38f83ac
