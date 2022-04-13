@@ -237,3 +237,7 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - The Client MUSt be HTML Page
         - Use Previously Created JS using ES 6, HTML with Bootstrap, UI generator for showing Employee information in Table 
   
+# Date: 13-April-2022
+1. Create a Web Server that will return html pages to the request base on 'http.url' property. Make sure that the Web Server will not Hard-Code page names while reading them using the 'fs' module. (Create a Route Table using ES6 Map()). The File will be read and will be responded to client.
+2. Create a Directory with files and Sub-Directories in it, using the 'fs' module read each file from parent directory and sub directories.     (Today)  
+3. (SELF-Research): Create a Node.js application that reads Excel and CSV files.
