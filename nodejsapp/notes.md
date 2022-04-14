@@ -266,3 +266,16 @@ console.log("Server Started on port 7013");
     - npm install -g  nodemon
     - nodemon [FILE].js
         - If the js file change, it will be reloaded      
+4. For Node.js and Express the Body is Received as Stream. The Express post and put methods will fail to read stream.  We MUST configure the JSON  middleware for Express HTTP Pipeline 
+    - expres.json()
+        - JSON body Parser in Older versions we were using body-parser package explicitly
+    - express.urlencoded({extended:false})
+        - JSON parsing
+5. To make sure that the Express REST API accessible to the third-Part client, configure CORS Middleware in the pipeline
+    - npm install --save core
+    - import cors from 'cors'
+    - instance.use(cors({
+        origin:"", methods:"", allowedHeaders:""
+    })); OR
+    - instance.use(cors());
+        

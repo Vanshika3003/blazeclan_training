@@ -10,7 +10,17 @@
     <script>
        $(document).ready(function(){
          $("#btn").on('click', function(){
-           alert('Click using jQuery');
+           alert('Clicked');
+            $.ajax({
+              url: 'http://localhost:7011/api/employees',
+              method: 'GET'
+            }).done(function(resp){
+                $("#dv").html(JSON.stringify(resp));
+                alert('Success');
+            }).fail(function(err){
+              $("#dv").html(err);
+              alert('Failed');
+            });
          });
        });
     </script>
@@ -36,5 +46,7 @@
     </tbody>
 </table>
   <button id="btn" class="btn btn-primary"> Click Me </button>
+  <hr>
+  <div id="dv"></div>
 </body>
 </html>
