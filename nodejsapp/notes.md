@@ -234,3 +234,35 @@ console.log("Server Started on port 7013");
             - fileUrlToPath
                 -  Map the Directory Absolute path to the Directory Relative Path which is common on
                     - Windows, Linux, Mac, etc.                   
+
+# Express.Js Application
+
+1. Express Object Model
+    - npm install --save express
+    - The 'express()' object
+        - HTTP Request Pipeline Methods
+            - get(), post(), put(), delete()
+        - A Method to integrate with Middlewares in HTTP Request Pipeline
+            - use(MIIDDLEWARE-TO-LOAD)
+        - Router
+            - Provided using IRouter interface  
+                - get(),post(),put(), andd delete()       
+                - First parameter for all these methods will be URL
+                - Second parameter is 'RequestHandler'
+                    - The RequestHandler will perform following
+                        - Read Request Header
+                            - Header parameters like 'Authorization'
+                        - Read request body
+                            - Data to be created, updated
+                        - Generate Response against the request as follows
+                            - File
+                            - JSON or Data Response      
+        - listen()
+            -Exposing and endpoint from Express Server         
+2. Express Web Apps
+    - Respond static Resources like Html, JavaScript, Css to the http request
+    - the 'static()' method of 'express()' object to read static file and respond it           
+3. to contineously run the server use 'nodemon' package
+    - npm install -g  nodemon
+    - nodemon [FILE].js
+        - If the js file change, it will be reloaded      
