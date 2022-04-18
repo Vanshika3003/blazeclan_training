@@ -196,3 +196,41 @@ console.log("Server Started on port 7013");
                 - 'end', event that represents the stream receive end
                 - 'error', event raised when error occur
                 - 'pause', 'resume', event for pause and resuming stream processing    
+
+- The 'fs' module
+    - The FileSystem Module
+    - Access to the OS Object Model to interact with File IO
+        - Read File (Sync and Async)
+            - readFile(), Async
+            - readFileSync(), Sync
+        - Write File (Sync and Async)
+            - Create new File if not exist and write data in it
+            - Append File
+            - writeFile(), Async
+            - writeFileSync(), Sync
+            - open() and openSync(), used to create a new File
+            - appendFile() and appendFileSync(), to append data to existing file
+            - unlink() and unlinkSync(), delete file
+        - The 'stat()' method
+            - This is used while reading contents of directory     
+            - The Stat could be file or subdirectory
+        - Directories (Sync and Async)
+        - Streams
+            - Contineous Data Flow
+            - File Upload and Download Operations
+        - Pipes    
+            - Joining Streams
+- Node.js Globals
+    - __dirName (Note: ReferenceError: __dirname is not defined in ES module scope)
+        - Perform file I/O from the path where the Node.js app is working
+    - __fileName
+    - env
+        - The Environment Object          
+    - To read file path in ES 6, we need to use the Global import Meta URL
+        - import.meta.url
+            - Create a Absolute PATH for Relative Directory base path
+                - c:\ will be changed to c:/
+        - The 'url' module
+            - fileUrlToPath
+                -  Map the Directory Absolute path to the Directory Relative Path which is common on
+                    - Windows, Linux, Mac, etc.                   
