@@ -278,4 +278,61 @@ console.log("Server Started on port 7013");
         origin:"", methods:"", allowedHeaders:""
     })); OR
     - instance.use(cors());
-        
+6. Building Line-of-Business Apps (LOB) using Express.js
+    - Express with its dependencies
+        - CORS
+        - JSON
+        - HTTP Methods for REST APIs
+        - Static Files for Server-Side host for static files e.g. HTML Pages, JS and CSS
+    - Data Access   
+        - Using Object-Relational-Mapping (ORM)
+            - sequelize
+            - sequelize-auo
+            - sequelize-cli
+            - pg, the PostgreSQL DB Provider
+            - pg-hstore, the DB Connection and Data Persistance Provider
+        - Commands
+            - npm install -g sequelize sequelize-cli sequelize-auto pg pg-hstore
+            -  npm install --save sequelize sequelize-cli sequelize-auto pg pg-hstore
+
+        - Generate the Logical Model from Database
+            - sequelize-auto -h localhost -d enterprize -u sabnisadmin -x P@ssw0rd_ -p 5433 --dialect postgres -o models -t department employee users -l esm
+
+            - -h, the host machine where database server is present. This can be name of the host machine or IP address
+            - -d, database name
+            - -u, user name
+            - -x, password
+            - -p, the port exposed by database
+            - --dialect, the database provider engine name
+                - postgres, mysql2, mssql, sqlite,ariadb
+            - -o, the output folder where Model classes are created
+            - -t, blank space separated list of tables from database from which Model classes will be created
+            - -l esm, generate ES 6 Modules with classes
+        - Important Objects for Programming
+            - Model, base class for Model classes generated from db tables
+                - The 'init()' method to initialize Mapping between class and the db  table
+                - The 'belongsTo()' method
+                    - Establish One-to-One relationships across tables
+                - The 'hasMany()' method
+                    - Establish One-to-Many relationship across tables
+                - Following Data Operations methods are async
+                    - findAll() 
+                     - Return all records
+                    - findOne({where:{CONDITION}});
+                    - create(OBJECT-TO-BE-CREATED)
+                    - update({OBJECT-TO-BE-UPDATED}, {where:{CONDITION}});
+                    - destroy(where:{CONDITION})  
+                -      
+            - sequelize, the Module for ORM
+                - All methods are Asynchronous
+                    - sync()
+                        - Connect to DB, and it is not exists then new database will be created
+                            - await sequelize.sync({force:false});
+                                    - Do not Overwrite the database
+            - 'pkg'
+                - Module that define ES 6 DataTypes
+                - const {DataTypes} = pkg
+                    - DeStructuring for 'pkg' module which contains the ES 6 DataTypes like
+                        - Number
+                        - String
+                        - Date 
