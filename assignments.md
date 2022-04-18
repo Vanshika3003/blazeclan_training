@@ -245,4 +245,19 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
 1. Create a Web Server that will return html pages to the request base on 'http.url' property. Make sure that the Web Server will not Hard-Code page names while reading them using the 'fs' module. (Create a Route Table using ES6 Map()). The File will be read and will be responded to client.
 2. Create a Directory with files and Sub-Directories in it, using the 'fs' module read each file from parent directory and sub directories.     (Today)  
 3. (SELF-Research): Create a Node.js application that reads Excel and CSV files.
+<<<<<<< HEAD
 >>>>>>> 7cb216ac130e5f9dc4c96dd73d121fad9b5eceda
+=======
+
+# Date: 14-April-2022
+
+1. Complete REST with Put and Delete methods
+2. From the HTML Clients Perform CRUD operations with REST APIs
+3. Create a get method in API that will search Employee Data based on following criteria
+    - EmpName='Mahesh' || DeptName = 'IT' (OR Condition)
+        - Return all EmpName as 'Mahesh' along with all Employees from IT DeptName
+    - EmpName='Mahesh' && DeptName = 'IT' (OR Condition)
+        - Return All employees with name as 'Mahesh' from IT DeptName only
+    - Create UI for sending Search Criteria to REST API and displaying result returned from REST API to HTML
+
+>>>>>>> 72df51a3d553a9dedf6c00e8e052ac056477d8da

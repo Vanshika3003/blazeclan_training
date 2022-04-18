@@ -234,3 +234,105 @@ console.log("Server Started on port 7013");
             - fileUrlToPath
                 -  Map the Directory Absolute path to the Directory Relative Path which is common on
                     - Windows, Linux, Mac, etc.                   
+
+# Express.Js Application
+
+1. Express Object Model
+    - npm install --save express
+    - The 'express()' object
+        - HTTP Request Pipeline Methods
+            - get(), post(), put(), delete()
+        - A Method to integrate with Middlewares in HTTP Request Pipeline
+            - use(MIIDDLEWARE-TO-LOAD)
+        - Router
+            - Provided using IRouter interface  
+                - get(),post(),put(), andd delete()       
+                - First parameter for all these methods will be URL
+                - Second parameter is 'RequestHandler'
+                    - The RequestHandler will perform following
+                        - Read Request Header
+                            - Header parameters like 'Authorization'
+                        - Read request body
+                            - Data to be created, updated
+                        - Generate Response against the request as follows
+                            - File
+                            - JSON or Data Response      
+        - listen()
+            -Exposing and endpoint from Express Server         
+2. Express Web Apps
+    - Respond static Resources like Html, JavaScript, Css to the http request
+    - the 'static()' method of 'express()' object to read static file and respond it           
+3. to contineously run the server use 'nodemon' package
+    - npm install -g  nodemon
+    - nodemon [FILE].js
+        - If the js file change, it will be reloaded      
+4. For Node.js and Express the Body is Received as Stream. The Express post and put methods will fail to read stream.  We MUST configure the JSON  middleware for Express HTTP Pipeline 
+    - expres.json()
+        - JSON body Parser in Older versions we were using body-parser package explicitly
+    - express.urlencoded({extended:false})
+        - JSON parsing
+5. To make sure that the Express REST API accessible to the third-Part client, configure CORS Middleware in the pipeline
+    - npm install --save core
+    - import cors from 'cors'
+    - instance.use(cors({
+        origin:"", methods:"", allowedHeaders:""
+    })); OR
+    - instance.use(cors());
+6. Building Line-of-Business Apps (LOB) using Express.js
+    - Express with its dependencies
+        - CORS
+        - JSON
+        - HTTP Methods for REST APIs
+        - Static Files for Server-Side host for static files e.g. HTML Pages, JS and CSS
+    - Data Access   
+        - Using Object-Relational-Mapping (ORM)
+            - sequelize
+            - sequelize-auo
+            - sequelize-cli
+            - pg, the PostgreSQL DB Provider
+            - pg-hstore, the DB Connection and Data Persistance Provider
+        - Commands
+            - npm install -g sequelize sequelize-cli sequelize-auto pg pg-hstore
+            -  npm install --save sequelize sequelize-cli sequelize-auto pg pg-hstore
+
+        - Generate the Logical Model from Database
+            - sequelize-auto -h localhost -d enterprize -u sabnisadmin -x P@ssw0rd_ -p 5433 --dialect postgres -o models -t department employee users -l esm
+
+            - -h, the host machine where database server is present. This can be name of the host machine or IP address
+            - -d, database name
+            - -u, user name
+            - -x, password
+            - -p, the port exposed by database
+            - --dialect, the database provider engine name
+                - postgres, mysql2, mssql, sqlite,ariadb
+            - -o, the output folder where Model classes are created
+            - -t, blank space separated list of tables from database from which Model classes will be created
+            - -l esm, generate ES 6 Modules with classes
+        - Important Objects for Programming
+            - Model, base class for Model classes generated from db tables
+                - The 'init()' method to initialize Mapping between class and the db  table
+                - The 'belongsTo()' method
+                    - Establish One-to-One relationships across tables
+                - The 'hasMany()' method
+                    - Establish One-to-Many relationship across tables
+                - Following Data Operations methods are async
+                    - findAll() 
+                     - Return all records
+                    - findOne({where:{CONDITION}});
+                    - create(OBJECT-TO-BE-CREATED)
+                    - update({OBJECT-TO-BE-UPDATED}, {where:{CONDITION}});
+                    - destroy(where:{CONDITION})  
+                -      
+            - sequelize, the Module for ORM
+                - All methods are Asynchronous
+                    - sync()
+                        - Connect to DB, and it is not exists then new database will be created
+                            - await sequelize.sync({force:false});
+                                    - Do not Overwrite the database
+            - 'pkg'
+                - Module that define ES 6 DataTypes
+                - const {DataTypes} = pkg
+                    - DeStructuring for 'pkg' module which contains the ES 6 DataTypes like
+                        - Number
+                        - String
+                        - Date 
