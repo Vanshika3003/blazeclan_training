@@ -263,3 +263,24 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
         - Return All employees with name as 'Mahesh' from IT DeptName only
 3. Create an API that will have POST method to post 'Single Department' and 'Multiple Employees' for that department using single POST request
 4. Consume these APIs by creating HTML page and AJAX call to API from HTML Pages          
+
+# Date: 19-April-2022
+1. Modify the HTML Pages and rest calls from HTML pages created in assignment 4 on date 18-April-2022 as follows
+    - Create a RegisterUser Page to create new user
+    - Create a login page for authenticating user
+    - The Departments CRUD and Employees CRUD REST APIs will be accessible only when the user is logged in successfully
+2. To be submitted on 29-April-2022 ***** Implement this as PROJECT
+    - Create a Roles and UsersInRole Table in Database
+    - Roles Table will have following columns
+        - RoleName (P.K.)
+        - Permissions varchar(100)
+            - Possible values in this will be e.g. Create, Read, Update, Delete (Comma Separated Values)
+    - UsersInRole Table will have following columns
+        - UserName (F.K. Ref Users Table)
+        - RoleName (F.K. Ref Roles Table)
+        - Note: Once the User is assigned Role, it cannot be changed
+    - Create a Default User known as 'appadmin' with default password (as per your value for pwd)
+    - Create a defile role known as 'admin', the 'appadmin' user will be assigned the 'admin' role by default
+    - Create RoleAPI using express
+        - New Roles can be created only by 'admin' role
+    - User can register themselves but role can be assigned to user only by administrator and then only user will be able to access the REST APIs and hence the application            

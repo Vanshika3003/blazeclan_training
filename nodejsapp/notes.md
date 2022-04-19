@@ -348,3 +348,16 @@ console.log("Server Started on port 7013");
     - Use Stored Procedure Calls   
         - await sequelize.query("Stored Procedure Call")   
         - await sequelize.query("Function Call")                 
+- JS Full-Stack OR MERN Stack OR PERN Stack
+    - Design Principals with REST APIs
+        - The API Method does not have any logic inside it
+            - REST API -- Calling Logic class -- Calling Data Access
+        - API Methods MUST be secure
+            - Login and Logout Strategy
+                - Session State
+                    - For Express Web Apps for User Based Authentication
+                - User Based Authentication used in case of APIs
+                    - Users Authentication
+                    - Users + Roles
+                    - Users + Tokens
+                    - Users + Roles + Token
