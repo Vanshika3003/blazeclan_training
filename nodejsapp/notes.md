@@ -336,3 +336,15 @@ console.log("Server Started on port 7013");
                         - Number
                         - String
                         - Date 
+    - Use Transactions
+        - Managed Transaction (Recommended)
+            - Transaction Monitor Object  used to Monitor the transaction
+                - The Transaction Object will be responsible to manage an execution state of each 'statement' (Insert/Update/Delete statements OR the Mapping Model methods)  
+            - Implicit Commit and Rollback 
+        - UnManaged Transaction
+            - The Transaction Object MUST call the Commit and Rollback for transactions based on the execution      
+    - Use Queries
+        - await sequelize.query("QUERY Statement")
+    - Use Stored Procedure Calls   
+        - await sequelize.query("Stored Procedure Call")   
+        - await sequelize.query("Function Call")                 
