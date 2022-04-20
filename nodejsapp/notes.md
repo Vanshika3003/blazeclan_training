@@ -361,3 +361,36 @@ console.log("Server Started on port 7013");
                     - Users + Roles
                     - Users + Tokens
                     - Users + Roles + Token
+- Using Json Web Token (JWT) for Authorization of Express REST APIs   
+    - Structure of JWT     
+        - Header.Payload.Signature
+        - Header
+            - Contains Algorithm for Encryption of Information in Token               
+        - Payload
+            - Contains Identity Claims to Authorize the the user
+                - User Name
+                - User Name + Role
+                - User Name + Role + Access Rights
+        - Signature
+            - Integrity Check for the Information stored in the token
+            - Generated using Cryptography Module 
+    - JsonWebToken Package
+        - Express-JWT
+            - based on jsonwebtoken
+        - npm install --save jsonwebtoken 
+        - jsonwebtoken.sign(payload, signature, algorithm)
+            - This will sign-in the authenticated user
+            - The token will be saved in Application Process
+        - jsonwebtoken.verify(token, signature, decode)
+            -  token: Received from the Client into HTTP Request Header using AUTHORIZATION Key 
+                - AUTHORIZATION: `Bearer TOKEN-VALUE`
+            -  signature
+                - verify the integrity
+            - decode
+                - The validation state of the token
+    - Process of Implementation
+        - Register New User
+        - Authenticate the User
+            - Generate Token
+        - Verify the Token
+            - Token Integrity Check     

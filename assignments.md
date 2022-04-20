@@ -284,3 +284,15 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Create RoleAPI using express
         - New Roles can be created only by 'admin' role
     - User can register themselves but role can be assigned to user only by administrator and then only user will be able to access the REST APIs and hence the application            
+
+# Date : 20-April-2022  (by 06:00 pm today)
+1. While Generating the token provide a payload to client as
+    - UserName 
+    - Access Rights
+        - Read
+        - Read,Create,Update
+        - Read,Create,Update,Delete or use *
+    - Make sure that that based on the Access rights the REST API Http Methods (GET/POST/PUT/DELETE) are accessible to the client    
+    - Use Users Table
+    - The Access Rights Collection can be created in the application for each user
+        - Note at-least use 5 different  
