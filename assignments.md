@@ -260,4 +260,17 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
         - Return All employees with name as 'Mahesh' from IT DeptName only
     - Create UI for sending Search Criteria to REST API and displaying result returned from REST API to HTML
 
+<<<<<<< HEAD
 >>>>>>> 72df51a3d553a9dedf6c00e8e052ac056477d8da
+=======
+# Date: 18-April-2022
+
+1. Using ORM Complete CRUD Operations on EMployees, Users tables
+2. Create a API that will have get method to return Data based on following criteria from the database 
+     - EmpName='Mahesh' || DeptName = 'IT' (OR Condition)
+        - Return all EmpName as 'Mahesh' along with all Employees from IT DeptName
+    - EmpName='Mahesh' && DeptName = 'IT' (OR Condition)
+        - Return All employees with name as 'Mahesh' from IT DeptName only
+3. Create an API that will have POST method to post 'Single Department' and 'Multiple Employees' for that department using single POST request
+4. Consume these APIs by creating HTML page and AJAX call to API from HTML Pages          
+>>>>>>> 42d02ee3dfe5d05f2f87a1420870f3cb64edea94
