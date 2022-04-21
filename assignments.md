@@ -296,3 +296,13 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Use Users Table
     - The Access Rights Collection can be created in the application for each user
         - Note at-least use 5 different  
+
+# Date: 21-April-2022
+
+1. Use the following links
+    - https://www.dotnetcurry.com/nodejs/1242/promises-nodejs-using-q-goodbye-callbacks
+    - https://www.dotnetcurry.com/nodejs/1225/call-external-service-using-nodejs
+    - to create an application that will using 'q' to enclose 'http.request()' object inside the deferrer to manage GET and POST operations
+    - Create a HTML page (Client using AJAX) to call the HTTP module (Gateway) which further call the Express REST APIs (Back-End Service) 
+2. Self-Study
+    - Implement a Express REST API that Uploads the File from the Client    

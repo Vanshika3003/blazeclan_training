@@ -394,3 +394,98 @@ console.log("Server Started on port 7013");
             - Generate Token
         - Verify the Token
             - Token Integrity Check     
+- Session State with Express
+    - express-session package
+        - built upon express
+        - The 'session' object
+            - secret, used for Encrypting / Decrypting requests
+            - resave, boolean, make an entry of the session state into the store for each request if the value is 'true' else if set as 'false', then only once the session is stored
+            - saveUnInitialized, boolean is false, the the communication will be w/o session information between caller and the server and is true, the session info is shared across server to client
+                - This will be used for SessionContext under which the communication will takes place   
+            - cookie, a JSON object
+                -  maxAge: Lifetime of Session Based Communication information exchanges between client and the server
+                    - Recommended min value is 20 minutes 
+                - secure, boolean,if set to true, then it will by default provide 'Cross-Site-Scripting' aka 'XSS', this is possible because the cookie is not accessible to client App, prevent the session hijacking
+                - httpOnly, if true then along with 'secure' the XSS will be prevented
+- Handling Chain Of Promises for Establishing Communication across Multiple Async Node.js apps
+    - a Promise Chain Monitor object, deferrer
+    - Node.js Modules for Deferrer aka Promise Handlers
+    - q and bluebird
+    - npm install --save q
+        - let defer = q.defer()
+            - Create a channel to monitor all async calls
+            - returns the object object that tracks the Success of failure of execution
+        - defer.resolve(), success
+        - defer.reject(), fail       
+
+- Building Modern Scalable MERN/PERN Stack App
+    - Front-End
+        - React.js
+            - Basics
+                - Project Configuration
+                    - React CLI
+                    - Introduction of Web Pack
+            - Components (Functional)
+                - UI
+                - Databinding
+                - Events
+                - Hooks
+                - Re-Usable Components
+                - Communication Across Components 
+            - Ajax Calls
+            - Custom Hooks
+            - Error Handling
+            - Single Page app using Routing
+                - Code-Splitting
+                - Lazy Loading
+            - Higher-Order-Components
+            - Profiler (Introduction)
+            - Portal (Introduction)
+            - Application State Management using Redux
+                - Redux Object Model
+                - SAGA Middlewares
+            - Next.js Framework for React.js
+            - Amplify Deployment
+            - A Full Web App by Integrating React With Node (If Time Permits)    
+    - Server-Side
+        - Think of Scalable Data Persistance Layer
+            - Cloud based Data Store     
+                - RDS, relational
+                - DynamoDB, NoSQL
+                - File Resource Storages
+                    - Simple Storage Service aka S3
+            - Server-Side App Deployment
+                -  Deploy as Web App
+                    - Amplify Service
+                        - Front-End (React, Angular, Vue, etc.)
+                        - Service Apps aka Server-Side, REST APIs with Node.js, JAVA, .NET Core, etc.
+                - Serverless apps
+                    - AWS Lambda
+                        - REST API as Serverless app
+                - Implementing Server-Side as Microservice
+                    - Docker
+                        - Image Creation
+                        - Containerization
+                    - Kubernetes aka K8s   
+                        - Cluster Creation on Cloud
+                            - Elastic Container Registry (ECR)
+                            - Elastic Kubernetes Server (EKS)   
+                - Providing Controlled Access of Microservices from Clients
+                    - Application Gateway
+                        - Express-Gateway
+                        - Ingress
+                        - AWS API Management / AWA API Gateway           
+                - Communication Across Microservices
+                    - Using Messaging
+                        - AWS Simple Queue Service (SQS)
+                        - RabbitMQ
+                            - Configure Explicitly 
+                        - Any other Messaging Services
+                    - Use of Cache
+                        - Distributed Cache using Redis Cache (Create Explicitly) 
+                        - AWS Elastic Cache            
+    - DevOps Introduction
+    - Testing
+        - Node.js REST API
+        - Load testing
+        - React.js Components Testing                                                  
