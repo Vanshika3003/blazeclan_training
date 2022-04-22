@@ -171,3 +171,8 @@ const MyChildComponent=(props)=>{
     - <></>
 ````            
     - Provide default layout for Component's UI, instae of using div tag
+
+- React DOM Rendering
+    - The ReactDom create a virtual DOM for rendering
+    - Each element in Virtual DOM contains 'key', this key will be used for monitoring changes into that element
+    - Note: If you are creating DOM element dynamically based on array, then make sure that the dynamically generated DOM element is assigned with a 'key' property

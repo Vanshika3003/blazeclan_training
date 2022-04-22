@@ -306,3 +306,11 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - Create a HTML page (Client using AJAX) to call the HTTP module (Gateway) which further call the Express REST APIs (Back-End Service) 
 2. Self-Study
     - Implement a Express REST API that Uploads the File from the Client    
+
+# Date:22-April-2022
+
+1. Create a Calculator Component using React.js (No Google)
+    - This MUST be Scientific Calculator
+2. Create a Component that will generate CheckBoxList based on Course Array Passed to it
+    - Array [{CourseName:'',Fees:}] 
+    - When a CheckBox is checked the, for all 'checked' checkboxes the Total Fees MUST be shown at the bottom    
