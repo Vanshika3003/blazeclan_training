@@ -4,7 +4,7 @@
 
 import express from 'express';
 import path from 'path';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 
 // 1. demand the port from the process (usually recommended in production)
 // provide a free port from hosting environment or use 7010
@@ -17,19 +17,19 @@ const port = process.env.PORT || 7010;
 let __serverPath = fileURLToPath(import.meta.url);
 
 // 3. define an instance of express object
-const instance = express(); 
+const instance = express();
 
 // 4. Configure .js and .css files from 'node_modules' folder
 // to the express request pipeline by using the Middleware method
 instance.use(
     express.static(path.join(__serverPath, './../../../node_modules/bootstrap/dist/css'))
 );
-instance.use( 
-    express.static(path.join(__serverPath,'./../../../node_modules/jquery/dist'))
-);
- 
 instance.use(
-    express.static(path.join(__serverPath,'./../../views'))
+    express.static(path.join(__serverPath, './../../../node_modules/jquery/dist'))
+);
+
+instance.use(
+    express.static(path.join(__serverPath, './../../views'))
 );
 
 // 5. Create a Route Table for route methods
@@ -39,33 +39,46 @@ const router = express.Router();
 instance.use(router);
 
 // 7. Use Express Request Processing Methods
-router.get('/', (req,resp)=>{
+router.get('/', (req, resp) => {
     resp.sendFile('index.html', {
-        root: path.join(__serverPath,'./../../views') // root is a server root
+        root: path.join(__serverPath, './../../views') // root is a server root
     });
 });
 
-router.get('/home', (req,resp)=>{
+router.get('/home', (req, resp) => {
     resp.sendFile('home.html', {
-        root: path.join(__serverPath,'./../../views') // root is a server root
+        root: path.join(__serverPath, './../../views') // root is a server root
     });
 });
 
-router.get('/contact', (req,resp)=>{
+router.get('/contact', (req, resp) => {
     resp.sendFile('contact.html', {
-        root: path.join(__serverPath,'./../../views') // root is a server root
+        root: path.join(__serverPath, './../../views') // root is a server root
     });
 });
 
-router.get('/about', (req,resp)=>{
+router.get('/about', (req, resp) => {
     resp.sendFile('about.html', {
-        root: path.join(__serverPath,'./../../views') // root is a server root
+        root: path.join(__serverPath, './../../views') // root is a server root
     });
+
+});
+router.get('/ass', (req, resp) => {
+    resp.sendFile('ass-18-april.html', {
+        root: path.join(__serverPath, './../../views') // root is a server root
+    });
+
+});
+router.get('/ass-14', (req, resp) => {
+    resp.sendFile('ass-14-april-modified.html', {
+        root: path.join(__serverPath, './../../views') // root is a server root
+    });
+
 });
 
 // 8. Start Listening on the port
 
-instance.listen(port, ()=>{
+instance.listen(port, () => {
     console.log('====================================');
     console.log(`Server Started on port ${port}`);
     console.log('====================================');

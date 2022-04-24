@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <style type="text/css">
+        .dropbutton {
+            background-color: brown;
+            color: yellow;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-hover {
+            display: none;
+            position: absolute;
+            background-color: chartreuse;
+            min-width: 150px;
+            /*Let's create a box that will provide an effect like drop-down
+              left top right bottom color
+            */
+            box-shadow: 0px 8px 16px cyan;
+        }
+
+        /* Define the same hover class for anchor tag*/
+        .dropdown-hover a {
+            color: black;
+            padding: 12px 16px;
+            /* Left Top */
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Apply Style of the anchor tag on the Mouse enter aka hover*/
+        .dropdown-hover a:hover {
+            background-color: yellowgreen;
+        }
+
+        /* Define aStyle that will detect the Mouse Hover event and toggle through the classes*/
+        .dropdown:hover .dropbutton {
+            background-color: blue;
+        }
+
+        .dropdown:hover .dropdown-hover {
+            display: block;
+        }
+
+        /*Lets define styles for the table*/
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border: double;
+            width: 100%;
+            /* Auto Expand the DOM Element Horizontally with the available space in the container */
+        }
+
+        th,
+        td {
+            border: double;
+            padding: 8px;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: green;
+            color: black;
+        }
+
+        /*First Column*/
+        .hover tbody tr:nth-child(n):hover {
+            background-color: grey;
+            font-size: 30px;
+            color: green;
+            font-family: cursive;
+
+        }
+
+        /* .hover  tr:nth-child(2):hover {background-color: purple;} */
+
+        /*Second Column*/
+        tr:nth-child(1) {
+            background-color: pink;
+        }
+
+        tr:nth-child(2) {
+            background-color: Blue;
+        }
+
+        /*Third Column*/
+        tr:nth-child(3) {
+            background-color: chocolate;
+        }
+
+        tr:nth-child(4) {
+            background-color: gold;
+        }
+
+        tr:nth-child(5) {
+            background-color: Cyan;
+        }
+
+        tr:nth-child(6) {
+            background-color: palevioletred;
+        }
+
+        tr:nth-child(7) {
+            background-color: mintcream;
+        }
+
+        tr:nth-child(6) {
+            background-color: royalblue;
+        }
+
+        tr {
+            color: red;
+        }
+
+        /* .hover tbody tr:nth-child(1):hover {background-color: #ebebeb;}
+.hover tbody tr:nth-child(2):hover {background-color: yellow;}
+.hover tbody tr:nth-child(3):hover {background-color: pink;}
+.hover tbody tr:nth-child(4):hover {background-color: blue;}
+.hover tbody tr:nth-child(4):hover {background-color: purple;} */
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#btn").on("click", function () {
+                alert("Click using jQuery");
+            });
+        });
+        $(document).ready(function () {
+            $("#btn").on("click", function () {
+                alert("Clicked");
+                $.ajax({
+                    url: "http://localhost:100",
+                    method: "GET",
+                    headers: { "Authorization": 'Basic ' + ('vanshika' + ":" + 'vk123') }
+
+                })
+                    //  xhr.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password))
+
+                    .done(function (resp) {
+                        $("#dv").html(JSON.stringify(resp));
+                        alert("Success");
+                    })
+                    .fail(function (err) {
+                        $("#dv").html(err);
+                        alert("Failed");
+                    });
+            });
+        });
+        window.onload = function () {
+            var btnSave = document.getElementById("btnSave");
+            btnSave.addEventListener("click", SaveEmployee, false);
+            var btnClear = document.getElementById("btnClear");
+            btnClear.addEventListener("click", ClearEmployee, false);
+            var btnUpdate = document.getElementById("btnUpdate");
+            btnUpdate.addEventListener("click", UpdateEmployee, false);
+            var btnDelete = document.getElementById("btnDelete");
+            btnDelete.addEventListener("click", DeleteEmployee, false);
+        };
+        function SaveEmployee() {
+            var empNo = parseInt(document.getElementById("txtEmpNo").value);
+            var empName = document.getElementById("txtEmpName").value;
+            var deptName = document.getElementById("txtDept").value;
+            var emp1 = {
+                EmpNo: empNo,
+                EmpName: empName,
+                DeptName: deptName,
+            };
+            EmployeeAdd(emp1);
+
+            function EmployeeAdd(emp1) {
+                $.ajax({
+                    url: "http://localhost:100",
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(emp1),
+                })
+                    .done(function (resp) {
+                        $("#dv").html(JSON.stringify(resp));
+
+                    })
+                    .fail(function (err) {
+                        $("#dv").html(err);
+                        alert("Failed");
+                    });
+
+            }
+
+        }
+
+        function ClearEmployee() {
+            document.getElementById('txtEmpNo').value = '';
+            document.getElementById('txtEmpName').value = '';
+            document.getElementById('txtDept').value = '';
+        }
+        function UpdateEmployee() {
+            var empNo = parseInt(document.getElementById("txtEmpNo").value);
+            var empName = document.getElementById("txtEmpName").value;
+            var deptName = document.getElementById("txtDept").value;
+            var emp1 = {
+                EmpNo: empNo,
+                EmpName: empName,
+                DeptName: deptName,
+            };
+            EmployeeUpdate(emp1, empNo);
+
+            function EmployeeUpdate(emp1, empNo) {
+                $.ajax({
+                    url: "http://localhost:100/" + empNo,
+                    type: "PUT",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(emp1),
+                })
+                    .done(function (resp) {
+                        $("#dv").html(JSON.stringify(resp));
+
+                    })
+                    .fail(function (err) {
+                        $("#dv").html(err);
+                        alert("Failed");
+                    });
+
+            }
+        }
+        function DeleteEmployee() {
+            var employeeNo = document.getElementById('txtEmpNo').value;
+            $.ajax({
+                url: "http://localhost:100/" + employeeNo,
+                type: "DELETE",
+                contentType: "application/json;charset=utf-8",
+                // data: JSON.stringify(emp1),
+            })
+                .done(function (resp) {
+                    $("#dv").html(JSON.stringify(resp));
+                    alert(employeeNo + " is deleted successfully!")
+                })
+                .fail(function (err) {
+                    $("#dv").html(err);
+                    alert("Failed");
+                });
+            document.getElementById('txtEmpNo').value = '';
+            document.getElementById('txtEmpName').value = '';
+            document.getElementById('txtDept').value = '';
+        }
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>ASS 12 APRIL</h1>
+
+    <button id="btn" class="btn btn-primary">Click Me</button>
+    <hr />
+    <!-- <div id="dv"></div> -->
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>EmpNo</td>
+            <td><input type="text" id="txtEmpNo" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>EmpName</td>
+            <td><input type="text" id="txtEmpName" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Department name</td>
+            <td><input type="text" id="txtDept" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" id="btnSave" value="ADD" class="btn btn-primary" />
+                <input type="button" id="btnUpdate" value="Update" class="btn btn-warning" />
+                <input type="button" id="btnDelete" value="Delete" class="btn btn-danger" />
+                <input type="button" id="btnClear" value="Clear" class="btn btn-secondary" />
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <div id="dvtable"></div><br>
+
+    <div class="col-lg-6">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Employee no</th>
+                    <th>Employee name</th>
+                    <th>Dept Name </th>
+                </tr>
+            </thead>
+            <tbody id="exampleid">
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div id="dv"></div>
+</body>
+
+</html>

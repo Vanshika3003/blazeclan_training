@@ -1,52 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="jquery.min.js"></script>
-   <link rel="stylesheet" href="bootstrap.min.css">
-    <script>
-       $(document).ready(function(){
-         $("#btn").on('click', function(){
-           alert('Clicked');
-            $.ajax({
-              url: 'http://localhost:7011/api/employees',
-              method: 'GET'
-            }).done(function(resp){
-                $("#dv").html(JSON.stringify(resp));
-                alert('Success');
-            }).fail(function(err){
-              $("#dv").html(err);
-              alert('Failed');
-            });
-         });
-       });
-    </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+
+  <script>
+    $(document).ready(function () {
+      $("#btn").on('click', function () {
+        alert('Clicked');
+        $.ajax({
+          url: 'http://localhost:7011/api/departments',
+          method: 'GET'
+        }).done(function (resp) {
+          $("#dv").html(JSON.stringify(resp));
+          alert('Success');
+        }).fail(function (err) {
+          $("#dv").html(err);
+          alert('Failed');
+        });
+      });
+    });
+    $(function () {
+      $("#frm_details").on("submit", function (event) {
+        event.preventDefault();
+
+        var formData = {
+          'deptno': $('input[name=deptno]').val(), //for get email 
+          'deptname': $('input[name=deptname]').val(), //for get email
+          'location': $('input[name=location]').val(), //for get email  
+          'capacity': $('input[name=capacity]').val() //for get email 
+        };
+        console.log(formData);
+
+        $.ajax({
+          url: "http://localhost:7011/api/departments",
+          type: "post",
+          data: formData,
+          success: function (d) {
+            alert(d);
+          }
+        });
+      });
+    })
+
+    $(document).ready(function () {
+      $(".delete-form").on('submit', function (event) {
+        event.preventDefault();
+        var id = $('#id').val();
+        $.ajax({
+          type: 'DELETE',
+          url: 'http://localhost:7011/api/departments/' + id,
+          success: (data) => {
+            console.log(data);
+          },
+          error: (err) => {
+            console.log(error);
+          }
+        });
+      })
+    });
+    function UpdateEmployee() {
+      var empNo = parseInt(document.getElementById("txtEmpNo").value);
+      var empName = document.getElementById("txtEmpName").value;
+      var designation = document.getElementById("designation").value;
+      var salary = document.getElementById("salary").value;
+      var deptno = document.getElementById("deptno").value;
+      var emp1 = {
+        empno: empNo,
+        empname: empName,
+        designation: designation,
+        salary: salary,
+        deptno: deptno
+      };
+      EmployeeUpdate(emp1, empNo);
+
+      function EmployeeUpdate(emp1, empNo) {
+        $.ajax({
+          url: "http://localhost:7011/api/departments/" + empNo,
+          type: "PUT",
+          contentType: "application/json;charset=utf-8",
+          data: JSON.stringify(emp1),
+        })
+          .done(function (resp) {
+            $("#dv1").html(JSON.stringify(resp));
+            getData();
+          })
+          .fail(function (err) {
+            $("#dv").html(err);
+            alert("Failed");
+          });
+
+      }
+    }
+  </script>
 </head>
+
 <body>
-  <h1>The Home Page</h1>
-  <table class="table table-bordred table-striped">
+  <h1>ASS 18 APRIL</h1>
+  <!-- <table class="table table-bordred table-striped">
     <tbody>
-        <tr>
-            <td>
-                <a href="/">Index</a>
-            </td>
-            <td>
-                <a href="/home">Home</a>
-            </td>
-            <td>
-                <a href="/about">About</a>
-            </td>
-            <td>
-                <a href="/contact">Contact</a>
-            </td>
-        </tr>  
+      <tr>
+        <td>
+          <a href="/">Index</a>
+        </td>
+        <td>
+          <a href="/home">Home</a>
+        </td>
+        <td>
+          <a href="/about">About</a>
+        </td>
+        <td>
+          <a href="/contact">Contact</a>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table> -->
   <button id="btn" class="btn btn-primary"> Click Me </button>
   <hr>
   <div id="dv"></div>
+  <form id="frm_details" method="post" name="frm_details">
+    DEPT NO- <input id="deptno" name="deptno" placeholder="Your dept no" type="text" /><br><br>
+    DEPT NAME- <input id="deptname" name="deptname" placeholder="Your Dept Name" type="text" /><br><br>
+    LOCATION-<input id="location" name="location" placeholder="Your Location" type="text" /><br><br>
+    CAPACITY-<input id="capacity" name="capacity" placeholder="Your capacity" type="text" /><br><br>
+
+    <button class="subscribe-box__btn" type="submit">Submit</button>
+  </form>
+  <hr>
+  <form class="delete-form">
+    <input id="id" type="text" name="id" /><br />
+    <button type="submit" name="submit">Submit</button>
+  </form>
+  <hr>
 </body>
+
+
 </html>

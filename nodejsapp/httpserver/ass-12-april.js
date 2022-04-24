@@ -19,7 +19,8 @@ let auth = { login: 'vanshika', password: 'vk123' }
 // Lets define API based on Http Request methods
 let server = http.createServer((request, response) => {
     let id = parseInt(request.headers.id);
-
+    //  response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    //response.header('Access-Control-Allow-Headers', 'Content-Type');
 
     // parse login and password from headers
     const b64auth = (request.headers.authorization || '').split(' ')[1] || ''
@@ -47,7 +48,11 @@ let server = http.createServer((request, response) => {
         }
 
     }
+    // else {
+    //     response.statusCode = 401;
+    //     response.write('None shall pass');
 
+    // }
 
 
     // 3. The POST method

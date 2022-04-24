@@ -1,63 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="./../transpile/application.build.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="./../transpiled/application.build.js"></script>
     <script>
-        window.onload = function(){
+
+        window.onload = function () {
             let empObj = new UserInterface();
-            let btnSave = document.getElementById('btnSave');
-            let onChnageOfEmpNO = document.getElementById('txtempNo');
 
-            
+            let btnSave = document.getElementById("btnSave");
+            let onChnageOfEmpNO = document.getElementById("txtempNo");
+            let btnclear = document.getElementById("btnclear");
+
             //On save
-            btnSave.addEventListener('click',function(){
-                
-                let empNo = document.getElementById('txtempNo').value;
-                let empName = document.getElementById('txtempName').value;
-                let deptName = document.getElementById('txtdeptName').value;
-                let designation = document.getElementById('txtdesination').value;
-                let salary = document.getElementById('txtsalary').value;
+            btnSave.addEventListener(
+                "click",
+                function () {
+                    let employeeObj = new Employee();
+                    employeeObj.EmpNo = document.getElementById("txtempNo").value;
+                    employeeObj.EmpName = document.getElementById("txtempName").value;
+                    employeeObj.DeptName = document.getElementById("txtdeptName").value;
+                    employeeObj.Designation =
+                        document.getElementById("txtdesination").value;
+                    employeeObj.Salary = document.getElementById("txtsalary").value;
+                    // console.log(`EMpobjs ${employeeObj.DeptName}`);
+                    empObj.save(employeeObj, true);
+                    // console.log(`val = ${res.DeptName}`);
+                    empObj.updateTable();
+                    // let getAllEmployees = empObj.getAllEmployee();
+                    // document.getElementById('tbodyid').innerHTML = (getAllEmployees);
+                    // console.log(`Employees after saving ${(res)}`);
+                },
+                false
+            );
 
-                let emp = {
-                    EmpNo:empNo,
-                    EmpName:empName,
-                    DeptName:deptName,
-                    Designation:designation,
-                    Salary:salary
-                }
-                
-                let res = empObj.save(emp,true);
-                console.log(`Employees after saving ${JSON.stringify(res)}`);
-                
-                
-            },false);
+
+
             // onchange of empNo, generate all the fields
-            
-            onChnageOfEmpNO.addEventListener('change',function(){
-                let employeeNo = onChnageOfEmpNO.value;
-                console.log(`Id is ${employeeNo}`);
-                let ename,deptname,designame,sal;
-                let empObj2 = empObj.getEmployeeById(employeeNo);
-                ename = empObj2['EmpName'];
-                deptname = empObj2['DeptName'];
-                designame = empObj2['Designation'];
-                sal = empObj2['Salary'];
-                document.getElementById('txtempName').value= ename;
-                document.getElementById('txtdeptName').value= deptname;
-                document.getElementById('txtdesination').value= designame;
-                document.getElementById('txtsalary').value= sal;
-            },false);
-        }
+
+            onChnageOfEmpNO.addEventListener(
+                "change",
+                function () {
+                    let employeeNo = onChnageOfEmpNO.value;
+                    var a = [];
+                    console.log(`Id is ${employeeNo}`);
+                    var ename, deptname, designame, sal;
+                    a = empObj.getEmployeeById(employeeNo);
+                    if (a !== undefined) {
+                        //console.log("a is ",a['EmpName']);
+                        ename = a["EmpName"];
+                        deptname = a["DeptName"];
+                        designame = a["Designation"];
+                        sal = a["Salary"];
+                        document.getElementById("txtempName").value = ename;
+                        document.getElementById("txtdeptName").value = deptname;
+                        document.getElementById("txtdesination").value = designame;
+                        document.getElementById("txtsalary").value = sal;
+                    }
+                },
+                false
+            );
+            //on update
+            btnedit.addEventListener(
+                "click",
+                function () {
+                    let employeeObj = new Employee();
+                    employeeObj.EmpNo = document.getElementById("txtempNo").value;
+                    employeeObj.EmpName = document.getElementById("txtempName").value;
+                    employeeObj.DeptName = document.getElementById("txtdeptName").value;
+                    employeeObj.Designation =
+                        document.getElementById("txtdesination").value;
+                    employeeObj.Salary = document.getElementById("txtsalary").value;
+                    empObj.save(employeeObj, false);
+                    empObj.updateTable();
+                    // let getAllEmployees = empObj.getAllEmployee();
+                    // document.getElementById("tbodyid").innerHTML =
+                    //     JSON.stringify(getAllEmployees);
+                    // console.log("Employees After Update = " + JSON.stringify(res));
+                },
+                false
+            );
+            btndelete.addEventListener(
+                "click",
+                function () {
+                    let employeeObj = new Employee();
+                    var item = document.getElementById("txtempNo").value;
+                    console.log(`Item is ${item}`);
+                    empObj.save(item, null);
+                    empObj.updateTable();
+                    alert("Employee " + item + " is deleted successfully");
+                    //  console.log("Employees After delete = " + JSON.stringify(res));
+                    document.getElementById("txtempNo").value = "";
+                    document.getElementById("txtempName").value = "";
+                    document.getElementById("txtdeptName").value = "";
+                    document.getElementById("txtdesination").value = "";
+                    document.getElementById("txtsalary").value = "";
+                },
+                false
+            );
+
+            //on clear
+            btnclear.addEventListener(
+                "click",
+                function () {
+                    document.getElementById("txtempNo").value = "";
+                    document.getElementById("txtempName").value = "";
+                    document.getElementById("txtdeptName").value = "";
+                    document.getElementById("txtdesination").value = "";
+                    document.getElementById("txtsalary").value = "";
+                },
+                false
+            );
+        };
     </script>
 </head>
+
 <body>
     <h1>Assignment 04 April (Second Part)</h1>
     <div class="container my-4">
@@ -65,47 +133,78 @@
             <tr>
                 <td>Employee No</td>
                 <td>
-                    <div class="form-group"><input type="text" class="form-control" id="txtempNo"
-                            autocomplete="off" placeholder="Enter employee no."></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtempNo" autocomplete="off"
+                            placeholder="Enter employee no." />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>Employee Name</td>
                 <td>
-                    <div class="form-group"><input type="text" class="form-control" id="txtempName"
-                        autocomplete="off" placeholder="Enter employee name."></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtempName" autocomplete="off"
+                            placeholder="Enter employee name." />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>Department Name</td>
                 <td>
-                    <div class="form-group"><input type="text" class="form-control" id="txtdeptName"
-                        autocomplete="off" placeholder="Enter Department."></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtdeptName" autocomplete="off"
+                            placeholder="Enter Department." />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>Designation</td>
                 <td>
-                    <div class="form-group"><input type="text" class="form-control" id="txtdesination"  placeholder="Enter Designation"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtdesination" placeholder="Enter Designation" />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td>Salary</td>
                 <td>
-                    <div class="form-group"><input type="text" class="form-control" id="txtsalary"  placeholder="Enter Salary"></div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtsalary" placeholder="Enter Salary" />
+                    </div>
                 </td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="button" class="btn btn-secondary" value="Save" id="btnSave"></td>
+                <td>
+                    <input type="button" class="btn btn-secondary" value="Save" id="btnSave" />
+                    <input type="button" class="btn btn-secondary" value="Update" id="btnedit" />
+                    <input type="button" class="btn btn-secondary" value="Delete" id="btndelete" />
+                    <input type="button" class="btn btn-secondary" value="Clear" id="btnclear" />
+                </td>
             </tr>
         </table>
-        <div>
-            <table id="table" class="table table-striped table-bordered">                
-                <thead id="theadid"></thead>
-                <tbody id="tbodyid"></tbody>
-            </table>
-        </div>
+    </div>
+    <!-- <div>
+        <table id="table" class="table table-striped table-bordered">
+            <thead id="theadid"></thead>
+            <tbody id="tbodyid"></tbody>
+        </table>
+    </div> -->
+
+    <div class="container mt-4">
+        <table class="table table-striped table-bordered " id="empTable">
+            <thead>
+                <tr>
+                    <th>Employee No</th>
+                    <th>Employee Name</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 </body>
+
 </html>

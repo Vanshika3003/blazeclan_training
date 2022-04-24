@@ -4,11 +4,11 @@ import pkg from 'sequelize';
 const {DataTypes} = pkg;
 // 2. Database Mapping Metadata
 // 2a. Model Mapping
-import department from './../models/department.js'
+import department from './../models2/department.js'
 // 2b. Sequelize Connection
-const sequelize = new Sequelize('enterprize', 'sabnisadmin', 'P@ssw0rd_', {
+const sequelize = new Sequelize('enterprize', 'vanshika', 'vk123', {
     host: 'localhost',
-    port: 5433,
+    port: 5432,
     dialect: 'postgres'
 });
 // 2c. Authentication (async)
@@ -98,6 +98,7 @@ class DataAccess {
         }
         return resp.status(500).send({message: 'Error Occured while deleting data'});
     }
+    
 }
 
 export default DataAccess;

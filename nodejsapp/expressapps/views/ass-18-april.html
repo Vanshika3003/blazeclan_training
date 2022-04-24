@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <style type="text/css">
+        .dropbutton {
+            background-color: brown;
+            color: yellow;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-hover {
+            display: none;
+            position: absolute;
+            background-color: chartreuse;
+            min-width: 150px;
+            /*Let's create a box that will provide an effect like drop-down
+              left top right bottom color
+            */
+            box-shadow: 0px 8px 16px cyan;
+        }
+
+        /* Define the same hover class for anchor tag*/
+        .dropdown-hover a {
+            color: black;
+            padding: 12px 16px;
+            /* Left Top */
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Apply Style of the anchor tag on the Mouse enter aka hover*/
+        .dropdown-hover a:hover {
+            background-color: yellowgreen;
+        }
+
+        /* Define aStyle that will detect the Mouse Hover event and toggle through the classes*/
+        .dropdown:hover .dropbutton {
+            background-color: blue;
+        }
+
+        .dropdown:hover .dropdown-hover {
+            display: block;
+        }
+
+        /*Lets define styles for the table*/
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border: double;
+            width: 100%;
+            /* Auto Expand the DOM Element Horizontally with the available space in the container */
+        }
+
+        th,
+        td {
+            border: double;
+            padding: 8px;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: green;
+            color: black;
+        }
+
+        /*First Column*/
+        .hover tbody tr:nth-child(n):hover {
+            background-color: grey;
+            font-size: 30px;
+            color: oldlace;
+            font-family: cursive;
+
+        }
+
+        /* .hover  tr:nth-child(2):hover {background-color: purple;} */
+
+
+        /*Third Column*/
+
+
+        tr:nth-child(3n+1) td {
+            background-color: pink;
+        }
+
+        tr:nth-child(3n+2) td {
+            background-color: Cyan;
+        }
+
+        tr:nth-child(3n) td {
+            background-color: palevioletred;
+        }
+
+
+        /* .hover tbody tr:nth-child(1):hover {background-color: #ebebeb;}
+.hover tbody tr:nth-child(2):hover {background-color: yellow;}
+.hover tbody tr:nth-child(3):hover {background-color: pink;}
+.hover tbody tr:nth-child(4):hover {background-color: blue;}
+.hover tbody tr:nth-child(4):hover {background-color: purple;} */
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#btn").on("click", function () {
+                getData();
+
+                alert("Click using jQuery");
+            });
+        });
+        function getData() {
+
+            $.ajax({
+                url: "http://localhost:7013/api/employee",
+                method: "GET",
+            })
+                .done(function (resp) {
+                    $("#dv1").html(JSON.stringify(resp));
+                    alert("Success");
+                    $.each(resp.data, function (key, value) {
+                        console.log(value);
+                        $('#exampleid').append("<tr>\
+                             <td>"+ value.empno + "</td>\
+                            <td>"+ value.empname + "</td>\ <td>" + value.designation + "</td>\ < td >" + value.salary + "</td >\ <td>" + value.salary + "</td>\ < td >" + value.salary + "</td >\ <td>" + value.deptno + "</td>\ </tr > ");
+                    })
+                })
+                .fail(function (err) {
+                    $("#dv").html(err);
+                    alert("Failed");
+                });
+
+
+        }
+        window.onload = function () {
+            var btnSave = document.getElementById("btnSave");
+            btnSave.addEventListener("click", SaveEmployee, false);
+            var btnClear = document.getElementById("btnClear");
+            btnClear.addEventListener("click", ClearEmployee, false);
+            var btnUpdate = document.getElementById("btnUpdate");
+            btnUpdate.addEventListener("click", UpdateEmployee, false);
+            var btnDelete = document.getElementById("btnDelete");
+            btnDelete.addEventListener("click", DeleteEmployee, false);
+            var btnSearchByName = document.getElementById("btnSearchByName");
+            btnSearchByName.addEventListener('click', SearchByName, false);
+            var btnSearchByAndCondition = document.getElementById("btnSearchByAndCondition");
+            btnSearchByAndCondition.addEventListener('click', SearchByAndCondition, false);
+            var txtEmpNo = document.getElementById("txtEmpNo");
+            txtEmpNo.addEventListener('change', ChangeEvent, false);
+        };
+        function SaveEmployee() {
+            var empNo = parseInt(document.getElementById("txtEmpNo").value);
+            var empName = document.getElementById("txtEmpName").value;
+            var designation = document.getElementById("designation").value;
+            var salary = document.getElementById("salary").value;
+            var deptno = document.getElementById("deptno").value;
+            var emp1 = {
+                empno: empNo,
+                empname: empName,
+                designation: designation,
+                salary: salary,
+                deptno: deptno
+            };
+
+
+            EmployeeAdd(emp1);
+
+            function EmployeeAdd(emp1) {
+                $.ajax({
+                    url: "http://localhost:7013/api/employee",
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(emp1),
+                })
+                    .done(function (resp) {
+                        $("#dv").html(JSON.stringify(resp));
+                        $('#exampleid').empty();
+                        alert("Success");
+                        getData();
+
+                    })
+                    .fail(function (err) {
+                        $("#dv").html(err);
+                        alert("Failed");
+                    });
+
+            }
+
+        }
+        function ChangeEvent() {
+            var employeeNo = document.getElementById('txtEmpNo').value;
+            $.ajax({
+                url: "http://localhost:7013/api/employee/" + employeeNo,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                //  data: JSON.stringify(emp),
+            })
+                .done(function (resp) {
+                    $("#dv").html(JSON.stringify(resp));
+                    console.log(JSON.stringify(resp.data.EmpName));
+                    $("#txtEmpName").val(resp.data.EmpName)
+                    $("#txtDept").val(resp.data.DeptName)
+                })
+                .fail(function (err) {
+                    $("#dv").html(err);
+                    alert("Failed");
+                });
+        }
+        function ClearEmployee() {
+            document.getElementById('txtEmpNo').value = '';
+            document.getElementById('txtEmpName').value = '';
+            document.getElementById("designation").value = '';
+            document.getElementById("salary").value = '';
+            document.getElementById("deptno").value = '';
+        }
+        function UpdateEmployee() {
+            var empNo = parseInt(document.getElementById("txtEmpNo").value);
+            var empName = document.getElementById("txtEmpName").value;
+            var designation = document.getElementById("designation").value;
+            var salary = document.getElementById("salary").value;
+            var deptno = document.getElementById("deptno").value;
+            var emp1 = {
+                empno: empNo,
+                empname: empName,
+                designation: designation,
+                salary: salary,
+                deptno: deptno
+            };
+            EmployeeUpdate(emp1, empNo);
+
+            function EmployeeUpdate(emp1, empNo) {
+                $.ajax({
+                    url: "http://localhost:7013/api/employee/" + empNo,
+                    type: "PUT",
+                    contentType: "application/json;charset=utf-8",
+                    data: JSON.stringify(emp1),
+                })
+                    .done(function (resp) {
+                        $('#exampleid').empty()
+
+                        $("#dv1").html(JSON.stringify(resp));
+                        getData();
+                    })
+                    .fail(function (err) {
+                        $("#dv").html(err);
+                        alert("Failed");
+                    });
+
+            }
+        }
+        function DeleteEmployee() {
+            var employeeNo = document.getElementById('txtEmpNo').value;
+            $.ajax({
+                url: "http://localhost:7013/api/employee/" + employeeNo,
+                type: "DELETE",
+                contentType: "application/json;charset=utf-8",
+                // data: JSON.stringify(emp1),
+            })
+
+                .done(function (resp) {
+                    $('#exampleid').empty()
+                    $("#dv").html(JSON.stringify(resp));
+                    getData();
+                    alert(employeeNo + " is deleted successfully!")
+                })
+                .fail(function (err) {
+                    $("#dv").html(err);
+                    alert("Failed");
+                });
+            document.getElementById('txtEmpNo').value = '';
+            document.getElementById('txtEmpName').value = '';
+            document.getElementById("designation").value = '';
+            document.getElementById("salary").value = '';
+            document.getElementById("deptno").value = '';
+        }
+
+        function SearchByName() {
+            var searchbyEmpName = document.getElementById("searchbyEmpName").value;
+            var searchbyDeptName = document.getElementById("searchbyDeptName").value;
+            $.ajax({
+                url: "http://localhost:7013/api/employeeByName/" + searchbyEmpName + "/" + searchbyDeptName,
+                method: "GET",
+            })
+                .done(function (resp) {
+                    $("#dv").html(JSON.stringify(resp));
+                    alert("Success", JSON.stringify(resp));
+                })
+                .fail(function (err) {
+                    $("#dv").html(err);
+                    alert("Failed");
+                });
+        }
+
+        function SearchByAndCondition() {
+            var searchbyEmpName = document.getElementById("txtEmployeeName").value;
+            console.log("serach " + searchbyEmpName);
+            var searchbyDeptName = document.getElementById("txtDepartName").value;
+            $.ajax({
+                url: "http://localhost:7011/api/employees/searchbyand/" + searchbyEmpName + "/" + searchbyDeptName,
+                method: "GET",
+            })
+                .done(function (resp) {
+                    $("#dv").html(JSON.stringify(resp));
+                    alert("Success");
+                })
+                .fail(function (err) {
+                    $("#dv").html(err);
+                    alert("Failed");
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>The Home Page</h1>
+    <!-- <table class="table table-bordred table-striped">
+        <tbody>
+            <tr>
+                <td>
+                    <a href="/">Index</a>
+                </td>
+                <td>
+                    <a href="/home">Home</a>
+                </td>
+                <td>
+                    <a href="/about">About</a>
+                </td>
+                <td>
+                    <a href="/contact">Contact</a>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+    <button id="btn" class="btn btn-primary">Click Me</button>
+    <hr />
+    <!-- <div id="dv"></div> -->
+    <hr />
+    <div id="dvtable"></div><br>
+
+    <table class="table table-striped">
+        <tr>
+            <td>EmpNo</td>
+            <td><input type="text" id="txtEmpNo" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>EmpName</td>
+            <td><input type="text" id="txtEmpName" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Designation</td>
+            <td><input type="text" id="designation" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td><input type="text" id="salary" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Dept No</td>
+            <td><input type="text" id="deptno" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" id="btnSave" value="ADD" class="btn btn-primary" />
+                <input type="button" id="btnUpdate" value="Update" class="btn btn-warning" />
+                <input type="button" id="btnDelete" value="Delete" class="btn btn-danger" />
+                <input type="button" id="btnClear" value="Clear" class="btn btn-secondary" />
+            </td>
+        </tr>
+    </table>
+    <hr>
+
+    <div class="col-lg-6">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Employee no</th>
+                    <th>Employee name</th>
+                    <th>Designation </th>
+                    <th>Salary </th>
+                    <th>Dept No </th>
+                </tr>
+            </thead>
+            <tbody id="exampleid">
+            </tbody>
+        </table>
+    </div>
+    <div id="dv"></div>
+
+    <hr>
+    <div class="container">
+        <div class="row">
+            <h1>Search By AND Condition</h1>
+            <div class="col">
+                <input type="text" class="form-control" id="searchbyEmpName" placeholder="Search By Employee Name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="searchbyDeptName" placeholder="Search By Dept Name">
+            </div>
+            <div class="col">
+                <input type="button" value="Search" id="btnSearchByName" class="btn btn-primary">
+            </div>
+        </div>
+    </div>
+    <!-- SERACH BY && -->
+    <div class="container">
+        <div class="row">
+            <h1>Search By OR Condition</h1>
+            <div class="col">
+                <input type="text" class="form-control" id="txtEmployeeName" placeholder="Search By Employee Name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="txtDepartName" placeholder="Search By Dept Name">
+            </div>
+            <div class="col">
+                <input type="button" value="Search" id="btnSearchByAndCondition" class="btn btn-primary">
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

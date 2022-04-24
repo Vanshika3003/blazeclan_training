@@ -273,4 +273,40 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
         - Return All employees with name as 'Mahesh' from IT DeptName only
 3. Create an API that will have POST method to post 'Single Department' and 'Multiple Employees' for that department using single POST request
 4. Consume these APIs by creating HTML page and AJAX call to API from HTML Pages          
+<<<<<<< HEAD
 >>>>>>> 42d02ee3dfe5d05f2f87a1420870f3cb64edea94
+=======
+
+# Date: 19-April-2022
+1. Modify the HTML Pages and rest calls from HTML pages created in assignment 4 on date 18-April-2022 as follows
+    - Create a RegisterUser Page to create new user
+    - Create a login page for authenticating user
+    - The Departments CRUD and Employees CRUD REST APIs will be accessible only when the user is logged in successfully
+2. To be submitted on 29-April-2022 ***** Implement this as PROJECT
+    - Create a Roles and UsersInRole Table in Database
+    - Roles Table will have following columns
+        - RoleName (P.K.)
+        - Permissions varchar(100)
+            - Possible values in this will be e.g. Create, Read, Update, Delete (Comma Separated Values)
+    - UsersInRole Table will have following columns
+        - UserName (F.K. Ref Users Table)
+        - RoleName (F.K. Ref Roles Table)
+        - Note: Once the User is assigned Role, it cannot be changed
+    - Create a Default User known as 'appadmin' with default password (as per your value for pwd)
+    - Create a defile role known as 'admin', the 'appadmin' user will be assigned the 'admin' role by default
+    - Create RoleAPI using express
+        - New Roles can be created only by 'admin' role
+    - User can register themselves but role can be assigned to user only by administrator and then only user will be able to access the REST APIs and hence the application            
+
+# Date : 20-April-2022  (by 06:00 pm today)
+1. While Generating the token provide a payload to client as
+    - UserName 
+    - Access Rights
+        - Read
+        - Read,Create,Update
+        - Read,Create,Update,Delete or use *
+    - Make sure that that based on the Access rights the REST API Http Methods (GET/POST/PUT/DELETE) are accessible to the client    
+    - Use Users Table
+    - The Access Rights Collection can be created in the application for each user
+        - Note at-least use 5 different  
+>>>>>>> 4bab14f4e259f95f700996534800dd51ca396261
