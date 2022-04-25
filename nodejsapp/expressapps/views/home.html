@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
   <meta charset="UTF-8">
@@ -141,3 +142,110 @@
 
 
 </html>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <script>
+      $(document).ready(function () {
+        $("#btn").on("click", function () {
+          alert("Clicked");
+          $.ajax({
+            url: "http://localhost:7011/api/employees",
+            method: "GET",
+          })
+            .done(function (resp) {
+              $("#dv").html(JSON.stringify(resp));
+              alert("Success");
+            })
+            .fail(function (err) {
+              $("#dv").html(err);
+              alert("Failed");
+            });
+        });
+
+        $("#btnlogin").on("click", function () {
+          $.ajax({
+            url: "http://localhost:7011/api/auth/authuser",
+            method: "POST",
+            dataType: "json",
+            data: {
+              username: "user1",
+              password: "123",
+            },
+          })
+            .done(function (resp) {
+              alert("Login Success");
+            })
+            .fail(function (err) {
+              $("#dv").html(err);
+              alert("Failed");
+            });
+        });
+        $("#btngetdata").on("click", function () {
+          $.ajax({
+            url: "http://localhost:7011/api/auth/departments",
+            method: "GET", 
+          })
+            .done(function (resp) {
+              $("#dv").html(JSON.stringify(resp));
+              alert("Login Success");
+            })
+            .fail(function (err) {
+              $("#dv").html(err);
+              alert("Failed");
+            });
+        });
+        $("#btnlogoff").on("click", function () {
+          $.ajax({
+            url: "http://localhost:7011/api/auth/logoff",
+            method: "POST"
+            
+          })
+            .done(function (resp) {
+              alert("Log Off Success");
+            })
+            .fail(function (err) {
+              $("#dv").html(err);
+              alert("Failed");
+            });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>The Home Page</h1>
+    <table class="table table-bordred table-striped">
+      <tbody>
+        <tr>
+          <td>
+            <a href="/">Index</a>
+          </td>
+          <td>
+            <a href="/home">Home</a>
+          </td>
+          <td>
+            <a href="/about">About</a>
+          </td>
+          <td>
+            <a href="/contact">Contact</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="btn" class="btn btn-primary">Click Me</button>
+    <hr />
+    <div id="dv"></div>
+    <hr />
+    <button class="btn btn-primary" id="btnlogin">Login</button>
+    <hr />
+    <button class="btn btn-primary" id="btngetdata">Get Data</button>
+    <hr />
+    <button class="btn btn-primary" id="btnlogoff">Log Off</button>
+  </body>
+</html>
+>>>>>>> b3a7c9bf342cab6101ae9dacb58120f88d72321c
