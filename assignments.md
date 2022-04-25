@@ -313,4 +313,17 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - This MUST be Scientific Calculator
 2. Create a Component that will generate CheckBoxList based on Course Array Passed to it
     - Array [{CourseName:'',Fees:}] 
-    - When a CheckBox is checked the, for all 'checked' checkboxes the Total Fees MUST be shown at the bottom    
+    - When a CheckBox is checked the, for all 'checked' checkboxes the Total Fees MUST be shown at the bottom
+
+# Date:25-April-2022
+
+1. Create a DataGridComponent using HTML Table with the following considerations
+    - The Data will be passed to this component will be a collection type, the component will accept data in 'DataSource' property
+    - HTML Table headers will be generated based in Keys inside collection
+    - HTML Table body with rows will be generated based on data in the collection
+    - The component will accept the 'CanEdit' property of the type boolean. If this value is true, each row will show edit button, when this button is clicked, the Row will be editable (explore contentEditable property of td). The End-User can edit the row and changes MUST be reflected into the collection received from parent
+    - The compose will accept 'CanDelete' property of the type boolean, if this property is true, then, each row will show delete button, when this is clicked the row will be deleted from the collection received from the parent
+    - Each column header has to show Arrow buttons, (use button class from bootstrap for UP and DOWN), when Upward arrow is clicked the data in the table MUST be sorted in ascending order w.r.t. that columns and when the downward arrow button is clicked the data in the table MUST be sorted in descending order w.r.t. that column
+    - (Optional for Today, but mandatory by friday)
+        - Implement Table Pagination by having 'IsPaginationEnabled' property value from the parent, of this is true then accept the 'pageSize' and below the table generate pagination (Bootstrap), based on No. of records in collection and page size generate page numbers and paginate accordingly        
+
