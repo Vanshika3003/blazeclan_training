@@ -37,7 +37,7 @@
             - User Interface (UI) using HTML (JSX) elements
             - the Data Members aka State Properties
                 - Used to pass and accept to and from UI
-                - Define rendering of HTMl UI aka DOM
+                - Define rendering of HTML UI aka DOM
             - methods
                 - Logic
                 - These can be bound with Events of HTML Elements to Update Data members and hence DOM Rendering
@@ -182,3 +182,26 @@ const MyChildComponent=(props)=>{
         Either use 'props' or 'context' to pass data to reusable component
         - In the Child Component make sure that the data received from parent is validated against null, undefined, NaN, etc.   
     - If using HTML table for showing data in tabular form, then make sure that the hard-coding for Table-Header and Table Rows is avoided
+
+- Understanding Hooks
+    - They are functions which are used for providing predefined behavior to React Functional Components
+        - Predefined Behavior
+            - State Property Declaration, this is a data (data state) hold by the component
+                - useState()
+            - Maintaining State Across Components (other than props)
+                - Pass data from Parent to Specific Child
+                - useContext()
+                    - A Function that contains a Subscription for the data (and method) passed from Parent Component component    
+                    - This will read data from the Global Context object which has data provided by the parent component 
+            - A Mechanism to provide an execution to some logic when component is loaded and also execute some logic when the Component is unloaded
+                - useEffect()
+                    - Used for AJAX Calls
+                    - Subscribing and De-subscribing to explicit DOM Events aka Cleanup of resources when the component is unloaded    
+            - Application State Management across the Component 
+                -  useReducer()
+                    - A mechanism that is used to act as an better alternative to useState() when the state is updated in multiple Stages
+                            - Init, Success, Fail
+    - All Standard Hooks are invoked directly at Component level, we cannot call them inside the function
+        - The Standard Hook can be called inside the Custom Hook                         
+
+- To Implement Validations for the Component, write the custom Logic with State Properties and make sure that, use HTML Form

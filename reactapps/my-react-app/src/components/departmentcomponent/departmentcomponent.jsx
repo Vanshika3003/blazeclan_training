@@ -4,7 +4,7 @@ import react,{useState, Fragment} from 'react';
 import SelectComponent from '../reusablecomponents/selectcomponent';
 
 
-const DepartmentComponent=()=>{
+const DepartmentComponent=(props)=>{
 
     let [department, setDepartment] = useState({deptno:0, deptname:'', location:'',capacity:0});
     let [departments, updateDepartments] = useState([]);
@@ -24,6 +24,7 @@ const DepartmentComponent=()=>{
 
     return(
         <Fragment>
+            <h1>{props.message} Department</h1>
             <div className='form-group'>
                 <label>DeptNo</label>
                 <input type="text" value={department.deptno} onChange={(evt)=>setDepartment({...department, deptno:parseInt(evt.target.value)})} className="form-control"/>

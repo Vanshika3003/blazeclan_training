@@ -4,6 +4,8 @@ import './index.css';
 // import components here
 import App from './App';
 import DepartmentComponent from './components/departmentcomponent/departmentcomponent';
+import ContexctProviderComponent from './components/contextprovidercomponent/contextprovidercomponent';
+import FormValidationComponent from './components/validationcomponent/FormValidationComponent';
 // Importing Bootstrap css
 import  './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
@@ -13,9 +15,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // The App Component will be rendered
 // Mount the Out HTML generated from returned DOM
 // of the Component in the 'root' element 
+const Message= 'WelCome';
 root.render(
   <React.StrictMode>
-    <DepartmentComponent />
+    {/* The 'message' is a props type thata is passed by the Root to DepartmentComponent */}
+    <FormValidationComponent/>
   </React.StrictMode>
 );
 

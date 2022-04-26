@@ -327,3 +327,15 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - (Optional for Today, but mandatory by friday)
         - Implement Table Pagination by having 'IsPaginationEnabled' property value from the parent, of this is true then accept the 'pageSize' and below the table generate pagination (Bootstrap), based on No. of records in collection and page size generate page numbers and paginate accordingly        
 
+# Date: 26-April-2022 (1 to 5 MUSt be done today)
+
+1. Create an Employee Data Entry Form which will accept following information
+    - EmpNo, EmpName, Designation, DeptName, Salary, TechnicalExpertise
+2. Make sure that the Designations are like 'Director', 'CTO', 'Accountant', 'Project Manager', 'Manager', 'Lead', 'Engineer', 'Developer', 'Tester', 'Cashier'
+3. Make sure that DeptName are like 'Dev', 'Test', 'Accounts', 'HR', 'System'
+3. Technical Experties will be, 'Management', 'Teacher', 'C++', 'C#', 'JAVA', 'Python', 'JavaScript', 'React', 'Angular', 'jQuery', 'Node.js', 'Express', 'nUnit', 'jUnit', etc.
+4. The Forms MUST reuse dropdowns for Designation, DeptName and  TechnicalExpertise. MAke sure that one-or-more technical expertise can be selected. DeptName and Designation can be only one
+5. Use the Following Validation Rules
+    - EmpNo, MUST be +ve Integer and MUST not be more than 8 digits
+    - EmpName, Must start from Uppercase character, there MUST not be any special character, Only 2 BlankSpaces are allowed as 'FirstName MiddleName LastName' in EmpName but they cannot be consecutive blank spaces   
+6. Create a 'ValidationSummaryComponent' thsi will show all error messages on the top of the form. Make sure that when a data is valid, only that error message will be removed from validation summary component      
