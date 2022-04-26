@@ -176,3 +176,9 @@ const MyChildComponent=(props)=>{
     - The ReactDom create a virtual DOM for rendering
     - Each element in Virtual DOM contains 'key', this key will be used for monitoring changes into that element
     - Note: If you are creating DOM element dynamically based on array, then make sure that the dynamically generated DOM element is assigned with a 'key' property
+
+- Practices to be followed while designing the React UI Components
+    - If a Complex UI e.g. select,table is repeated for different data sources then consider creating reusable component.
+        Either use 'props' or 'context' to pass data to reusable component
+        - In the Child Component make sure that the data received from parent is validated against null, undefined, NaN, etc.   
+    - If using HTML table for showing data in tabular form, then make sure that the hard-coding for Table-Header and Table Rows is avoided
