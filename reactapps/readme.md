@@ -205,3 +205,19 @@ const MyChildComponent=(props)=>{
         - The Standard Hook can be called inside the Custom Hook                         
 
 - To Implement Validations for the Component, write the custom Logic with State Properties and make sure that, use HTML Form
+
+- Using 'useEffect'
+    - This is a Hook that is used for Following
+        - Invoked at Functional Component level to provide and initialization code execution which we need when the component is rendered.
+            - Global Event registration
+            - AJAX Calls
+            - Any other computations those we want to handle after the component completes its rendering
+        - This is an async hook with Following syntax
+            - useEffect(()=>{ INITIALIZATION LOGIC; return()=>{CLEANUP LOGIC;}  }, [DEPENDENCY-PARAMETER]);     
+            - The useEffect() will be used to update the state and hence re-render the DOM Tree based on state updates. The DEPENDENCY-PARAMETER, is used to signal the useEffect() that the state is changed and component is re-rendered ao that the useEffect() can be unloaded.
+                - IMP NOTE****: If the DEPENDENCY-PARAMETER is not passed, then the uesEffct() won't be unloaded and will continue its execution which will overhead the component   
+- AJAX Call from React App
+    - Use 'axios' a promise based library for External HTTP calls
+        - npm install --save axios
+        - axios.get(),post(), put(),delete()
+            - All methods are Async and uses promise Objects  

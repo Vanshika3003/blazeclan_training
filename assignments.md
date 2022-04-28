@@ -339,3 +339,11 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - EmpNo, MUST be +ve Integer and MUST not be more than 8 digits
     - EmpName, Must start from Uppercase character, there MUST not be any special character, Only 2 BlankSpaces are allowed as 'FirstName MiddleName LastName' in EmpName but they cannot be consecutive blank spaces   
 6. Create a 'ValidationSummaryComponent' thsi will show all error messages on the top of the form. Make sure that when a data is valid, only that error message will be removed from validation summary component      
+
+# Date: 28-April-2022
+
+1. Create Department and Employee Component for CRUD using REST API
+2. Call the Secure REST API by Accessing the REST API that is secured with Tokens
+    - Create Component for creating User and Login 
+    - Receive the Token and then use token to Authorize the user to call REST API
+3. Create a Component that will perform the Server-Side Search (like google search) to fetch matching Departments, Employees, Employee by DeptName, Employee By Designation, etc.       
