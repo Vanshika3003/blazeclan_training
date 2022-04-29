@@ -9,6 +9,8 @@ import FormValidationComponent from './components/validationcomponent/FormValida
 import ToggleComponent from './components/lifecyclewitheffect/togglecomponent';
 import AjaxCallComponent from './components/useeffectajaxcomponent/ajaxcallcomponent';
 import UseCustomHookReducerComponent from './components/cusomhookusereducer/usecustomhookcomponent';
+import ContainerComponent from './components/errorchecks/simpleerrorcheckcomponent';
+import ContainerComponentWithErrorBoundary from './components/errorchecks/errorcondarycomponent';
 // Importing Bootstrap css
 import  './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
@@ -22,7 +24,7 @@ const Message= 'WelCome';
 root.render(
   <React.StrictMode>
     {/* The 'message' is a props type thata is passed by the Root to DepartmentComponent */}
-    <UseCustomHookReducerComponent/>
+    <ContainerComponentWithErrorBoundary/>
   </React.StrictMode>
 );
 

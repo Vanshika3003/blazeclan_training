@@ -346,4 +346,20 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
 2. Call the Secure REST API by Accessing the REST API that is secured with Tokens
     - Create Component for creating User and Login 
     - Receive the Token and then use token to Authorize the user to call REST API
-3. Create a Component that will perform the Server-Side Search (like google search) to fetch matching Departments, Employees, Employee by DeptName, Employee By Designation, etc.       
+3. Create a Component that will perform the Server-Side Search (like google search) to fetch matching Departments, Employees, Employee by DeptName, Employee By Designation, etc.    
+
+
+# Date: 29-April-2022
+
+1. (Today)Create a Custom Hook of name useRemoteOperation(), that will accept following Parameters
+    - useRemoteOperation(url, type, data, options);
+        - The 'url' is remote REST API
+        - The 'type' is GET,POST,PUT,DELETE
+        - The 'data' is data to be posted (POST) or edited (PUT)
+        - The 'options' is a JSON object that will contain HTTP Headers e.g. as follows
+            - 'Content-Type': 'application/json'
+            - 'AUTHORIZATION' : 'Bearer TOKEN-VALUE'
+    - This hook should perform all REST CRUD Operations
+2. Modify the components created for REST API CRUD Operations on date 28-April-2022 for Handling Errors using Error Boundary
+3. Upload an Image from React App to Node.js REST API and show uploaded Image
+    - https://www.devcurry.com/2020/03/mern-stack-javascript-web-application.html

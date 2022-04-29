@@ -216,6 +216,7 @@ const MyChildComponent=(props)=>{
             - useEffect(()=>{ INITIALIZATION LOGIC; return()=>{CLEANUP LOGIC;}  }, [DEPENDENCY-PARAMETER]);     
             - The useEffect() will be used to update the state and hence re-render the DOM Tree based on state updates. The DEPENDENCY-PARAMETER, is used to signal the useEffect() that the state is changed and component is re-rendered ao that the useEffect() can be unloaded.
                 - IMP NOTE****: If the DEPENDENCY-PARAMETER is not passed, then the uesEffect() won't be unloaded and will continue its execution which will overhead the component   
+    - useEffetc(): A Combination of 'componentDidMount()' and 'componentWillUnMount()'            
 - AJAX Call from React App
     - Use 'axios' a promise based library for External HTTP calls
         - npm install --save axios
@@ -241,3 +242,15 @@ const MyChildComponent=(props)=>{
                 - action, the logic that will be a reason for updating the 'initialState' to 'updatesState'     
 - creating a custom-Hook
     - a need when we want to write a wrapper for standard Hook                    
+
+- React.js Error Boundaries
+    - Use Try..catch block for handling errors in functional component and in catch block return the fallback UI
+    - If the error Handling is not used or places in component, the React UI will crash in browser
+    - Use Error Boundary
+        -  Create a Class Component, this will act as a parent to all child components in it
+        - This component will implement the 'componentDidCatch(error, log)' function to listen to any error thrown by any child component
+            - error: The error thrown by child component
+            - log is stackTract in the browser
+        - The error will be stored in this class component using the 'getDerivedStateFromError()' property
+            - This is a read-only property that will listen to the error and will pass that error to 'componentDidCatch()'    
+    - Note: If using the React CLI, then make sure that the index.css will be disabling the 'iframe'  style because the React CLI (create-react-app) using 'iFrame' to show the browser error messages
