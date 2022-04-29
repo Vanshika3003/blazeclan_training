@@ -8,7 +8,7 @@ import ContexctProviderComponent from './components/contextprovidercomponent/con
 import FormValidationComponent from './components/validationcomponent/FormValidationComponent';
 import ToggleComponent from './components/lifecyclewitheffect/togglecomponent';
 import AjaxCallComponent from './components/useeffectajaxcomponent/ajaxcallcomponent';
-
+import UseCustomHookReducerComponent from './components/cusomhookusereducer/usecustomhookcomponent';
 // Importing Bootstrap css
 import  './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
@@ -22,7 +22,7 @@ const Message= 'WelCome';
 root.render(
   <React.StrictMode>
     {/* The 'message' is a props type thata is passed by the Root to DepartmentComponent */}
-    <AjaxCallComponent/>
+    <UseCustomHookReducerComponent/>
   </React.StrictMode>
 );
 

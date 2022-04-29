@@ -215,9 +215,29 @@ const MyChildComponent=(props)=>{
         - This is an async hook with Following syntax
             - useEffect(()=>{ INITIALIZATION LOGIC; return()=>{CLEANUP LOGIC;}  }, [DEPENDENCY-PARAMETER]);     
             - The useEffect() will be used to update the state and hence re-render the DOM Tree based on state updates. The DEPENDENCY-PARAMETER, is used to signal the useEffect() that the state is changed and component is re-rendered ao that the useEffect() can be unloaded.
-                - IMP NOTE****: If the DEPENDENCY-PARAMETER is not passed, then the uesEffct() won't be unloaded and will continue its execution which will overhead the component   
+                - IMP NOTE****: If the DEPENDENCY-PARAMETER is not passed, then the uesEffect() won't be unloaded and will continue its execution which will overhead the component   
 - AJAX Call from React App
     - Use 'axios' a promise based library for External HTTP calls
         - npm install --save axios
         - axios.get(),post(), put(),delete()
-            - All methods are Async and uses promise Objects  
+            - All methods are Async and uses promise Objects
+
+- useReducer()
+    - Alternative to useState()
+    - useState(state, action)
+        - action: DispatchAction
+            - Execute a Callback with state update from initial to final in tow step execution
+            - If (cond1) state= one
+            - If (cond2) stet=two
+        - The DispatchAction will immediately update the state, so if there exisits the complex Logic for State Update, then the useState() will be having challenges in updates. This is where we need useReducer() 
+        - Thew useReducer() will be used to monitor state updates based on logic
+    - useReducer(reducer object, initialState)  
+        - initialState: The initial value to be updated in state when app is loaded. This will be updated using 'reducer' object
+        -  reducer object
+            - a function as follows
+                - function(state, action){........ COMPLEX LOGIC ........ return updatedState;}
+                - state, the initialState by default 
+                    - The 'initialState', can be a value or a complex JSON object
+                - action, the logic that will be a reason for updating the 'initialState' to 'updatesState'     
+- creating a custom-Hook
+    - a need when we want to write a wrapper for standard Hook                    
