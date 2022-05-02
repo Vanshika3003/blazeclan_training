@@ -9,6 +9,11 @@ class DepartmentService {
         let response = await axios.get(`${this.url}/api/departments`);
         return response;
     }
+
+    async getDataById(id){
+        let response = await axios.get(`${this.url}/api/departments/${id}`);
+        return response;
+    }
     async postData(dept){
         let response = await axios.post(`${this.url}/api/departments`,dept, {
             headers:{

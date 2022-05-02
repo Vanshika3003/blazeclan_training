@@ -11,9 +11,12 @@ import AjaxCallComponent from './components/useeffectajaxcomponent/ajaxcallcompo
 import UseCustomHookReducerComponent from './components/cusomhookusereducer/usecustomhookcomponent';
 import ContainerComponent from './components/errorchecks/simpleerrorcheckcomponent';
 import ContainerComponentWithErrorBoundary from './components/errorchecks/errorcondarycomponent';
+import ListDepartmentsComponent from './components/routingapp/listdepartmentscomponent';
 // Importing Bootstrap css
 import  './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import MainRouterComponent from './components/routingapp/mainroutercomponent';
 // Point to the <div> rag in index.html that is present
 // in the public
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,7 +27,9 @@ const Message= 'WelCome';
 root.render(
   <React.StrictMode>
     {/* The 'message' is a props type thata is passed by the Root to DepartmentComponent */}
-    <ContainerComponentWithErrorBoundary/>
+    <BrowserRouter>
+      <MainRouterComponent></MainRouterComponent>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
