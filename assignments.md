@@ -362,4 +362,31 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
     - EmpNo, MUST be +ve Integer and MUST not be more than 8 digits
     - EmpName, Must start from Uppercase character, there MUST not be any special character, Only 2 BlankSpaces are allowed as 'FirstName MiddleName LastName' in EmpName but they cannot be consecutive blank spaces   
 6. Create a 'ValidationSummaryComponent' thsi will show all error messages on the top of the form. Make sure that when a data is valid, only that error message will be removed from validation summary component      
+<<<<<<< HEAD
 >>>>>>> 6e60d1f14a2c3df87fc59377e6d317f49f14fd9a
+=======
+
+# Date: 28-April-2022
+
+1. Create Department and Employee Component for CRUD using REST API
+2. Call the Secure REST API by Accessing the REST API that is secured with Tokens
+    - Create Component for creating User and Login 
+    - Receive the Token and then use token to Authorize the user to call REST API
+3. Create a Component that will perform the Server-Side Search (like google search) to fetch matching Departments, Employees, Employee by DeptName, Employee By Designation, etc.    
+
+
+# Date: 29-April-2022
+
+1. (Today)Create a Custom Hook of name useRemoteOperation(), that will accept following Parameters
+    - useRemoteOperation(url, type, data, options);
+        - The 'url' is remote REST API
+        - The 'type' is GET,POST,PUT,DELETE
+        - The 'data' is data to be posted (POST) or edited (PUT)
+        - The 'options' is a JSON object that will contain HTTP Headers e.g. as follows
+            - 'Content-Type': 'application/json'
+            - 'AUTHORIZATION' : 'Bearer TOKEN-VALUE'
+    - This hook should perform all REST CRUD Operations
+2. Modify the components created for REST API CRUD Operations on date 28-April-2022 for Handling Errors using Error Boundary
+3. Upload an Image from React App to Node.js REST API and show uploaded Image
+    - https://www.devcurry.com/2020/03/mern-stack-javascript-web-application.html
+>>>>>>> 6e13d2dcf29ac2ac31e7e955754a8e2ad4dbe312

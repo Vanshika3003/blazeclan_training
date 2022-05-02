@@ -124,7 +124,7 @@ function DepartmentComponent(props) {
                 <hr />
                 <div>
                     <DatagridComponent getData={(value) => { setDepartment({ ...department, deptno: value }) }}
-                        getDataName={(value) => { setDepartment({ ...department, deptname: value }) }} delete={(id) => deleteDept(id)} update={(id) => updateDept(id)} canDelete={true} dataSource={department} dataSource2={departments}
+                        getDataName={(value) => { setDepartment({ ...department, deptname: value }) }} getDataLocation={(value) => { setDepartment({ ...department, location: value }) }} getDataCapacity={(value) => { setDepartment({ ...department, capacity: value }) }} delete={(id) => deleteDept(id)} update={(id) => updateDept(id)} canDelete={true} dataSource={department} dataSource2={departments}
                     ></DatagridComponent>
                 </div>
                 <div id='dv3'>

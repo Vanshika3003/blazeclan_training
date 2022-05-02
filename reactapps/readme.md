@@ -205,3 +205,52 @@ const MyChildComponent=(props)=>{
         - The Standard Hook can be called inside the Custom Hook                         
 
 - To Implement Validations for the Component, write the custom Logic with State Properties and make sure that, use HTML Form
+
+- Using 'useEffect'
+    - This is a Hook that is used for Following
+        - Invoked at Functional Component level to provide and initialization code execution which we need when the component is rendered.
+            - Global Event registration
+            - AJAX Calls
+            - Any other computations those we want to handle after the component completes its rendering
+        - This is an async hook with Following syntax
+            - useEffect(()=>{ INITIALIZATION LOGIC; return()=>{CLEANUP LOGIC;}  }, [DEPENDENCY-PARAMETER]);     
+            - The useEffect() will be used to update the state and hence re-render the DOM Tree based on state updates. The DEPENDENCY-PARAMETER, is used to signal the useEffect() that the state is changed and component is re-rendered ao that the useEffect() can be unloaded.
+                - IMP NOTE****: If the DEPENDENCY-PARAMETER is not passed, then the uesEffect() won't be unloaded and will continue its execution which will overhead the component   
+    - useEffetc(): A Combination of 'componentDidMount()' and 'componentWillUnMount()'            
+- AJAX Call from React App
+    - Use 'axios' a promise based library for External HTTP calls
+        - npm install --save axios
+        - axios.get(),post(), put(),delete()
+            - All methods are Async and uses promise Objects
+
+- useReducer()
+    - Alternative to useState()
+    - useState(state, action)
+        - action: DispatchAction
+            - Execute a Callback with state update from initial to final in tow step execution
+            - If (cond1) state= one
+            - If (cond2) stet=two
+        - The DispatchAction will immediately update the state, so if there exisits the complex Logic for State Update, then the useState() will be having challenges in updates. This is where we need useReducer() 
+        - Thew useReducer() will be used to monitor state updates based on logic
+    - useReducer(reducer object, initialState)  
+        - initialState: The initial value to be updated in state when app is loaded. This will be updated using 'reducer' object
+        -  reducer object
+            - a function as follows
+                - function(state, action){........ COMPLEX LOGIC ........ return updatedState;}
+                - state, the initialState by default 
+                    - The 'initialState', can be a value or a complex JSON object
+                - action, the logic that will be a reason for updating the 'initialState' to 'updatesState'     
+- creating a custom-Hook
+    - a need when we want to write a wrapper for standard Hook                    
+
+- React.js Error Boundaries
+    - Use Try..catch block for handling errors in functional component and in catch block return the fallback UI
+    - If the error Handling is not used or places in component, the React UI will crash in browser
+    - Use Error Boundary
+        -  Create a Class Component, this will act as a parent to all child components in it
+        - This component will implement the 'componentDidCatch(error, log)' function to listen to any error thrown by any child component
+            - error: The error thrown by child component
+            - log is stackTract in the browser
+        - The error will be stored in this class component using the 'getDerivedStateFromError()' property
+            - This is a read-only property that will listen to the error and will pass that error to 'componentDidCatch()'    
+    - Note: If using the React CLI, then make sure that the index.css will be disabling the 'iframe'  style because the React CLI (create-react-app) using 'iFrame' to show the browser error messages
