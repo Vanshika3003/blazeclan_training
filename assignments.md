@@ -389,4 +389,16 @@ HINT: https://www.dotnetcurry.com/aspnet-mvc/1039/drag-drop-html5-aspnet-mvc-jqu
 2. Modify the components created for REST API CRUD Operations on date 28-April-2022 for Handling Errors using Error Boundary
 3. Upload an Image from React App to Node.js REST API and show uploaded Image
     - https://www.devcurry.com/2020/03/mern-stack-javascript-web-application.html
+<<<<<<< HEAD
 >>>>>>> 6e13d2dcf29ac2ac31e7e955754a8e2ad4dbe312
+=======
+
+# Date: 02-May-2022
+1. Modify the Routing App by adding deletecomponent to show record to be deleted. Modify the ListDepartmentsComponent  by showing delete button for each row. (You can use the 'DataGridComponent' for showing the List)
+    - Make sure that, Locations are fetched from the Department table and shown in the Create and Edit Components
+    - MAke sure that the List will always show Departments data in the sorted order by DeptNo
+2. Modify the Application to show links for Single-Page-Application  as like
+    - Department            Employee
+    - When the Department Link is clicked , show Layout for Department Single Page Application
+    - When the Employee Link is clicked , show Layout for Employee Single Page Application       
+>>>>>>> 80951d18cd4040036fac72397ac39a1b4347689f

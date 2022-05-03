@@ -1,29 +1,29 @@
 import axios from 'axios';
 
-class DepartmentService {
+class EmployeeService {
     constructor() {
         this.url = 'http://localhost:7013'
     }
 
     async getData() {
-        let response = await axios.get(`${this.url}/api/departments`);
+        let response = await axios.get(`${this.url}/api/employee`);
         return response;
     }
 
     async getDataById(id) {
-        let response = await axios.get(`${this.url}/api/departments/${id}`);
+        let response = await axios.get(`${this.url}/api/employee/${id}`);
         return response;
     }
-    async postData(dept) {
-        let response = await axios.post(`${this.url}/api/departments`, dept, {
+    async postData(emp) {
+        let response = await axios.post(`${this.url}/api/employee`, emp, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         return response;
     }
-    async putData(dept) {
-        let response = await axios.put(`${this.url}/api/departments/${dept.deptno}`, dept, {
+    async putData(emp) {
+        let response = await axios.put(`${this.url}/api/employee/${emp.empno}`, emp, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -32,9 +32,9 @@ class DepartmentService {
     }
 
     async deleteData(id) {
-        let response = await axios.delete(`${this.url}/api/departments/${id}`);
+        let response = await axios.delete(`${this.url}/api/employee/${id}`);
         return response;
     }
 }
 
-export default DepartmentService;
+export default EmployeeService;

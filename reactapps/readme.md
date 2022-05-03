@@ -254,3 +254,28 @@ const MyChildComponent=(props)=>{
         - The error will be stored in this class component using the 'getDerivedStateFromError()' property
             - This is a read-only property that will listen to the error and will pass that error to 'componentDidCatch()'    
     - Note: If using the React CLI, then make sure that the index.css will be disabling the 'iframe'  style because the React CLI (create-react-app) using 'iFrame' to show the browser error messages
+
+- React.js Simple Page Application
+    -  React-Router-DOM    
+        - npm install --save react-router-dom
+        - Dynamic Way of navigating across components using Resource Based Routes
+        - Works on the top of React.js
+        - RICH Object Model and Features for routing
+            - BrowserRouter
+                - Component that contains objet Model for Routing 
+                - Routes, as a Child of BrowserRouter that executes the Routing Object model into the browser  
+            - Outlet
+
+                - An container when the Component in Route will be mounted and executed    
+            - Switch
+                - The Query Table aka Route Table that defines Route expressions e.g. path and element
+            - Route
+                - Provides Properties like 'path', for URL and 'element' that accepts the component  
+            - Link          
+                - Represents the navigation link
+                - It has 'to' property to navigate to the path
+            - useRouteMatch
+                - For finding the out the URL match so that parameters from it can be read using the 'useParams' hook    
+            - useNavigate
+                - This will be used to read the Route URL so that the Route Parameters can be read
+                - Use this hook to navigate  explicitly to the component     
