@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getDepartments } from "./../actions/action";
+import { getDepartments } from "../actions/action";
 import { useDispatch, useSelector } from "react-redux";
 
 const ListDepartmentsSAGAComponent = () => {

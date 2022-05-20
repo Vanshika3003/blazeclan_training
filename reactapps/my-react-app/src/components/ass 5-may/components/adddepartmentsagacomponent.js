@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
-import { addDepartment } from './../actions/action';
+import { addDepartment } from '../actions/action';
 import SelectComponent from '../../reusablecomponents/selectcomponent';
 const AddDepartmentSAGAComponent = () => {
 

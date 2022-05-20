@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import components here
 import App from './App';
-import DepartmentComponent from './components/departmentcomponent/departmentcomponent';
-import CheckboxComponent from './components/departmentcomponent/checkboxcomponent';
-import CalculatorComponent from './components/departmentcomponent/calculatorcomponent';
+import DepartmentComponent from './components/ass-22-april/departmentcomponent';
+import CheckboxComponent from './components/ass-22-april/checkboxcomponent';
+import CalculatorComponent from './components/ass-22-april/calculatorcomponent';
 
 import ContexctProviderComponent from './components/contextprovidercomponent/contextprovidercomponent';
-import FormValidationComponent from './components/validationcomponent/FormValidationComponent';
+import FormValidationComponent from './components/ass 26-april/FormValidationComponent';
 import ToggleComponent from './components/lifecyclewitheffect/togglecomponent';
 import AjaxCallComponent from './components/useeffectajaxcomponent/ajaxcallcomponent';
-import UseCustomHookReducerComponent from './components/cusomhookusereducer/usecustomhookcomponent';
+import UseCustomHookReducerComponent from './components/ass 29-april/usecustomhookcomponent';
 import ContainerComponent from './components/errorchecks/simpleerrorcheckcomponent';
 import ContainerComponentWithErrorBoundary from './components/errorchecks/errorcondarycomponent';
-import ListDepartmentsComponent from './components/routingapp/listdepartmentscomponent';
+import ListDepartmentsComponent from './components/ass 2-may/listdepartmentscomponent';
 import EventTestComponent from './componentsfortest/eventtestcomponent';
 
 import HelloTestComponent from './componentsfortest/hellotestcomponent';
@@ -22,9 +22,9 @@ import HelloTestComponent from './componentsfortest/hellotestcomponent';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import MainRouterComponent from './components/routingapp/mainroutercomponent';
+import MainRouterComponent from './components/ass 2-may/mainroutercomponent';
 import ApplicationComponent from './components/ass 2-may/applicationcomponent';
-import UploadComponent from './components/uploadcomponent/uploadcomponent'
+import UploadComponent from './components/ass 12-may/uploadcomponent'
 
 // Point to the <div> rag in index.html that is present
 // in the public
@@ -109,7 +109,7 @@ reportWebVitals();
 
 // import "./index.css";
 // import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import MainReduxSAGAomponent from "./components/sagaapp/mainsagacomponent";
+// import MainReduxSAGAomponent from "./components/ass 5-may/mainsagacomponent";
 
 // import reportWebVitals from "./reportWebVitals";
 

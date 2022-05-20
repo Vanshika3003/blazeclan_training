@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import Navigator from './components/navigator';
+import Navigator from './ass 6-may/navigator';
 export default function Home() {
 
   const [x, setX] = useState(0);

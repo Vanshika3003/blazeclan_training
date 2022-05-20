@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import ReactDOM from "react-dom/client";
 import { act } from 'react-dom/test-utils'
 // import the component being tested
-import HelloTestComponent from "./../componentsfortest/hellotestcomponent";
+import HelloTestComponent from "../componentsfortest/hellotestcomponent";
 
 // test suit and test case
 

@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import ReactDOM from "react-dom/client";
 import { act } from 'react-dom/test-utils'
 // import the component being tested
-import EventTestComponent from './../componentsfortest/eventtestcomponent';
+import EventTestComponent from '../componentsfortest/eventtestcomponent';
 
 // test suit and test case
 
