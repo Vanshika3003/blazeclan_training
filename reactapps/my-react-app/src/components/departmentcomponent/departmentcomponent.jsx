@@ -113,7 +113,7 @@ function DepartmentComponent(props) {
                 <div className='form-group'>
                     <input type="button" className='btn btn-warning' value="Clear"
                         onClick={clear} />
-                    <input type="button" className='btn btn-success' value="Save" onClick={save} />
+                    <input type="button" className='btn btn-success b1' value="Save" onClick={save} />
                 </div>
                 <hr />
                 <div className='container'>

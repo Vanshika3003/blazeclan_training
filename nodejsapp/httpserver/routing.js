@@ -9,7 +9,7 @@ let __fileName = fileURLToPath(import.meta.url);
 console.log(`File Name = ${__fileName}`);
 // 2. Combine this with the actual Resource Path
 let dirPath = path.join(__fileName, "./../../views");
-
+console.log("dirPath", dirPath);
 const server = http.createServer((req, resp) => {
   // check the URL and accordingly read file from the server and respond it
   if (req.url === "/home") {
@@ -30,9 +30,26 @@ const server = http.createServer((req, resp) => {
     );
   } else {
     if (req.url === "/about") {
+      // read the home.html and send the response
+      fs.readFile(
+        `${dirPath}/about.html`,
+        { encoding: "ascii" },
+        (error, file) => {
+          if (error) {
+            resp.writeHead(404, { "Content-Type": "text/html" });
+            resp.write("The Resource You are Looking for is not available.... ");
+            resp.end();
+          }
+          resp.writeHead(200, { "Content-Type": "text/html" });
+          resp.write(file);
+          resp.end();
+        }
+      );
+    } else {
+      if (req.url === "/contact") {
         // read the home.html and send the response
         fs.readFile(
-          `${dirPath}/about.html`,
+          `${dirPath}/contact.html`,
           { encoding: "ascii" },
           (error, file) => {
             if (error) {
@@ -46,30 +63,13 @@ const server = http.createServer((req, resp) => {
           }
         );
       } else {
-        if (req.url === "/contact") {
-            // read the home.html and send the response
-            fs.readFile(
-              `${dirPath}/contact.html`,
-              { encoding: "ascii" },
-              (error, file) => {
-                if (error) {
-                  resp.writeHead(404, { "Content-Type": "text/html" });
-                  resp.write("The Resource You are Looking for is not available.... ");
-                  resp.end();
-                }
-                resp.writeHead(200, { "Content-Type": "text/html" });
-                resp.write(file);
-                resp.end();
-              }
-            );
-          } else {
-            resp.writeHead(404, { "Content-Type": "text/html" });
-            resp.write("The Resource You are Looking for is not available.... ");
-            resp.end();
-          }
+        resp.writeHead(404, { "Content-Type": "text/html" });
+        resp.write("The Resource You are Looking for is not available.... ");
+        resp.end();
       }
-  }  
+    }
+  }
 });
 
-server.listen(734);
+server.listen(200);
 console.log("Server Started on port 7013");

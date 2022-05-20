@@ -18,7 +18,7 @@ instance.use(cors({
 
 // import dataaccess
 
-import DataAccess from './dataaccess/tokenissuer.js'
+import DataAccess from './dataaccess/ass-20-april.js'
 
 let ds = new DataAccess();
 // lets create REST API

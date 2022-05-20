@@ -93,9 +93,9 @@ const reducer = (state, action) => {
 const UseCustomHookReducerComponent = () => {
     console.log('In Component');
     // Use the Custom reducer that will update the state and hence asks the React to update DOM
-    const state = useStateUpdater("http://localhost:7012/api/departments", "GET",
+    const state = useStateUpdater("http://localhost:7013/api/departments", "GET",
         // {
-        //     "deptno": 1220,
+        //     "deptno": 1221,
         //     "deptname": "HR",
         //     "location": "Delhi",
         //     "capacity": 45
@@ -103,12 +103,12 @@ const UseCustomHookReducerComponent = () => {
         {},
         {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibW52IiwicGFzc3dvcmQiOiJwYXNzMyJ9LCJ1c2VyUGVybWlzc2lvbnMiOlsicmVhZCJdLCJpYXQiOjE2NTE0NDM3NTksImV4cCI6MTY1MTQ0NzM1OX0.V-lBDt43Ye6JvzSZmgy9FoQDw1ygN2Omj3MZivBKm_WPINkSHDeW9NshiSmkdTyN',
+            //'Authorization': 'Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoibW52IiwicGFzc3dvcmQiOiJwYXNzMyJ9LCJ1c2VyUGVybWlzc2lvbnMiOlsicmVhZCJdLCJpYXQiOjE2NTE0NDM3NTksImV4cCI6MTY1MTQ0NzM1OX0.V-lBDt43Ye6JvzSZmgy9FoQDw1ygN2Omj3MZivBKm_WPINkSHDeW9NshiSmkdTyN',
         },
     );
     return (
         <div className='container'>
-            <h1>using a Custom Hook That Wraps 'useEffect' and 'useReducer'</h1>
+            <h1>ASS 29-APRIL</h1>
             <Fragment>
                 {
                     JSON.stringify(state)

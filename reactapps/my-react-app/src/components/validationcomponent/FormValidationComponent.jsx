@@ -5,7 +5,11 @@ const FormValidationComponent = () => {
     const [emp, setEmp] = useState({ EmpNo: 0, EmpName: '', Designation: '', DeptName: '', Salary: '', TechnicalExpertise: '' });
     const [isEmpNoValid, checkEmpNo] = useState(true);
     const [isEmpNameValid, checkEmpName] = useState(true);
+    const [isEmpNameCapital, checkEmpNameCap] = useState(true);
+    const [isEmpNameChar, checkEmpNameChar] = useState(true);
+
     const [isFormValid, checkForm] = useState(true);
+
     const [employees, updateEmployees] = useState([]);
 
 
@@ -70,10 +74,20 @@ const FormValidationComponent = () => {
         }
 
         if (name === "EmpName") {
-            if (value.length < 2 || value[0] == value[0].toLowerCase() || !regex.test(value)) {
+            if (value.length < 2) {
                 checkEmpName(false);
                 checkForm(false);
-            } else {
+            }
+            else if (value[0] == value[0].toLowerCase()) {
+                checkEmpNameCap(false);
+                checkForm(false);
+            }
+            else if (!regex.test(value)) {
+                checkEmpNameChar(false);
+                checkForm(false);
+            }
+
+            else {
                 checkEmpName(true);
                 checkForm(true);
             }
@@ -140,7 +154,7 @@ const FormValidationComponent = () => {
         // </div>
         <Fragment>
 
-            <h1 className="text-center">Employee Data Entry Form</h1>
+            <h1 className="text-center">ASS -26-APRIL</h1>
             {/* { isEmpNameValidRule1 && <ValidationSummaryComponent dataSource={isEmpNameValidRule1}/>}
     { isEmpNameValidRule2 || <ValidationSummaryComponent dataSource={isEmpNameValidRule2}/>} */}
             <form name="frmEmp">
@@ -153,14 +167,30 @@ const FormValidationComponent = () => {
                                         <label>EmpNo</label>
                                         <input type="text" className="form-control" name="EmpNo" value={emp.EmpNo} onChange={handleChange} />
 
-
+                                        <div className='alert alert-danger' hidden={isEmpNoValid}>
+                                            EmpNo MUST be +ve integer and not have more than 8 Digit Numbers
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div className="form-group">
                                         <label>EmpName</label>
                                         <input type="text" className="form-control" name="EmpName" value={emp.EmpName} onChange={handleChange} />
-                                    </div>                                </td>
+                                    </div>
+                                    <div className='alert alert-danger' hidden={isEmpNameValid}>
+                                        EmpName must be minimum 2 characters long
+                                    </div>
+                                    <div className='alert alert-danger' hidden={isEmpNameCapital}>
+                                        First digit of EmpName should be capital
+                                    </div>
+                                    <div className='alert alert-danger' hidden={isEmpNameChar}>
+                                        EmpName must not contain any character
+
+                                    </div>
+
+
+                                </td>
+
                             </tr>
                             <tr>
                                 <td>
